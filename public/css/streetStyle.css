@@ -1,0 +1,52 @@
+.dragscroll {
+    border: 1px solid rgb(31, 40, 49);
+    background-color : #283849;
+    overflow: auto;
+    position: relative;
+}
+
+.horizontal.dragscroll {
+    margin-top : 10px;
+    width: 95%;
+    margin-left: auto;
+    background-color: #000000;
+    margin-right: auto;
+}
+
+.horizontal {
+    cursor : -webkit-grab;
+    cursor : -moz-grab;
+    cursor : -o-grab;
+    cursor : grab;
+}
+
+
+.horizontal:active {
+    cursor : -webkit-grabbing;
+    cursor : -moz-grabbing;
+    cursor : -o-grabbing;
+    cursor : grabbing;
+}
+
+
+.category {
+    z-index: 2;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    background-color: white;
+
+    top: 270px;
+    left: 750px;
+}
+
+.streetElement {
+    z-index: 3;
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    background-color: black;
+
+    top: 350px;
+    left: 400px;
+}

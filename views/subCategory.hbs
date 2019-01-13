@@ -1,0 +1,22 @@
+<h2>This is the category page for {{subCategory}}</h2>
+
+<a href="./">Back to category</a>
+<br/>
+<br/>
+
+{{#each words}}
+    {{#if this.image}}
+        <img src="{{this.image}}" style="height: 100px;" onclick="playAudio('{{this.audio}}')"/>
+    {{/if}}
+{{/each}}
+
+<br>
+<a href="./{{subCategory}}/quiz">Take Quiz</a>
+
+
+<script>
+    function playAudio(soundLocation) {
+        var audio = new Audio(soundLocation);
+        audio.play();    
+    }
+</script>

@@ -1,0 +1,46 @@
+{   "quiz": [
+        {
+            "word": "apple",
+            "answerImage": "/images/categories/fruit/fruitGroup1/apple.png",
+            "answerAudio": "/audio/categories/fruit/fruitGroup1/apple.wav",
+            "incorrectImages": [
+                "/images/categories/fruit/fruitGroup1/lemon.png",
+                "/images/categories/fruit/fruitGroup1/pear.png",
+                "/images/categories/fruit/fruitGroup1/strawberry.png"
+            ]
+        },
+        {
+            "word": "banana",
+            "answerImage": "/images/categories/fruit/fruitGroup1/banana.png",
+            "answerAudio": "/audio/categories/fruit/fruitGroup1/banana.wav",
+            "incorrectImages": [
+                "/images/categories/fruit/fruitGroup1/pear.png",
+                "/images/categories/fruit/fruitGroup1/strawberry.png",
+                "/images/categories/fruit/fruitGroup1/orange.png"
+            ]
+        },
+
+        {
+            "word": "strawberry",
+            "answerImage": "/images/categories/fruit/fruitGroup1/strawberry.png",
+            "answerAudio": "/audio/categories/fruit/fruitGroup1/strawberry.wav",
+            "incorrectImages": [
+                "/images/categories/fruit/fruitGroup1/apple.png",
+                "/images/categories/fruit/fruitGroup1/pear.png",
+                "/images/categories/fruit/fruitGroup1/orange.png"
+            ]
+        },
+
+        {
+            "word": "lemon",
+            "answerImage": "/images/categories/fruit/fruitGroup1/lemon.png",
+            "answerAudio": "/audio/categories/fruit/fruitGroup1/lemon.wav",
+            "incorrectImages": [
+                "/images/categories/fruit/fruitGroup1/pear.png",
+                "/images/categories/fruit/fruitGroup1/orange.png",
+                "/images/categories/fruit/fruitGroup1/apple.png"
+            ]
+        }
+    ]
+
+}

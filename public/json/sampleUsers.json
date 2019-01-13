@@ -1,0 +1,42 @@
+[
+    {
+        "id": "123",
+        "name": "Mikey",
+        "profileImage": "/images/profileImages/orange.png",
+        "quizScores": [
+            "10/10",
+            "8/10",
+            "5/10"
+        ]
+    },
+    {
+        "id": "567",
+        "name": "Leo",
+        "profileImage": "/images/profileImages/blue.png",
+        "quizScores": [
+            "9/10",
+            "8/10",
+            "8/10"
+        ]
+    },
+    {
+        "id": "9",
+        "name": "Raphael",
+        "profileImage": "/images/profileImages/red.png",
+        "quizScores": [
+            "3/10",
+            "4/10",
+            "6/10"
+        ]
+    },
+    {
+        "id": "81454",
+        "name": "Donatello",
+        "profileImage": "/images/profileImages/purple.png",
+        "quizScores": [
+            "6/10",
+            "2/10",
+            "4/10"
+        ]
+    }
+]

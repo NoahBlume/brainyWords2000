@@ -1,0 +1,46 @@
+<h2 id="header">street</h2>
+
+<div class="horizontal dragscroll background-container">
+    <img id="streetBackground" style="height: 700px;" src="/images/streetBackground/street.png"/>
+    <div class="streetElement"  onmouseup="playAudio('apple.wav');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="category" onmouseup="selectCategory('fruit');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+</div>
+
+<a href="/progress">Progress</a>
+
+
+<script>
+    var dragging = false;
+    var header = document.getElementById("header");
+    
+    function setDrag() {
+        dragging = true
+        header.style.color = "green";
+    }
+
+    function clearDrag() {
+        dragging = false
+        header.style.color = "red";
+    }
+
+    function playAudio(soundName) {
+        if (dragging == true) {
+            dragging = false
+            header.style.color = "red";
+        } else {
+            var audio = new Audio('/audio/street/' + soundName);
+            audio.play();    
+        }
+    }
+
+    function selectCategory(categoryName) {
+        if (dragging == true) {
+            dragging = false
+            header.style.color = "red";
+        } else {
+            location.href= '/category/' + categoryName;
+        }   
+    }
+</script>

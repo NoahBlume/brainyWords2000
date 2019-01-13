@@ -1,0 +1,79 @@
+<audio id="correct-sound" src="/audio/correct.wav" type="audio/wav"></audio>
+<audio id="incorrect-sound" src="/audio/incorrect.wav" type="audio/wav"></audio>
+<audio id="answer-audio" src="" type="audio/wav"></audio>
+
+<div id="top">
+    <h2 align="center">Quiz</h2>
+</div>
+
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content slim" id="myModal">
+        <div class="modal-header" style="text-align:center;">
+            <h2 align="center" style="margin-right: auto; margin-left: auto;">Results</h2>
+        </div>
+        <div class="modal-body">
+            <br/>
+            <h5>Correct on first try:</h5>
+            <h2 id="numRight"></h2>
+            <button type="button" class="btn done-button" id="quiz-complete-button">Done</button>
+        </div>
+        <!-- <div class="modal-footer">
+            <h3>Done</h3>
+        </div> -->
+    </div>
+</div>
+
+<div id="startModal" style="display:block;" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content slim">
+        <div class="modal-header" style="text-align:center;">
+            <h2 align="center" style="margin-right: auto; margin-left: auto;">Start Quiz</h2>
+        </div>
+        <div class="modal-body">
+            <br/>
+            <div class="play-button" id="begin-quiz">
+            </div>
+            <br/>
+        </div>
+    </div>
+</div>
+
+
+<br/><br/>
+<h3 id="question-word" align="center">apple</h3>
+<br/>
+
+<div class="row">
+    <div class="col-sm-3 offset-sm-3 rectangle">
+        <div class="option" id="top-left">
+            <img class="option-image">
+        </div>
+    </div>
+    <div class="col-sm-3 rectangle">
+        <div class="option" id="top-right">
+            <img class="option-image">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3 offset-sm-3 rectangle">
+        <div class="option" id="bottom-left">
+            <img class="option-image">
+        </div>
+    </div>
+    <div class="col-sm-3 rectangle">
+        <div class="option" id="bottom-right">
+            <img class="option-image">
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var decodedJson = decodeURIComponent("{{{encodedJson}}}");
+    window.sharedInfo = JSON.parse(decodedJson);
+
+    window.redirectLocation = "{{subCategoryLocation}}";
+    // console.log(window.sharedInfo);
+</script>
