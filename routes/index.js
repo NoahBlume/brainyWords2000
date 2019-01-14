@@ -6,25 +6,17 @@ const path = require('path');
 
 const fs = require('fs');
 
-// GET route for reading data
+// GET route for welcome screen
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Welcome!'});
-  // return res.sendFile(path.resolve(__dirname, '../templateLogReg/index.html'));
 });
 
-// GET route for reading data
-router.get('/quiz', function (req, res, next) {
-  // return res.sendFile(path.resolve(__dirname, '../templateLogReg/quiz/quiz.html'));
-  res.render('quiz', { layout: 'quizLayout.hbs', title: 'Register'});
-});
-
-// GET route for reading data
+// GET route for main street screen
 router.get('/street', function (req, res, next) {
     res.render('street', { layout: "streetLayout.hbs", title: 'Street'});
-  // return res.sendFile(path.resolve(__dirname, '../templateLogReg/quiz/quiz.html'));
 });
 
-// GET route for reading data
+// GET route for progress screen
 router.get('/progress', function (req, res, next) {
     const email = "example email";
     const name = "example name";
@@ -38,17 +30,12 @@ router.get('/progress', function (req, res, next) {
     });
 });
 
-router.post('/play', function(req, res, next) {
-    res.redirect('/street');
-});
-
-
+// GET route for viewing a category
 router.get('/category/:category', function (req, res, next) {
-    // console.log("category page hit!!!");
-    var category = req.params.category;
+    const category = req.params.category;
 
     try {
-        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category);
+        // const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category);
         const imagePath = path.join(__dirname, '..', 'public/images/categories/', category);
 
         const publicImagePath = '/images/categories/' + category;
@@ -89,7 +76,7 @@ router.get('/category/:category', function (req, res, next) {
 });
 
 
-// GET route after registering
+// GET route for viewing a subcategory
 router.get('/category/:category/:subCategory', function (req, res, next) {
     // console.log("subcategory page hit!!!");
     const category = req.params.category;
@@ -151,7 +138,7 @@ router.get('/category/:category/:subCategory', function (req, res, next) {
 });
 
 
-// GET route after registering
+// GET route for taking a quiz
 router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
     // console.log("quiz page hit!!!");
     const category = req.params.category;
