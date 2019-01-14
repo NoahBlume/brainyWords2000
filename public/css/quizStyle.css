@@ -10,12 +10,20 @@ body {
   /*background-color: #555;*/
 }
 
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
 .option {
     height: 90%;
     width: 90%;
     border-radius: 10px;
     background-color: #f7f7f7;
     box-shadow: -3px 3px 10px -3px;
+
+    white-space: nowrap;
+    text-align: center;
     /*border-color: white;
     border-style: solid;
     border-width: 5px;*/
@@ -34,11 +42,17 @@ body {
 }
 
 .option-image {
-    height: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5%;
+    /*height: 90%;*/
+
+    max-width: 95%;
+    max-height: 95%;
+
+    vertical-align: middle;
+
+    display: inline-block;
+    margin: auto;
+    padding-left: 0;
+    margin-left: -4px;
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
