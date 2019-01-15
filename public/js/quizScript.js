@@ -9,17 +9,17 @@ var modal = document.getElementById('myModal');
 // var incorrectSound = $("#incorrect-sound").trigger('play');
 var startModal = document.getElementById('startModal');
 
-var green = "#22bc00";
-var questions = {};
-var quizReady = false;
+const green = "#22bc00";
+const questions = {};
+let quizReady = false;
 questions['answerIndex'] = -1;
 questions['numQuestions'] = -1;
 questions['curQuestion'] = 0;
-var firstQuestion = true;
+let firstQuestion = true;
 
 
 $( document ).ready(function() {
-    var testing = window.sharedInfo;
+    const testing = window.sharedInfo;
     // console.log(testing);
     questions['quiz'] = testing.quiz;
 
@@ -40,47 +40,16 @@ $( document ).ready(function() {
 
 
     // get the button that closes the quiz complete modal
-    var quizDoneButton = document.getElementById("quiz-complete-button");
-
-    // Get the <span> element that closes the modal
-    // var span = document.getElementsByClassName("close")[0];
+    const quizDoneButton = document.getElementById("quiz-complete-button");
 
     // When the user clicks the done button, return to the subcategory
     quizDoneButton.onclick = function() {
         window.location.href = window.redirectLocation;
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    // span.onclick = function() {
-    //     modal.style.display = "none";
-    // }
-
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    //     if (event.target == modal) {
-    //         modal.style.display = "none";
-    //     }
-    // }
-
-    // $.ajaxSetup({
-    //     scriptCharset: "utf-8",
-    //     contentType: "application/json; charset=utf-8"
-    // });
-
-    // $.getJSON("/json/quizQuestions.json", {}, function(json) {
-    //     console.log(json); // this will show the info it in firebug console
-    //     questions['quiz'] = json.quiz;
-
-    //     questions.numQuestions = questions.quiz.length;
-    //     totalNumQuestions = questions.numQuestions;
-
-    //     SetupQuiz(questions);
-    //     quizReady = true;
-    // });
+    };
 
     $("#top-left").click(function() {
         if(quizReady === true) {
-            if(questions.answerIndex == 0) {
+            if(questions.answerIndex === 0) {
                 ResetColors();
                 $("#top-left").css('background-color', green);
                 // alert("Correct!");
@@ -96,7 +65,7 @@ $( document ).ready(function() {
 
     $("#top-right").click(function() {
         if(quizReady === true) {
-            if(questions.answerIndex == 1) {
+            if(questions.answerIndex === 1) {
                 ResetColors();
                 $("#top-right").css('background-color', green);
                 // alert("Correct!");
@@ -112,7 +81,7 @@ $( document ).ready(function() {
 
     $("#bottom-left").click(function() {
         if(quizReady === true) {
-            if(questions.answerIndex == 2) {
+            if(questions.answerIndex === 2) {
                 ResetColors();
                 $("#bottom-left").css('background-color', green);
                 // alert("Correct!");
@@ -128,7 +97,7 @@ $( document ).ready(function() {
 
     $("#bottom-right").click(function() {
         if(quizReady === true) {
-            if(questions.answerIndex == 3) {
+            if(questions.answerIndex === 3) {
                 ResetColors();
                 $("#bottom-right").css('background-color', green);
                 // alert("Correct!");
@@ -161,6 +130,7 @@ function QuizComplete(questions) {
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
+    document.activeElement.blur();
 
     setTimeout(function() {
         if (firstTry) {

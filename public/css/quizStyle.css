@@ -6,8 +6,6 @@ body {
 
 .rectangle {
   height: 250px;
-
-  /*background-color: #555;*/
 }
 
 .helper {
@@ -39,8 +37,6 @@ body {
 }
 
 .option-image {
-    /*height: 90%;*/
-
     max-width: 95%;
     max-height: 95%;
 
@@ -62,23 +58,12 @@ body {
 
 #top-left {
     float: right;
-    /*background-color: green;*/
-}
-
-#top-right {
-    /*float: left;*/
-    /*background-color: orange;*/
 }
 
 #bottom-left {
     float: right;
-    /*background-color: grey;*/
 }
 
-#bottom-right {
-    /*float: left;*/
-    /*background-color: blue;*/
-}
 
 .button {
     background-color: #4CAF50; /* Green */
@@ -99,18 +84,8 @@ body {
 }
 
 #top {
-    /*background-color: #2d2d2d; /*dark grey*/
-    /*position:absolute;*/
-    /*left:0;*/
-    /*right:0;*/
-    /*top:0;*/
-    /*color: white;*/
     text-align: center;
 }
-
-
-
-
 
 
 /* The Modal (background) */
