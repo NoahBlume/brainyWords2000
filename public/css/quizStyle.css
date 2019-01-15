@@ -237,4 +237,8 @@ special styling for small (mobile) screens
         margin-left: auto;
         margin-right: auto;
     }
+
+    .option:hover {
+        background-color: #f7f7f7;
+    }
 }

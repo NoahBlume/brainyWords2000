@@ -130,7 +130,6 @@ function QuizComplete(questions) {
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
-    document.activeElement.blur();
 
     setTimeout(function() {
         if (firstTry) {
