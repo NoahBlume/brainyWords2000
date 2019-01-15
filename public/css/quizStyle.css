@@ -6,19 +6,22 @@ body {
 
 .rectangle {
   height: 250px;
-
-  /*background-color: #555;*/
 }
 
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
 .option {
     height: 90%;
     width: 90%;
     border-radius: 10px;
     background-color: #f7f7f7;
     box-shadow: -3px 3px 10px -3px;
-    /*border-color: white;
-    border-style: solid;
-    border-width: 5px;*/
+
+    white-space: nowrap;
+    text-align: center;
 
     -webkit-transition: background-color 0.25s ease-in-out;
     -moz-transition: background-color 0.25s ease-in-out;
@@ -34,11 +37,15 @@ body {
 }
 
 .option-image {
-    height: 90%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5%;
+    max-width: 95%;
+    max-height: 95%;
+
+    vertical-align: middle;
+
+    display: inline-block;
+    margin: auto;
+    padding-left: 0;
+    margin-left: -4px;
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -51,23 +58,12 @@ body {
 
 #top-left {
     float: right;
-    /*background-color: green;*/
-}
-
-#top-right {
-    /*float: left;*/
-    /*background-color: orange;*/
 }
 
 #bottom-left {
     float: right;
-    /*background-color: grey;*/
 }
 
-#bottom-right {
-    /*float: left;*/
-    /*background-color: blue;*/
-}
 
 .button {
     background-color: #4CAF50; /* Green */
@@ -88,18 +84,8 @@ body {
 }
 
 #top {
-    /*background-color: #2d2d2d; /*dark grey*/
-    /*position:absolute;*/
-    /*left:0;*/
-    /*right:0;*/
-    /*top:0;*/
-    /*color: white;*/
     text-align: center;
 }
-
-
-
-
 
 
 /* The Modal (background) */
@@ -218,4 +204,41 @@ body {
 
 .done-button:hover {
     background-color: #3a8cff;
+}
+
+
+/*
+special styling for small (mobile) screens
+ */
+@media only screen and (max-width: 576px) {
+    .rectangle {
+        height: 100px;
+    }
+
+    #top-left {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #top-right {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #bottom-left {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #bottom-right {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .option:hover {
+        background-color: #f7f7f7;
+    }
 }

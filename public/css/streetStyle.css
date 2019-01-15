@@ -1,5 +1,5 @@
 .dragscroll {
-    border: 1px solid rgb(31, 40, 49);
+    /*border: 1px solid rgb(31, 40, 49);*/
     background-color : #283849;
     overflow: auto;
     position: relative;
@@ -7,16 +7,16 @@
 
 .horizontal.dragscroll {
     margin-top : 10px;
-    width: 95%;
-    margin-left: auto;
+    /*width: 100%;*/
+    margin-left: 0;
     background-color: #000000;
-    margin-right: auto;
+    margin-right: 0;
 }
 
 .horizontal {
     cursor : -webkit-grab;
     cursor : -moz-grab;
-    cursor : -o-grab;
+    /*cursor : -o-grab;*/
     cursor : grab;
 }
 
@@ -24,7 +24,7 @@
 .horizontal:active {
     cursor : -webkit-grabbing;
     cursor : -moz-grabbing;
-    cursor : -o-grabbing;
+    /*cursor : -o-grabbing;*/
     cursor : grabbing;
 }
 
@@ -32,21 +32,68 @@
 .category {
     z-index: 2;
     position: absolute;
-    height: 300px;
-    width: 300px;
+    height: 170px;
+    width: 170px;
     background-color: white;
 
-    top: 270px;
-    left: 750px;
+    top: 150px;
+    left: 430px;
 }
 
 .streetElement {
     z-index: 3;
     position: absolute;
-    height: 170px;
-    width: 170px;
-    background-color: black;
+    height: 90px;
+    width: 90px;
+    background-color: greenyellow;
 
-    top: 350px;
-    left: 400px;
+    top: 205px;
+    left: 232px;
 }
+
+@media screen and (max-height: 530px) {
+    html {
+        -webkit-transform: scale(.9);
+        -moz-transform: scale(.9);
+        transform: scale(.9);
+        transform-origin: top center;
+
+        /*zoom: 50%;*/
+    }
+}
+
+@media screen and (max-height: 475px) {
+    html {
+        -webkit-transform: scale(.8);
+        -moz-transform: scale(.8);
+        transform: scale(.8);
+        transform-origin: top center;
+
+        /*zoom: 50%;*/
+    }
+}
+
+@media screen and (max-height: 420px) {
+    html {
+        -webkit-transform: scale(.7);
+        -moz-transform: scale(.7);
+        transform: scale(.7);
+        transform-origin: top center;
+
+        /*zoom: 50%;*/
+    }
+}
+
+@media screen and (max-height: 365px) {
+    html {
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        transform: scale(.6);
+        transform-origin: top center;
+
+        /*zoom: 50%;*/
+    }
+}
+
+/*@media scrren and(max-width:1280px){html{-moz-transform: scale(0.75, 0.75); zoom: 0.75; zoom: 75%;}}*/
+/*@media scrren and(max-width:800px){html{-moz-transform: scale(0.50, 0.50); zoom: 0.50; zoom: 50%;}}*/
