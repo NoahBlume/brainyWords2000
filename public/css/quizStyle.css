@@ -24,9 +24,6 @@ body {
 
     white-space: nowrap;
     text-align: center;
-    /*border-color: white;
-    border-style: solid;
-    border-width: 5px;*/
 
     -webkit-transition: background-color 0.25s ease-in-out;
     -moz-transition: background-color 0.25s ease-in-out;
@@ -232,4 +229,37 @@ body {
 
 .done-button:hover {
     background-color: #3a8cff;
+}
+
+
+/*
+special styling for small (mobile) screens
+ */
+@media only screen and (max-width: 576px) {
+    .rectangle {
+        height: 100px;
+    }
+
+    #top-left {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #top-right {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #bottom-left {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #bottom-right {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
