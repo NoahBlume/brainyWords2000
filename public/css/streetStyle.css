@@ -51,7 +51,7 @@
     left: 232px;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 530px) {
     html {
         -webkit-transform: scale(.9);
         -moz-transform: scale(.9);
@@ -62,7 +62,7 @@
     }
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 475px) {
     html {
         -webkit-transform: scale(.8);
         -moz-transform: scale(.8);
@@ -73,11 +73,22 @@
     }
 }
 
-@media screen and (max-height: 400px) {
+@media screen and (max-height: 420px) {
     html {
         -webkit-transform: scale(.7);
         -moz-transform: scale(.7);
         transform: scale(.7);
+        transform-origin: top center;
+
+        /*zoom: 50%;*/
+    }
+}
+
+@media screen and (max-height: 365px) {
+    html {
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        transform: scale(.6);
         transform-origin: top center;
 
         /*zoom: 50%;*/
