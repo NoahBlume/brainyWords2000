@@ -1,17 +1,33 @@
 <h2 id="header">street</h2>
 
-<div class="horizontal dragscroll background-container">
-    <img id="streetBackground" style="height: 400px;" src="/images/streetBackground/street.png"/>
+<div class="horizontal dragscroll background-container" id="mainContainer">
+    <img id="streetBackground" style="height: 400px; display: none;" src="/images/streetBackground/front.jpg"/>
+    <img id="low_res" style="height: 400px;" src="/images/streetBackground/background.jpg"/>
     <div class="streetElement"  onmouseup="playAudio('apple.wav');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="category" onmouseup="selectCategory('fruit');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 </div>
 
+<img id="highQualityStreet" style="display: none;" src="/images/streetBackground/front.jpg"/>
+
 <a href="/progress">Progress</a>
 
-
 <script>
+    $(document).ready(function() {
+        $('#mainContainer').scrollLeft(0);
+    });
+
+    $("#highQualityStreet").off().on("load", function() {
+        console.log("DID THE THING");
+        $("#streetBackground").css({
+            "display" : "inline"
+        });
+        $("#low_res").css({
+            "display" : "none"
+        });
+    });
+
     let dragging = false;
     const header = document.getElementById("header");
 
