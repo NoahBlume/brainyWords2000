@@ -16,7 +16,7 @@
 .horizontal {
     cursor : -webkit-grab;
     cursor : -moz-grab;
-    /*cursor : -o-grab;*/
+    cursor : -o-grab;
     cursor : grab;
 }
 
@@ -24,7 +24,7 @@
 .horizontal:active {
     cursor : -webkit-grabbing;
     cursor : -moz-grabbing;
-    /*cursor : -o-grabbing;*/
+    cursor : -o-grabbing;
     cursor : grabbing;
 }
 
@@ -93,4 +93,12 @@
 
         /*zoom: 50%;*/
     }
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }

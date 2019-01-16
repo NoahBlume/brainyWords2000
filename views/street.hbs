@@ -1,15 +1,15 @@
 <h2 id="header">street</h2>
 
 <div class="horizontal dragscroll background-container" id="mainContainer">
-    <img id="streetBackground" style="height: 400px; display: none; z-index: 1; position: absolute;" src="/images/streetBackground/front.jpg"/>
     <img id="low_res" style="height: 400px; z-index: 2;" src="/images/streetBackground/background.jpg"/>
+    <img id="streetBackground" style="height: 400px; display: none; z-index: 1; position: absolute;" src="/images/streetBackground/front.jpg"/>
+
     <div class="streetElement"  onmouseup="playAudio('apple.wav');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="category" onmouseup="selectCategory('fruit');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 </div>
 
-<img id="highQualityStreet" style="display: none;" src="/images/streetBackground/completeStreet.png"/>
 
 <a href="/progress">Progress</a>
 
@@ -18,7 +18,7 @@
         $('#mainContainer').scrollLeft(0);
     });
 
-    $("#highQualityStreet").off().on("load", function() {
+    $("#streetBackground").off().on("load", function() {
         console.log("DID THE THING");
 
         $("#streetBackground").css({
