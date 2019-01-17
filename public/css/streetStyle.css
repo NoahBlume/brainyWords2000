@@ -41,121 +41,119 @@
     background-color: greenyellow;
 }
 
-@media screen and (max-height: 740px) {
-    html {
-        -webkit-transform: scale(.95);
-        -moz-transform: scale(.95);
-        transform: scale(.95);
-        transform-origin: top center;
 
-        /*zoom: 50%;*/
-    }
 
-    .horizontal.dragscroll {
-        margin-left: -10%;
-        margin-right: -10%;
-    }
-
-    #header {
-        margin-left: -10%;
-    }
-}
-
-@media screen and (max-height:5850px) {
-    html {
-        -webkit-transform: scale(.95);
-        -moz-transform: scale(.95);
-        transform: scale(.95);
-        transform-origin: top center;
-
-        /*zoom: 50%;*/
-    }
-
-    .horizontal.dragscroll {
-        margin-left: -10%;
-        margin-right: -10%;
-    }
-
-    #header {
-        margin-left: -10%;
-    }
-}
-
-@media screen and (max-height: 530px) {
+/* START OF SCREEN RESIZING SETTINGS */
+@media screen and (max-height: 750px) {
     html {
         -webkit-transform: scale(.9);
         -moz-transform: scale(.9);
         transform: scale(.9);
         transform-origin: top center;
-
-        /*zoom: 50%;*/
     }
 
     .horizontal.dragscroll {
-        margin-left: -10%;
-        margin-right: -10%;
-    }
-
-    #header {
-        margin-left: -10%;
+        margin-left: -5.5%;
+        margin-right: -5.5%;
     }
 }
 
-@media screen and (max-height: 475px) {
+@media screen and (max-height: 695px) {
     html {
-        -webkit-transform: scale(.8);
-        -moz-transform: scale(.8);
-        transform: scale(.8);
+        -webkit-transform: scale(.83);
+        -moz-transform: scale(.83);
+        transform: scale(.83);
         transform-origin: top center;
-
-        /*zoom: 50%;*/
     }
 
     .horizontal.dragscroll {
-        margin-left: -20%;
-        margin-right: -20%;
-    }
-
-    #header {
-        margin-left: -20%;
+        margin-left: -10.25%;
+        margin-right: -10.25%;
     }
 }
 
-@media screen and (max-height: 420px) {
+@media screen and (max-height: 640px) {
+    html {
+        -webkit-transform: scale(.77);
+        -moz-transform: scale(.77);
+        transform: scale(.77);
+        transform-origin: top center;
+    }
+
+    .horizontal.dragscroll {
+        margin-left: -15%;
+        margin-right: -15%;
+    }
+}
+
+@media screen and (max-height:585px) {
     html {
         -webkit-transform: scale(.7);
         -moz-transform: scale(.7);
         transform: scale(.7);
         transform-origin: top center;
-
-        /*zoom: 50%;*/
     }
 
     .horizontal.dragscroll {
-        margin-left: -23%;
-        margin-right: -23%;
+        margin-left: -21.5%;
+        margin-right: -21.5%;
+    }
+}
+
+@media screen and (max-height: 530px) {
+    html {
+        -webkit-transform: scale(.62);
+        -moz-transform: scale(.62);
+        transform: scale(.62);
+        transform-origin: top center;
     }
 
-    #header {
-        margin-left: -23%;
+    .horizontal.dragscroll {
+        margin-left: -30.65%;
+        margin-right: -30.65%;
+    }
+}
+
+@media screen and (max-height: 475px) {
+    html {
+        -webkit-transform: scale(.55);
+        -moz-transform: scale(.55);
+        transform: scale(.55);
+        transform-origin: top center;
+    }
+
+    .horizontal.dragscroll {
+        margin-left: -41%;
+        margin-right: -41%;
+    }
+}
+
+@media screen and (max-height: 420px) {
+    html {
+        -webkit-transform: scale(.47);
+        -moz-transform: scale(.47);
+        transform: scale(.47);
+        transform-origin: top center;
+    }
+
+    .horizontal.dragscroll {
+        margin-left: -56.33%;
+        margin-right: -56.33%;
     }
 }
 
 @media screen and (max-height: 365px) {
     html {
-        -webkit-transform: scale(.6);
-        -moz-transform: scale(.6);
-        transform: scale(.6);
+        -webkit-transform: scale(.42);
+        -moz-transform: scale(.42);
+        transform: scale(.42);
         transform-origin: top center;
-
-        /*zoom: 50%;*/
     }
 
     .horizontal.dragscroll {
-        margin-left: -30%;
-        margin-right: -30%;
-    }
-    #header {
-        margin-left: -30%;
+        margin-left: -69%;
+        margin-right: -69%;
     }
 }
+
+/* END OF SCREEN RESIZING SETTINGS */
