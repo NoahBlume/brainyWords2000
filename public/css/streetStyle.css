@@ -38,7 +38,10 @@
 .streetElement {
     z-index: 5;
     position: absolute;
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
+    border-color: greenyellow;
+    border-width: medium;
+    border-style: solid;
 }
 
 
