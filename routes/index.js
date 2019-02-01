@@ -16,6 +16,7 @@ router.get('/street', function (req, res, next) {
     res.render('street', { layout: "streetLayout.hbs", title: 'Street'});
 });
 
+
 // GET route for progress screen
 router.get('/progress', function (req, res, next) {
     const email = "example email";
@@ -28,6 +29,13 @@ router.get('/progress', function (req, res, next) {
         userName: name,
         accountEmail: email
     });
+});
+
+// GET route for main street screen
+router.get('/street/:location', function (req, res, next) {
+    const location = req.params.location;
+    //TODO: handle errors where page is not found (try catch + 404)
+    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", title: 'Street'});
 });
 
 // GET route for viewing a category

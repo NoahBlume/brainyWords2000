@@ -44,6 +44,14 @@
     border-style: solid;
 }
 
+.zoomArea {
+    z-index: 4;
+    position: absolute;
+    border-color: cyan;
+    border-width: medium;
+    border-style: solid;
+}
+
 
 
 /* START OF SCREEN RESIZING SETTINGS */

@@ -9,6 +9,15 @@
     <!--<div class="category" style="height: 170px; width: 170px; top: 150px; left: 430px;" onmouseup="selectCategory('fruit');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
 
+    <!--Start of Zoomed In Section Links-->
+    <div class="zoomArea"
+         Style = "width: 572px; height: 220px; left: 25775px; top: 1px;"
+         onmouseup="zoomIn('schoolOutside');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <!--End of Zoomed In Section Links-->
+
+
     <!--Start of Mylon's Street Elements (1-7)-->
     <!--1-->
     <div class="streetElement"
@@ -169,7 +178,7 @@
 
     <!--<div class="streetElement"-->
          <!--style="width: 66px; height: 72px; left: 22430px; top: 135px;"-->
-         <!--onmouseup="playAudio('mohawk????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('mohawk???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
 
 
@@ -285,7 +294,7 @@
     </div>
     <!--<div class="streetElement"-->
          <!--style="width: 294px; height: 124px; left: 24018px; top: 356px;"-->
-         <!--onmouseup="playAudio('dune_buggy??????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('dune_buggy???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
 
     <div class="streetElement"
@@ -324,7 +333,7 @@
     </div>
     <!--<div class="streetElement"-->
          <!--style="width: 106px; height: 73px; left: 24646px; top: 43px;"-->
-         <!--onmouseup="playAudio('officers_hat???????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('officers_hat???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
     <div class="streetElement"
          style="width: 135px; height: 195px; left: 24683px; top: 149px;"
@@ -403,7 +412,7 @@
     </div>
     <!--<div class="streetElement"-->
          <!--style="width: 231px; height: 66px; left: 25445px; top: 158px;"-->
-         <!--onmouseup="playAudio('stairs????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('stairs???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
     <div class="streetElement"
          style="width: 114px; height: 62px; left: 25390px; top: 127px;"
@@ -551,7 +560,7 @@
     </div>
     <!--<div class="streetElement"-->
          <!--style="width:88px; height: 76px; left: 26908px; top: 53px;"-->
-         <!--onmouseup="playAudio('14slippers????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('14slippers???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
     <div class="streetElement"
          style="width: 139px; height: 69px; left: 26994px; top: 45px;"
@@ -597,7 +606,7 @@
     </div>
     <!--<div class="streetElement"-->
          <!--style="width: 646px; height: 307px; left: 27628px; top: 346px;"-->
-         <!--onmouseup="playAudio('trolley_car?????.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+         <!--onmouseup="playAudio('trolley_car???.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
     <!--</div>-->
     <div class="streetElement"
          style="width: 138px; height: 148px; left: 27588px; top: 492px;"
@@ -753,22 +762,22 @@
     });
 
     let dragging = false;
-    const header = document.getElementById("header");
+    // const header = document.getElementById("header");
 
     function setDrag() {
         dragging = true;
-        header.style.color = "green";
+        // header.style.color = "green";
     }
 
     function clearDrag() {
         dragging = false;
-        header.style.color = "red";
+        // header.style.color = "red";
     }
 
     function playAudio(soundName) {
         if (dragging === true) {
             dragging = false;
-            header.style.color = "red";
+            // header.style.color = "red";
         } else {
             const audio = new Audio('/audio/street/' + soundName);
             audio.play();    
@@ -778,9 +787,18 @@
     function selectCategory(categoryName) {
         if (dragging === true) {
             dragging = false;
-            header.style.color = "red";
+            // header.style.color = "red";
         } else {
             location.href= '/category/' + categoryName;
         }   
+    }
+
+    function zoomIn(areaName) {
+        if (dragging === true) {
+            dragging = false;
+            // header.style.color = "red";
+        } else {
+            location.href= '/street/' + areaName;
+        }
     }
 </script>
