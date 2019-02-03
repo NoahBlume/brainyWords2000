@@ -7,7 +7,7 @@
 
 .horizontal.dragscroll {
     margin-top : 10px;
-    /*width: 110%;*/
+    /*width: 100%;*/
     margin-left: 0;
     background-color: #000000;
     margin-right: 0;
@@ -32,139 +32,76 @@
 .category {
     z-index: 4;
     position: absolute;
+    height: 170px;
+    width: 170px;
     background-color: white;
+
+    top: 150px;
+    left: 430px;
 }
 
 .streetElement {
     z-index: 5;
     position: absolute;
-    /*background-color: greenyellow;*/
-    border-color: greenyellow;
-    border-width: medium;
-    border-style: solid;
+    height: 90px;
+    width: 90px;
+    background-color: greenyellow;
+
+    top: 205px;
+    left: 232px;
 }
 
-.zoomArea {
-    z-index: 4;
+.hippoStreet {
+    z-index: 5;
     position: absolute;
-    border-color: cyan;
-    border-width: medium;
-    border-style: solid;
+    height: 90px;
+    width: 200px;
+    background-color: purple;
+
+    top: 220px;
+    left: 9200px;
 }
 
-
-
-/* START OF SCREEN RESIZING SETTINGS */
-@media screen and (max-height: 750px) {
+@media screen and (max-height: 530px) {
     html {
         -webkit-transform: scale(.9);
         -moz-transform: scale(.9);
         transform: scale(.9);
         transform-origin: top center;
-    }
 
-    .horizontal.dragscroll {
-        margin-left: -5.5%;
-        margin-right: -5.5%;
-    }
-}
-
-@media screen and (max-height: 695px) {
-    html {
-        -webkit-transform: scale(.83);
-        -moz-transform: scale(.83);
-        transform: scale(.83);
-        transform-origin: top center;
-    }
-
-    .horizontal.dragscroll {
-        margin-left: -10.25%;
-        margin-right: -10.25%;
-    }
-}
-
-@media screen and (max-height: 640px) {
-    html {
-        -webkit-transform: scale(.77);
-        -moz-transform: scale(.77);
-        transform: scale(.77);
-        transform-origin: top center;
-    }
-
-    .horizontal.dragscroll {
-        margin-left: -15%;
-        margin-right: -15%;
-    }
-}
-
-@media screen and (max-height:585px) {
-    html {
-        -webkit-transform: scale(.7);
-        -moz-transform: scale(.7);
-        transform: scale(.7);
-        transform-origin: top center;
-    }
-
-    .horizontal.dragscroll {
-        margin-left: -21.5%;
-        margin-right: -21.5%;
-    }
-}
-
-@media screen and (max-height: 530px) {
-    html {
-        -webkit-transform: scale(.62);
-        -moz-transform: scale(.62);
-        transform: scale(.62);
-        transform-origin: top center;
-    }
-
-    .horizontal.dragscroll {
-        margin-left: -30.65%;
-        margin-right: -30.65%;
+        /*zoom: 50%;*/
     }
 }
 
 @media screen and (max-height: 475px) {
     html {
-        -webkit-transform: scale(.55);
-        -moz-transform: scale(.55);
-        transform: scale(.55);
+        -webkit-transform: scale(.8);
+        -moz-transform: scale(.8);
+        transform: scale(.8);
         transform-origin: top center;
-    }
 
-    .horizontal.dragscroll {
-        margin-left: -41%;
-        margin-right: -41%;
+        /*zoom: 50%;*/
     }
 }
 
 @media screen and (max-height: 420px) {
     html {
-        -webkit-transform: scale(.47);
-        -moz-transform: scale(.47);
-        transform: scale(.47);
+        -webkit-transform: scale(.7);
+        -moz-transform: scale(.7);
+        transform: scale(.7);
         transform-origin: top center;
-    }
 
-    .horizontal.dragscroll {
-        margin-left: -56.33%;
-        margin-right: -56.33%;
+        /*zoom: 50%;*/
     }
 }
 
 @media screen and (max-height: 365px) {
     html {
-        -webkit-transform: scale(.42);
-        -moz-transform: scale(.42);
-        transform: scale(.42);
+        -webkit-transform: scale(.6);
+        -moz-transform: scale(.6);
+        transform: scale(.6);
         transform-origin: top center;
-    }
 
-    .horizontal.dragscroll {
-        margin-left: -69%;
-        margin-right: -69%;
+        /*zoom: 50%;*/
     }
 }
-
-/* END OF SCREEN RESIZING SETTINGS */
