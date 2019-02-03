@@ -45,7 +45,8 @@
     position: absolute;
     height: 90px;
     width: 90px;
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
+    outline: 3px solid greenyellow;
 
     top: 205px;
     left: 232px;
