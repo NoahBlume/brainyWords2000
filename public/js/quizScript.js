@@ -51,12 +51,12 @@ $( document ).ready(function() {
         if(quizReady === true) {
             if(questions.answerIndex === 0) {
                 ResetColors();
-                $("#top-left").css('background-color', green);
+                $("#top-left").addClass('correct');
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
                 // alert("Wrong Answer");
-                $("#top-left").css('background-color', 'red');
+                $("#top-left").addClass('incorrect');
                 firstTry = false;
                 $("#incorrect-sound").trigger('play');
             }
@@ -67,12 +67,12 @@ $( document ).ready(function() {
         if(quizReady === true) {
             if(questions.answerIndex === 1) {
                 ResetColors();
-                $("#top-right").css('background-color', green);
+                $("#top-right").addClass('correct');
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
                 // alert("Wrong Answer");
-                $("#top-right").css('background-color', 'red');
+                $("#top-right").addClass('incorrect');
                 firstTry = false;
                 $("#incorrect-sound").trigger('play');
             }
@@ -83,12 +83,12 @@ $( document ).ready(function() {
         if(quizReady === true) {
             if(questions.answerIndex === 2) {
                 ResetColors();
-                $("#bottom-left").css('background-color', green);
+                $("#bottom-left").addClass('correct');
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
                 // alert("Wrong Answer");
-                $("#bottom-left").css('background-color', 'red');
+                $("#bottom-left").addClass('incorrect');
                 firstTry = false;
                 $("#incorrect-sound").trigger('play');
             }
@@ -99,11 +99,11 @@ $( document ).ready(function() {
         if(quizReady === true) {
             if(questions.answerIndex === 3) {
                 ResetColors();
-                $("#bottom-right").css('background-color', green);
+                $("#bottom-right").addClass('correct');
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                $("#bottom-right").css('background-color', 'red');
+                $("#bottom-right").addClass('incorrect');
                 firstTry = false;
                 $("#incorrect-sound").trigger('play');
                 // alert("Wrong Answer");
@@ -115,10 +115,10 @@ $( document ).ready(function() {
 });
 
 function ResetColors() {
-    $("#top-left").css('background-color', "");
-    $("#top-right").css('background-color', "");
-    $("#bottom-left").css('background-color', "");
-    $("#bottom-right").css('background-color', "");
+    $("#top-left").removeClass("correct incorrect");
+    $("#top-right").removeClass("correct incorrect");
+    $("#bottom-left").removeClass("correct incorrect");
+    $("#bottom-right").removeClass("correct incorrect");
 }
 
 function QuizComplete(questions) {
