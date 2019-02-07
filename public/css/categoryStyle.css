@@ -5,6 +5,7 @@ body {
 
 .rectangle {
     height: 250px;
+    margin-bottom: 20px;
 }
 
 .helper {
@@ -67,12 +68,18 @@ body {
                                   supported by Chrome and Opera */
 }
 
+.label-text {
+    text-align: center;
+    margin-left: -10%;
+}
+
 /*
 special styling for small (mobile) screens
  */
 @media only screen and (max-width: 576px) {
     .rectangle {
         height: 100px;
+        margin-bottom: 10px;
     }
 
     .option.wide {
@@ -101,4 +108,10 @@ special styling for small (mobile) screens
         margin-left: auto;
         margin-right: auto;
     }
+
+    .label-text {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
+
