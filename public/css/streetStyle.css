@@ -32,15 +32,26 @@
 .category {
     z-index: 4;
     position: absolute;
-    background-color: white;
+    border-color: magenta;
+    border-width: medium;
+    border-style: solid;
 }
 
 .streetElement {
     z-index: 5;
     position: absolute;
-    border-style: solid;
-    border-width: 5px;
+    /*background-color: greenyellow;*/
     border-color: greenyellow;
+    border-width: medium;
+    border-style: solid;
+}
+
+.zoomArea {
+    z-index: 4;
+    position: absolute;
+    border-color: cyan;
+    border-width: medium;
+    border-style: solid;
 }
 
 

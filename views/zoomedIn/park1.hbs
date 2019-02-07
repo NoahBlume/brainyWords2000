@@ -1,0 +1,112 @@
+<!--<h2 id="header">street</h2>-->
+
+<div class="horizontal dragscroll background-container" id="mainContainer">
+    <!--<img id="low_res" style="height: 720px; z-index: 2;" src="/images/streetZoomedIn/schoolOutside.png"/>-->
+    <img id="streetBackground" style="height: 660px; z-index: 2;" src="/images/streetZoomedIn/park1.png"/>
+
+    <!--<div class="streetElement" style="height: 90px; width: 90px; top: 205px; left: 232px;" onmouseup="playAudio('apple.wav');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+    <!--</div>-->
+    <!--<div class="category" style="height: 170px; width: 170px; top: 150px; left: 430px;" onmouseup="selectCategory('fruit');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+    <!--</div>-->
+
+
+    <div class="streetElement"
+         style="width: 250px; height: 220px; left: 66px; top: 101px;"
+         onmouseup="playAudio('01hawk.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 139px; height: 55px; left: 266px; top: 450px;"
+         onmouseup="playAudio('08_big_pond_or_small_lake.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 130px; height: 62px; left: 500px; top: 425px;"
+         onmouseup="playAudio('03swan.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 105px; height: 85px; left: 310px; top: 534px;"
+         onmouseup="playAudio('08bluejay.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <!--Goose-->
+    <!--<div class="streetElement"-->
+         <!--style="width: 76px; height: 76px; left: 578px; top: 533px;"-->
+         <!--onmouseup="playAudio('.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">-->
+    <!--</div>-->
+
+    <div class="streetElement"
+         style="width: 78px; height: 76px; left: 659px; top: 450px;"
+         onmouseup="playAudio('Ducks.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 169px; height: 102px; left: 750px; top: 380px;"
+         onmouseup="playAudio('05seagulls.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 105px; height: 104px; left: 940px; top: 500px;"
+         onmouseup="playAudio('16_one_bird_came_to_visit_the_other.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 84px; height: 67px; left: 1100px; top: 320px;"
+         onmouseup="playAudio('07robin.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 114px; height: 94px; left: 1120px; top: 140px;"
+         onmouseup="playAudio('06sparrows.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 80px; height: 100px; left: 1230px; top: 402px;"
+         onmouseup="playAudio('05blackbird.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 168px; height: 83px; left: 750px; top: 473px;"
+         onmouseup="playAudio('08_big_pond_or_small_lake.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 95px; height: 93px; left: 1637px; top: 520px;"
+         onmouseup="playAudio('03butterfly.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 148px; height: 220px; left: 1500px; top: 210px;"
+         onmouseup="playAudio('08pirate _looking_through_a_spyglass.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+    <div class="streetElement"
+         style="width: 100px; height: 115px; left: 1480px; top: 300px;"
+         onmouseup="playAudio('trash_can.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+
+
+</div>
+
+<script>
+    let dragging = false;
+
+    function setDrag() {
+        dragging = true;
+    }
+
+    function clearDrag() {
+        dragging = false;
+    }
+
+    function playAudio(soundName) {
+        if (dragging === true) {
+            dragging = false;
+        } else {
+            const audio = new Audio('/audio/street/' + soundName);
+            audio.play();    
+        }
+    }
+</script>

@@ -17,7 +17,7 @@ body {
     height: 90%;
     width: 90%;
     border-radius: 10px;
-    background-color: #f7f7f7;
+    background-color: white;
     box-shadow: -3px 3px 10px -3px;
 
     white-space: nowrap;
@@ -30,7 +30,10 @@ body {
     transition: background-color 0.25s ease-in-out;
 }
 .option:hover {
-    background-color: #d8d8d8;
+    border-color: #d8d8d8;
+    border-style: solid;
+    border-width: 1.6px;
+    /*background-color: #d8d8d8;*/
 }
 .option:active {
     box-shadow: none;
@@ -238,7 +241,4 @@ special styling for small (mobile) screens
         margin-right: auto;
     }
 
-    .option:hover {
-        background-color: #f7f7f7;
-    }
 }
