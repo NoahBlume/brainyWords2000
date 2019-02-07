@@ -71,6 +71,7 @@ router.get('/category/:category', function (req, res, next) {
 
         res.render('category', { 
             title: category.charAt(0).toUpperCase() + category.slice(1),
+            layout: 'categoryLayout.hbs',
             category: category,
             subCategories: categoryData
         });
@@ -132,6 +133,7 @@ router.get('/category/:category/:subCategory', function (req, res, next) {
 
         res.render('subCategory', { 
             title: category.charAt(0).toUpperCase() + category.slice(1),
+            layout: 'categoryLayout.hbs',
             category: category,
             subCategory: subCategory,
             words: subCategoryData
