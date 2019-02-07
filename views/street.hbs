@@ -13,22 +13,22 @@
     <!--Start of Zoomed In Section Links-->
     <div class="zoomArea"
          Style = "width: 572px; height: 220px; left: 25775px; top: 1px;"
-         onmouseup="zoomIn('schoolOutside');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="zoomIn('22/schoolOutside');"  onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 
     <div class="zoomArea"
          Style = "width: 475px; height: 179px; left: 9586px; top: 1px;"
-         onmouseup="zoomIn('park1');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="zoomIn('8/park1');"  onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 
     <div class="zoomArea"
          Style = "width: 760px; height: 188px; left: 10506px; top: 1px;"
-         onmouseup="zoomIn('park2');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="zoomIn('8/park2');"  onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 
     <div class="zoomArea"
          Style = "width: 925px; height: 186px; left: 11263px; top: 1px;"
-         onmouseup="zoomIn('park3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="zoomIn('8/park3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 
     <!--End of Zoomed In Section Links-->
@@ -36,7 +36,7 @@
     <!-- Start of Links to the Stores -->
     <div class="category"
          style="width: 418px; height: 224px; left: 22372px; top: 1px;"
-         onmouseup="selectCategory('Hair Salon');" onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="selectCategory('19/Hair Salon');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
 
 
@@ -1891,10 +1891,97 @@
 <!--<a href="/progress">Progress</a>-->
 
 <script>
-    // $(document).ready(function() {
+    $(document).ready(function() {
         // window.scrollTo(0, 1);
-        // $('#mainContainer').scrollLeft(0);
-    // });
+        let store = {{store}};
+        let scrollPosition = 0;
+
+        switch(store) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                scrollPosition = 22100;
+                break;
+            case 20:
+                scrollPosition = 23200;
+                break;
+            case 21:
+                scrollPosition = 24050;
+                break;
+            case 22:
+                scrollPosition = 24950;
+                break;
+            case 23:
+                scrollPosition = 26350;
+                break;
+            case 24:
+                scrollPosition = 27350;
+                break;
+            case 25:
+                scrollPosition = 28200;
+                break;
+            case 26:
+                break;
+            case 27:
+                break;
+            case 28:
+                break;
+            case 29:
+                break;
+            case 30:
+                break;
+            case 31:
+                break;
+            case 32:
+                break;
+            case 33:
+                break;
+            case 34:
+                break;
+            case 35:
+                break;
+        }
+
+
+        if (store > 0) {
+            $('#mainContainer').scrollLeft(scrollPosition);
+            console.log("srolllling");
+        }
+    });
 
     $("#streetBackground").off().on("load", function() {
         console.log("DID THE THING");
