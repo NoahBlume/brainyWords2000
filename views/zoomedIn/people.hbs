@@ -1,0 +1,24 @@
+<div class="horizontal dragscroll background-container" id="mainContainer">
+    <img id="streetBackground" style="height: 660px; z-index: 2;" src="/images/streetZoomedIn/people.png"/>
+</div>
+
+<script>
+    let dragging = false;
+
+    function setDrag() {
+        dragging = true;
+    }
+
+    function clearDrag() {
+        dragging = false;
+    }
+
+    function playAudio(soundName) {
+        if (dragging === true) {
+            dragging = false;
+        } else {
+            const audio = new Audio('/audio/street/' + soundName);
+            audio.play();    
+        }
+    }
+</script>
