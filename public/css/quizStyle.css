@@ -241,4 +241,33 @@ special styling for small (mobile) screens
         margin-right: auto;
     }
 
+    .option:hover {
+        border-color: white;
+        border-style: none;
+        border-width: 0;
+        /*background-color: #d8d8d8;*/
+    }
+
+    .option:active {
+        border-color: #d8d8d8;
+        border-style: solid;
+        border-width: 1.6px;
+        /*background-color: #d8d8d8;*/
+    }
+}
+
+.option.incorrect {
+    border-color: red;
+    border-style: solid;
+    border-width: 5px;
+    /*box-shadow: none;*/
+    /*background-color: #d8d8d8;*/
+}
+
+.option.correct {
+    border-color: green;
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: none;
+    /*background-color: #d8d8d8;*/
 }

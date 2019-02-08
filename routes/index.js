@@ -6,6 +6,10 @@ const path = require('path');
 
 const fs = require('fs');
 
+function textCleanup(string) {
+    return string.replace(/[0-9]/g, '').replace('_', ' ');
+}
+
 // GET route for welcome screen
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Welcome!'});
@@ -75,7 +79,8 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
                 subCatObject = {
                     imageDirectory: publicImagePath + '/' + trimmedSubCat,
                     audioDirectory: publicAudioPath + '/' + trimmedSubCat,
-                    imageFile: publicImagePath + '/' + subCategory
+                    imageFile: publicImagePath + '/' + subCategory,
+                    subCatName: trimmedSubCat
                 };
 
                 categoryData[trimmedSubCat] = subCatObject;
@@ -135,6 +140,7 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
                 
             } 
             subCatObj['image'] = publicImagePath + '/' + subCatImage;
+            subCatObj['name'] = textCleanup(subCatName);
             subCategoryData[subCatName] = subCatObj; 
         });
 
@@ -193,6 +199,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
         const allWords = {};
         const wordList = [];
 
+        //add links to the image corresponding to each word
         imageFiles.forEach(function(wordImage) {
             const word = wordImage.split('.')[0];
             wordList.push(word);
@@ -207,6 +214,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
             allWords[word] = wordObj; 
         });
 
+        //add links to the audio file corresponding to each word
         audioFiles.forEach(function(wordAudio) {
             const word = wordAudio.split('.')[0];
 
@@ -220,24 +228,26 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
             allWords[word] = wordObj; 
         });
 
-
+        //set remain words to be a shallow copy of wordList
         const remainingWords = wordList.slice();
 
+        //randomly generate 5 quiz questions
         for(let i = 0; i < 5 && i < wordList.length; i++) {
             const quizObj = {};
 
             const correctWordIndex = Math.floor(Math.random() * remainingWords.length);
-            const correctWord = remainingWords[correctWordIndex];
+            const correctWord = remainingWords[correctWordIndex]; //randomly chooses a word for the question
             remainingWords.splice(correctWordIndex, 1); //remove the word from remaining words
 
-            quizObj.word = correctWord;
+            quizObj.word = textCleanup(correctWord);
             quizObj.answerImage = allWords[correctWord].imagePath;
             quizObj.answerAudio = allWords[correctWord].audioPath;
 
             const incorrectImages = [];
-            const allOtherWords = wordList.slice();
+            const allOtherWords = wordList.slice(); //makes shallow copy of wordList
             allOtherWords.splice(allOtherWords.indexOf(correctWord), 1);
 
+            //randomly chooses 3 other words as incorrect options
             for (let j = 0; j < 3 && j < wordList.length - 1; j++) {
                 // randomly select incorrect word options
                 const wrongWordIndex = Math.floor(Math.random() * allOtherWords.length);
