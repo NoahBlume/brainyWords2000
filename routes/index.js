@@ -6,6 +6,10 @@ const path = require('path');
 
 const fs = require('fs');
 
+function textCleanup(string) {
+    return string.replace(/[0-9]/g, '').replace('_', ' ');
+}
+
 // GET route for welcome screen
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Welcome!'});
@@ -13,7 +17,15 @@ router.get('/', function (req, res, next) {
 
 // GET route for main street screen
 router.get('/street', function (req, res, next) {
-    res.render('street', { layout: "streetLayout.hbs", title: 'Street'});
+    let store = req.query.store;
+    if(!store) {
+        store = 0;
+    }
+    res.render('street', {
+        layout: "streetLayout.hbs",
+        title: 'Street',
+        store: store
+    });
 });
 
 
@@ -31,23 +43,28 @@ router.get('/progress', function (req, res, next) {
     });
 });
 
-// GET route for main street screen
-router.get('/street/:location', function (req, res, next) {
+// GET route for zoomed in street areas
+router.get('/street/:closestStore/:location', function (req, res, next) {
+    const categoryNum = req.params.closestStore;
     const location = req.params.location;
     //TODO: handle errors where page is not found (try catch + 404)
-    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", title: 'Street'});
+    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", store: categoryNum, title: 'Street'});
 });
 
 // GET route for viewing a category
-router.get('/category/:category', function (req, res, next) {
+router.get('/category/:categoryNum/:category', function (req, res, next) {
+    const categoryNum = req.params.categoryNum;
     const category = req.params.category;
-
     try {
         // const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category);
-        const imagePath = path.join(__dirname, '..', 'public/images/categories/', category);
+        // const categoryPath = path.join(__dirname, '..', 'public/images/categories/', categoryNum);
+        // const categoryNameList = fs.readdirSync(categoryPath);
+        // const category = categoryNameList[0];
 
-        const publicImagePath = '/images/categories/' + category;
-        const publicAudioPath = '/audio/categories/' + category;
+        const imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category);
+
+        const publicImagePath = '/images/categories/' + categoryNum + '/' + category;
+        const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category;
 
         // var audioFiles = fs.readdirSync(audioPath);
         const imageFiles = fs.readdirSync(imagePath);
@@ -62,7 +79,8 @@ router.get('/category/:category', function (req, res, next) {
                 subCatObject = {
                     imageDirectory: publicImagePath + '/' + trimmedSubCat,
                     audioDirectory: publicAudioPath + '/' + trimmedSubCat,
-                    imageFile: publicImagePath + '/' + subCategory
+                    imageFile: publicImagePath + '/' + subCategory,
+                    subCatName: trimmedSubCat
                 };
 
                 categoryData[trimmedSubCat] = subCatObject;
@@ -70,8 +88,9 @@ router.get('/category/:category', function (req, res, next) {
         });
 
         res.render('category', { 
-            title: category.charAt(0).toUpperCase() + category.slice(1),
+            title: category,
             layout: 'categoryLayout.hbs',
+            store: categoryNum,
             category: category,
             subCategories: categoryData
         });
@@ -86,17 +105,23 @@ router.get('/category/:category', function (req, res, next) {
 
 
 // GET route for viewing a subcategory
-router.get('/category/:category/:subCategory', function (req, res, next) {
+router.get('/category/:categoryNum/:category/:subCategory', function (req, res, next) {
     // console.log("subcategory page hit!!!");
     const category = req.params.category;
+    const categoryNum = req.params.categoryNum;
     const subCategory = req.params.subCategory;
 
     try {
-        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category, subCategory);
-        const imagePath = path.join(__dirname, '..', 'public/images/categories/', category, subCategory);
+        // const categoryPath = path.join(__dirname, '..', 'public/images/categories/', categoryNum);
+        // const categoryNameList = fs.readdirSync(categoryPath);
+        // const category = categoryNameList[0];
 
-        const publicImagePath = '/images/categories/' + category + '/' + subCategory;
-        const publicAudioPath = '/audio/categories/' + category + '/' + subCategory;
+
+        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory);
+        const imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory);
+
+        const publicImagePath = '/images/categories/' + categoryNum + '/' + category + '/' + subCategory;
+        const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category + '/' + subCategory;
 
 
         // var audioFiles = fs.readdirSync(audioPath);
@@ -115,6 +140,7 @@ router.get('/category/:category/:subCategory', function (req, res, next) {
                 
             } 
             subCatObj['image'] = publicImagePath + '/' + subCatImage;
+            subCatObj['name'] = textCleanup(subCatName);
             subCategoryData[subCatName] = subCatObj; 
         });
 
@@ -132,7 +158,7 @@ router.get('/category/:category/:subCategory', function (req, res, next) {
         });
 
         res.render('subCategory', { 
-            title: category.charAt(0).toUpperCase() + category.slice(1),
+            title: category,
             layout: 'categoryLayout.hbs',
             category: category,
             subCategory: subCategory,
@@ -149,18 +175,19 @@ router.get('/category/:category/:subCategory', function (req, res, next) {
 
 
 // GET route for taking a quiz
-router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
+router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, res, next) {
     // console.log("quiz page hit!!!");
+    const categoryNum = req.params.categoryNum;
     const category = req.params.category;
     const subCategory = req.params.subCategory;
 
     try {
         // TODO - get all of the subcategory data and construct a quiz
-        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category, subCategory);
-        const imagePath = path.join(__dirname, '..', 'public/images/categories/', category, subCategory);
+        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory);
+        const imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory);
 
-        const publicImagePath = '/images/categories/' + category + '/' + subCategory;
-        const publicAudioPath = '/audio/categories/' + category + '/' + subCategory;
+        const publicImagePath = '/images/categories/' + categoryNum + '/' + category + '/' + subCategory;
+        const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category + '/' + subCategory;
 
         // var audioFiles = fs.readdirSync(audioPath);
         const imageFiles = fs.readdirSync(imagePath);
@@ -172,6 +199,7 @@ router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
         const allWords = {};
         const wordList = [];
 
+        //add links to the image corresponding to each word
         imageFiles.forEach(function(wordImage) {
             const word = wordImage.split('.')[0];
             wordList.push(word);
@@ -186,6 +214,7 @@ router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
             allWords[word] = wordObj; 
         });
 
+        //add links to the audio file corresponding to each word
         audioFiles.forEach(function(wordAudio) {
             const word = wordAudio.split('.')[0];
 
@@ -199,24 +228,26 @@ router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
             allWords[word] = wordObj; 
         });
 
-
+        //set remain words to be a shallow copy of wordList
         const remainingWords = wordList.slice();
 
+        //randomly generate 5 quiz questions
         for(let i = 0; i < 5 && i < wordList.length; i++) {
             const quizObj = {};
 
             const correctWordIndex = Math.floor(Math.random() * remainingWords.length);
-            const correctWord = remainingWords[correctWordIndex];
+            const correctWord = remainingWords[correctWordIndex]; //randomly chooses a word for the question
             remainingWords.splice(correctWordIndex, 1); //remove the word from remaining words
 
-            quizObj.word = correctWord;
+            quizObj.word = textCleanup(correctWord);
             quizObj.answerImage = allWords[correctWord].imagePath;
             quizObj.answerAudio = allWords[correctWord].audioPath;
 
             const incorrectImages = [];
-            const allOtherWords = wordList.slice();
+            const allOtherWords = wordList.slice(); //makes shallow copy of wordList
             allOtherWords.splice(allOtherWords.indexOf(correctWord), 1);
 
+            //randomly chooses 3 other words as incorrect options
             for (let j = 0; j < 3 && j < wordList.length - 1; j++) {
                 // randomly select incorrect word options
                 const wrongWordIndex = Math.floor(Math.random() * allOtherWords.length);
@@ -235,7 +266,7 @@ router.get('/category/:category/:subCategory/quiz', function (req, res, next) {
             title: "Quiz",
             encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
             layout: 'quizLayout.hbs',
-            subCategoryLocation: '/category/' + category + '/' + subCategory
+            subCategoryLocation: '/category/' + categoryNum + '/' + category + '/' + subCategory
         });
     } catch(error) {
         console.log(error);
