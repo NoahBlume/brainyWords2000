@@ -35,6 +35,7 @@
     border-color: magenta;
     border-width: medium;
     border-style: solid;
+    cursor:pointer;
 }
 
 .streetElement {
@@ -44,6 +45,7 @@
     border-color: greenyellow;
     border-width: medium;
     border-style: solid;
+    cursor:pointer;
 }
 
 .zoomArea {
@@ -52,6 +54,7 @@
     border-color: cyan;
     border-width: medium;
     border-style: solid;
+    cursor:pointer;
 }
 
 
