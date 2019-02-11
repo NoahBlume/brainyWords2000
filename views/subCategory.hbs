@@ -1,6 +1,15 @@
+{{#if hasParentCategory}}
+    <a href="./">
+{{else}}
+    <a href="/street?store={{categoryNum}}">
+{{/if}}
+<img style="height:30px; float:left; margin-top: 5px; margin-right: 10px;" src="/images/buttons/backButton.png"/>
+</a>
+
+
 <h2>This is the category page for {{subCategory}}</h2>
 
-<a href="./">Back to category</a>
+
 <br/>
 <br/>
 
@@ -8,7 +17,7 @@
     {{#each words}}
         {{#if this.image}}
             <div class="col-sm-3 rectangle wide">
-                <div class="option wide" id="top-left" onclick="playAudio('{{this.audio}}');">
+                <div class="option wide" id="top-left" onclick='playAudio("{{this.audio}}");'>
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.image}}">
                 </div>

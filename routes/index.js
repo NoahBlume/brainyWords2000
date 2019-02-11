@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 function textCleanup(string) {
-    return string.replace(/[0-9]/g, '').replace('_', ' ');
+    return string.replace(/[0-9]/g, '').replace(/_/g, ' ');
 }
 
 // GET route for welcome screen
@@ -24,7 +24,8 @@ router.get('/street', function (req, res, next) {
     res.render('street', {
         layout: "streetLayout.hbs",
         title: 'Street',
-        store: store
+        store: store,
+        zoom: false
     });
 });
 
@@ -48,7 +49,7 @@ router.get('/street/:closestStore/:location', function (req, res, next) {
     const categoryNum = req.params.closestStore;
     const location = req.params.location;
     //TODO: handle errors where page is not found (try catch + 404)
-    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", store: categoryNum, title: 'Street'});
+    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", store: categoryNum, zoom: true, title: 'Street'});
 });
 
 // GET route for viewing a category
@@ -71,6 +72,8 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
 
         const categoryData = {};
 
+        let subCategoryFound = false;
+
         imageFiles.forEach(function(subCategory) {
             let subCatObject;
             if (subCategory.endsWith(".png") || subCategory.endsWith(".jpg")) {
@@ -84,16 +87,64 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
                 };
 
                 categoryData[trimmedSubCat] = subCatObject;
+            } else if (!subCategory.includes('.')) {
+                subCategoryFound = true;
             }
         });
 
-        res.render('category', { 
-            title: category,
-            layout: 'categoryLayout.hbs',
-            store: categoryNum,
-            category: category,
-            subCategories: categoryData
-        });
+        if (subCategoryFound) {
+            res.render('category', {
+                title: category,
+                layout: 'categoryLayout.hbs',
+                store: categoryNum,
+                category: category,
+                subCategories: categoryData
+            });
+        } else {
+            //No subcategories - go straight to the words page
+            const subCategoryData = {};
+
+            imageFiles.forEach(function(subCatImage) {
+                const subCatName = subCatImage.split('.')[0];
+
+                let subCatObj = {};
+
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['image'] = publicImagePath + '/' + subCatImage;
+                subCatObj['name'] = textCleanup(subCatName);
+                subCategoryData[subCatName] = subCatObj;
+            });
+
+            const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category);
+            const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category;
+            const audioFiles = fs.readdirSync(audioPath);
+            audioFiles.forEach(function(subCatAudio) {
+                const subCatName = subCatAudio.split('.')[0];
+
+                let subCatObj = {};
+
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
+                subCategoryData[subCatName] = subCatObj;
+            });
+
+            res.render('subCategory', {
+                title: category,
+                layout: 'categoryLayout.hbs',
+                categoryNum: categoryNum,
+                category: category,
+                subCategory: category,
+                words: subCategoryData,
+                hasParentCategory: false
+            });
+        }
+
     } catch(error) {
         console.log(error);
         // TODO: figure out the correct way to handle this
@@ -106,7 +157,6 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
 
 // GET route for viewing a subcategory
 router.get('/category/:categoryNum/:category/:subCategory', function (req, res, next) {
-    // console.log("subcategory page hit!!!");
     const category = req.params.category;
     const categoryNum = req.params.categoryNum;
     const subCategory = req.params.subCategory;
@@ -160,9 +210,11 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
         res.render('subCategory', { 
             title: category,
             layout: 'categoryLayout.hbs',
+            categoryNum: categoryNum,
             category: category,
             subCategory: subCategory,
-            words: subCategoryData
+            words: subCategoryData,
+            hasParentCategory: true
         });
     } catch(error) {
         console.log(error);
