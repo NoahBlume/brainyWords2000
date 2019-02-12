@@ -38,6 +38,10 @@ body {
     height: 100px;
 }
 
+.option.square {
+    border-radius: 0px;
+}
+
 .option:hover {
     border-color: #d8d8d8;
     border-style: solid;

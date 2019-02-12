@@ -11,7 +11,7 @@
     {{#each subCategories}}
         {{#if this.imageFile}}
             <div class="col-sm-3 rectangle wide">
-                <div class="option wide" id="top-left" onclick="select('{{../store}}/{{../category}}/{{@key}}');">
+                <div class="option wide square" id="top-left" onclick="select('{{../store}}/{{../category}}/{{@key}}');">
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.imageFile}}">
                 </div>
@@ -31,7 +31,12 @@
 
 <script>
     function select(subcategory) {
-        document.location.href = '/category/' + subcategory;
-    }
+        const audio = new Audio('/audio/categories/' + subcategory + '.mp3');
 
+        audio.addEventListener("ended", function () {
+            document.location.href = '/category/' + subcategory;
+        });
+
+        audio.play();
+    }
 </script>

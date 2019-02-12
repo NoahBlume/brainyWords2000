@@ -2602,7 +2602,13 @@
             dragging = false;
             // header.style.color = "red";
         } else {
-            location.href= '/category/' + categoryName;
+            const audio = new Audio('/audio/categories/' + categoryName + '.mp3');
+
+            audio.addEventListener("ended", function(){
+                location.href= '/category/' + categoryName;
+            });
+
+            audio.play();
         }
     }
 
