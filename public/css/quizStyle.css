@@ -271,3 +271,57 @@ special styling for small (mobile) screens
     box-shadow: none;
     /*background-color: #d8d8d8;*/
 }
+
+h2 {
+    margin-bottom: 20px;
+}
+
+#question-word {
+    margin-bottom: 15px;
+}
+
+@media only screen and (max-height: 420px) {
+    .option-container {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        height: 70%;
+        margin-top: 5%;
+    }
+    .rectangle {
+        height: 90%;
+        /*width: 280px;*/
+        margin-bottom: 10px;
+    }
+
+    .option {
+        /*width: 270px;*/
+        height: 90%;
+    }
+
+
+    #top-left {
+        float: none;
+    }
+
+    #bottom-left {
+        float: none;
+        margin-left: 0;
+    }
+
+    .rectangle {
+        margin-left: 0;
+    }
+
+    #question-word {
+        margin-bottom: 5px;
+    }
+
+    h2 {
+        /*margin-bottom: 5px;*/
+    }
+
+    .row {
+        margin-top: 0;
+    }
+}
