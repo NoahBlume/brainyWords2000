@@ -264,6 +264,11 @@ h2 {
     margin-bottom: 15px;
 }
 
+.option-container {
+    margin-left: 0px;
+    margin-right: 0;
+}
+
 @media only screen and (max-height: 420px) {
     .option-container {
         flex-wrap: nowrap;
@@ -271,6 +276,7 @@ h2 {
         overflow-y: hidden;
         height: 70%;
         margin-top: 5%;
+        margin-left: 15px;
     }
     .rectangle {
         height: 90%;

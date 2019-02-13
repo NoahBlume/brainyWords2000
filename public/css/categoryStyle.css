@@ -79,7 +79,7 @@ body {
 
 .word-container {
     margin-left: 0;
-    /*margin-right: 0;*/
+    margin-right: 0;
 }
 
 /*
@@ -99,6 +99,7 @@ special styling for mobile phones in landscape mode
         overflow-y: hidden;
         height: 70%;
         margin-top: 5%;
+        margin-left: 15px;
     }
     .rectangle.wide {
         height: 90%;
@@ -108,6 +109,10 @@ special styling for mobile phones in landscape mode
     .option.wide {
         height: 90%;
     }
+    /*.word-container {*/
+        /*margin-left: 0;*/
+        /*margin-right: 0;*/
+    /*}*/
 }
 
 /*
@@ -130,9 +135,9 @@ special styling for small (mobile) screens
         margin-right: 0;
     }
 
-    .word-container {
-        margin-left: -15px;
+    /*.word-container {*/
+        /*margin-left: auto;*/
         /*margin-right: auto;*/
-    }
+    /*}*/
 }
 
