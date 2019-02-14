@@ -7,7 +7,16 @@ const path = require('path');
 const fs = require('fs');
 
 function textCleanup(string) {
-    return string.replace(/[0-9]/g, '').replace(/_/g, ' ');
+    if (string.match(/[a-z]/i)) {
+        //if regular element
+        return string.replace(/^[0-9]+/, '').replace(/_/g, ' ');
+    } else if(string.match(/[[=]|[+]]/) && string.match(/_/)){
+        //if addition element
+        return string.replace(/^[0-9]+/, '').replace(/_/g, '');
+    } else {
+        //if number element
+        return string.replace(/^0+/, '').replace(/_/g, ' ');
+    }
 }
 
 function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
@@ -15,7 +24,13 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
     let imagePath;
     let imageFiles;
     let audioFiles;
+
+    let additionQuiz = false;
     if(hasSubcategory) {
+        if(subCategory === 'addition') {
+            subCategory = 'addition/addition_quiz';
+            additionQuiz = true;
+        }
         audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory);
         imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory);
 
@@ -39,24 +54,33 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
     const allWords = {};
     const wordList = [];
 
-    //add links to the image corresponding to each word
-    imageFiles.forEach(function(wordImage) {
-        const word = wordImage.split('.')[0];
-        wordList.push(word);
+    if(additionQuiz === false) {
+        //add links to the image corresponding to each word
+        imageFiles.forEach(function(wordImage) {
+            const word = wordImage.split('.')[0];
+            wordList.push(word);
 
-        let wordObj = {};
+            let wordObj = {};
 
-        if (word in allWords) {
-            wordObj = allWords[word];
-        }
+            if (word in allWords) {
+                wordObj = allWords[word];
+            }
 
-        wordObj['imagePath'] = publicImagePath + '/' + wordImage;
-        allWords[word] = wordObj;
-    });
+            wordObj['imagePath'] = publicImagePath + '/' + wordImage;
+            allWords[word] = wordObj;
+        });
+    }
+
 
     //add links to the audio file corresponding to each word
     audioFiles.forEach(function(wordAudio) {
-        const word = wordAudio.split('.')[0];
+        let word = wordAudio.split('.')[0];
+
+        let wordAnswer = null;
+        if(additionQuiz === true) {
+            wordList.push(word);
+            wordAnswer = word.split('=')[1];
+        }
 
         let wordObj = {};
 
@@ -65,6 +89,9 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
 
         }
         wordObj['audioPath'] = publicAudioPath + '/' + wordAudio;
+        if (additionQuiz === true) {
+            wordObj['imagePath'] = publicImagePath + '/' + wordAnswer + '.png';
+        }
         allWords[word] = wordObj;
     });
 
@@ -79,22 +106,50 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
         const correctWord = remainingWords[correctWordIndex]; //randomly chooses a word for the question
         remainingWords.splice(correctWordIndex, 1); //remove the word from remaining words
 
-        quizObj.word = textCleanup(correctWord);
+        if (additionQuiz) {
+            quizObj.word = textCleanup(correctWord.split('=')[0] + '=');
+        } else {
+            quizObj.word = textCleanup(correctWord);
+        }
         quizObj.answerImage = allWords[correctWord].imagePath;
         quizObj.answerAudio = allWords[correctWord].audioPath;
 
         const incorrectImages = [];
-        const allOtherWords = wordList.slice(); //makes shallow copy of wordList
+        let allOtherWords = wordList.slice(); //makes shallow copy of wordList
         allOtherWords.splice(allOtherWords.indexOf(correctWord), 1);
+
+        let wrongAnswers = [];
 
         //randomly chooses 3 other words as incorrect options
         for (let j = 0; j < 3 && j < wordList.length - 1; j++) {
             // randomly select incorrect word options
-            const wrongWordIndex = Math.floor(Math.random() * allOtherWords.length);
-            const wrongWord = allOtherWords[wrongWordIndex];
-            allOtherWords.splice(wrongWordIndex, 1);
+            if(additionQuiz === false) {
+                const wrongWordIndex = Math.floor(Math.random() * allOtherWords.length);
+                const wrongWord = allOtherWords[wrongWordIndex];
+                allOtherWords.splice(wrongWordIndex, 1);
 
-            incorrectImages.push(allWords[wrongWord].imagePath);
+                incorrectImages.push(allWords[wrongWord].imagePath);
+            } else {
+
+                let foundDifferentOption = false;
+                let wrongWordIndex;
+                let wrongWord;
+                let wrongAnswer;
+                while (!foundDifferentOption) {
+                    wrongWordIndex = Math.floor(Math.random() * allOtherWords.length);
+                    wrongWord = allOtherWords[wrongWordIndex];
+                    wrongAnswer = wrongWord.split('=')[1];
+                    if (wrongAnswer !== correctWord.split('=')[1] && !wrongAnswers.includes(wrongAnswer)) {
+                        foundDifferentOption = true;
+                    }
+                    allOtherWords.splice(wrongWordIndex, 1);
+                }
+                allOtherWords.splice(wrongWordIndex, 1);
+
+                wrongAnswers.push(wrongAnswer);
+                incorrectImages.push(allWords[wrongWord].imagePath);
+            }
+
         }
 
         quizObj.incorrectImages = incorrectImages;
@@ -226,33 +281,37 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
             const subCategoryData = {};
 
             imageFiles.forEach(function(subCatImage) {
-                const subCatName = subCatImage.split('.')[0];
+                if(subCatImage.includes('.')) {
+                    const subCatName = subCatImage.split('.')[0];
 
-                let subCatObj = {};
+                    let subCatObj = {};
 
-                if (subCatName in subCategoryData) {
-                    subCatObj = subCategoryData[subCatName];
+                    if (subCatName in subCategoryData) {
+                        subCatObj = subCategoryData[subCatName];
 
+                    }
+                    subCatObj['image'] = publicImagePath + '/' + subCatImage;
+                    subCatObj['name'] = textCleanup(subCatName);
+                    subCategoryData[subCatName] = subCatObj;
                 }
-                subCatObj['image'] = publicImagePath + '/' + subCatImage;
-                subCatObj['name'] = textCleanup(subCatName);
-                subCategoryData[subCatName] = subCatObj;
             });
 
             const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category);
             const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category;
             const audioFiles = fs.readdirSync(audioPath);
             audioFiles.forEach(function(subCatAudio) {
-                const subCatName = subCatAudio.split('.')[0];
+                if(subCatAudio.includes('.')) {
+                    const subCatName = subCatAudio.split('.')[0];
 
-                let subCatObj = {};
+                    let subCatObj = {};
 
-                if (subCatName in subCategoryData) {
-                    subCatObj = subCategoryData[subCatName];
+                    if (subCatName in subCategoryData) {
+                        subCatObj = subCategoryData[subCatName];
 
+                    }
+                    subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
+                    subCategoryData[subCatName] = subCatObj;
                 }
-                subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
-                subCategoryData[subCatName] = subCatObj;
             });
 
             res.render('subCategory', {
@@ -302,30 +361,35 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
         const subCategoryData = {};
 
         imageFiles.forEach(function(subCatImage) {
-            const subCatName = subCatImage.split('.')[0];
+            if(subCatImage.includes('.')) {
+                const subCatName = subCatImage.split('.')[0];
 
-            let subCatObj = {};
+                let subCatObj = {};
 
-            if (subCatName in subCategoryData) {
-                subCatObj = subCategoryData[subCatName];
-                
-            } 
-            subCatObj['image'] = publicImagePath + '/' + subCatImage;
-            subCatObj['name'] = textCleanup(subCatName);
-            subCategoryData[subCatName] = subCatObj; 
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['image'] = publicImagePath + '/' + subCatImage;
+                subCatObj['name'] = textCleanup(subCatName);
+                subCategoryData[subCatName] = subCatObj;
+            }
+
         });
 
         audioFiles.forEach(function(subCatAudio) {
-            const subCatName = subCatAudio.split('.')[0];
+            if(subCatAudio.includes('.')) {
+                const subCatName = subCatAudio.split('.')[0];
 
-            let subCatObj = {};
+                let subCatObj = {};
 
-            if (subCatName in subCategoryData) {
-                subCatObj = subCategoryData[subCatName];
-                
-            } 
-            subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
-            subCategoryData[subCatName] = subCatObj; 
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
+                subCategoryData[subCatName] = subCatObj;
+            }
         });
 
         res.render('subCategory', { 
