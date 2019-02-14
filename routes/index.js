@@ -30,6 +30,8 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
         if(subCategory === 'addition') {
             subCategory = 'addition/addition_quiz';
             additionQuiz = true;
+        } else if (subCategory === 'alphabet letters') {
+            subCategory = 'alphabet letters/alphabet_quiz';
         }
         audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory);
         imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory);
