@@ -1,0 +1,30 @@
+<div class="horizontal background-container" id="mainContainer">
+    <img id="streetBackground" style="height: 660px; z-index: 2;" src="/images/streetZoomedIn/zoo.png"/>
+
+    <div class="streetElement" 
+        style="height: 400px; width: 150px; top: 250px; left: 17px;" 
+        onmouseup="playAudio('19plumber.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    
+</div>
+
+<script>
+    let dragging = false;
+
+    function setDrag() {
+        dragging = true;
+    }
+
+    function clearDrag() {
+        dragging = false;
+    }
+
+    function playAudio(soundName) {
+        if (dragging === true) {
+            dragging = false;
+        } else {
+            const audio = new Audio('/audio/street/' + soundName);
+            audio.play();    
+        }
+    }
+</script>
