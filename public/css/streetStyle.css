@@ -57,6 +57,12 @@
     cursor:pointer;
 }
 
+.missingStreetImage {
+    z-index:2;
+    position: absolute;
+    cursor:pointer;
+}
+
 
 
 /* START OF SCREEN RESIZING SETTINGS */
