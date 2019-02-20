@@ -1,4 +1,12 @@
 <!--<h2 id="header">street</h2>-->
+<a href="/">
+    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
+</a>
+
+<a href="/progress">
+    <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/progressButton.png"/>
+</a>
+<br style="clear: both;"/>
 
 <div class="horizontal dragscroll background-container" id="mainContainer">
     <img id="low_res" style="height: 720px; z-index: 2;" src="/images/streetBackground/small.jpg"/>
@@ -37,8 +45,8 @@
     </div>
 
     <div class="zoomArea"
-         Style = "width: 332px; height: 222px; left: 21575px; top: 0px;"
-         onmouseup="zoomIn('18/zoo');" onmousedown="clearDrag();" onmousemove="setDrag();">
+         Style = "width: 332px; height: 222px; left: 21575px; top: 10px;"
+         onmouseup="zooZoomIn('18/zoo', '18Zoo.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     
 
@@ -2814,6 +2822,20 @@
 
             audio.addEventListener("ended", function(){
                 location.href= '/category/' + categoryName;
+            });
+
+            audio.play();
+        }
+    }
+
+    function zooZoomIn(areaName, soundName) {
+        if (dragging === true) {
+            dragging = false;
+        } else {
+            const audio = new Audio('/audio/street/' + soundName);
+
+            audio.addEventListener("ended", function(){
+                location.href= '/street/' + areaName;
             });
 
             audio.play();
