@@ -1,15 +1,12 @@
-var correctOnFirstTry = 0;
-var firstTry = true;
-var totalNumQuestions = 0;
+let correctOnFirstTry = 0;
+let firstTry = true;
+let totalNumQuestions = 0;
 
 // Get the modal
-var modal = document.getElementById('myModal');
-// modal.style.display = "block";
-// var correctSound = $("#correct-sound");
-// var incorrectSound = $("#incorrect-sound").trigger('play');
-var startModal = document.getElementById('startModal');
+let modal = document.getElementById('myModal');
+const startModal = document.getElementById('startModal');
 
-const green = "#22bc00";
+// const green = "#22bc00";
 const questions = {};
 let quizReady = false;
 questions['answerIndex'] = -1;
@@ -17,11 +14,14 @@ questions['numQuestions'] = -1;
 questions['curQuestion'] = 0;
 let firstQuestion = true;
 
+let queuedQuiz = {};
+
+const quizRefreshPath = window.redirectLocation + '/quizRefresh';
+
 
 $( document ).ready(function() {
-    const testing = window.sharedInfo;
-    // console.log(testing);
-    questions['quiz'] = testing.quiz;
+    // console.log("quiz refresh path: " + quizRefreshPath);
+    questions['quiz'] = window.sharedInfo.quiz;
 
     questions.numQuestions = questions.quiz.length;
     totalNumQuestions = questions.numQuestions;
@@ -36,6 +36,11 @@ $( document ).ready(function() {
         setTimeout(function() {
             $("#answer-audio").trigger('play');
         }, 500);
+
+        $.get(quizRefreshPath, function(data, status){
+            // console.log("refresh data: " + data.quiz);
+            queuedQuiz = data.quiz;
+        });
     });
 
 
@@ -136,14 +141,29 @@ function correctAnswer(questions) {
             correctOnFirstTry++;
         }
         firstTry = true;
-        console.log("correct on first try " + correctOnFirstTry);
+        // console.log("correct on first try " + correctOnFirstTry);
 
         questions.curQuestion++;
 
         ResetColors();
-
         if(questions.numQuestions <= questions.curQuestion) {
-            QuizComplete(questions);
+            //reached the end of the quiz questions, refresh the quiz with new questions
+            questions.quiz = queuedQuiz;
+
+            questions.numQuestions = questions.quiz.length;
+            totalNumQuestions = questions.numQuestions;
+
+            questions.curQuestion = 0;
+
+            SetupQuiz(questions);
+            quizReady = true;
+
+            $.get(quizRefreshPath, function(data, status){
+                // console.log("refresh data: " + data.quiz);
+                queuedQuiz = data.quiz;
+                // console.log("queued quiz:");
+                // console.log(queuedQuiz);
+            });
         } else {
             SetupQuiz(questions);
         }
@@ -154,7 +174,7 @@ function correctAnswer(questions) {
 function SetupQuiz(questions) {
     var quiz = questions.quiz;
     var curQuestion = questions.curQuestion;
-    console.log(questions);
+    // console.log(questions);
     var allSrcs = [];
 
     var question = quiz[curQuestion];
@@ -168,13 +188,13 @@ function SetupQuiz(questions) {
         allSrcs.push(value);
     });
 
-    if(answerIndex == 4) {
+    if(answerIndex === 4) {
         allSrcs.push(correctImage);
     } else {
         allSrcs.splice(answerIndex, 0, correctImage);
     }
-    console.log(allSrcs);
-    console.log(answerIndex);
+    // console.log(allSrcs);
+    // console.log(answerIndex);
 
     $("#top-left").children(".option-image").attr("src", allSrcs[0]);
     $("#top-right").children(".option-image").attr("src", allSrcs[1]);
