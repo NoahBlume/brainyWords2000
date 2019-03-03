@@ -15,7 +15,15 @@ questions['curQuestion'] = 0;
 let firstQuestion = true;
 
 let queuedQuiz = {};
-
+let bank = {};
+bank['moneyBags'] = 0;
+bank['goldCoins'] = 0;
+bank['silverCoins'] = 0;
+if (localStorage.getItem('totalRight') === null) {
+    localStorage.setItem('totalRight', "0");
+}
+bank['totalRight'] = parseInt(localStorage.getItem('totalRight'));
+bank['newRight'] = 0;
 const quizRefreshPath = window.redirectLocation + '/quizRefresh';
 
 
@@ -45,12 +53,12 @@ $( document ).ready(function() {
 
 
     // get the button that closes the quiz complete modal
-    const quizDoneButton = document.getElementById("quiz-complete-button");
+    // const quizDoneButton = document.getElementById("quiz-complete-button");
 
     // When the user clicks the done button, return to the subcategory
-    quizDoneButton.onclick = function() {
-        window.location.href = window.redirectLocation;
-    };
+    // quizDoneButton.onclick = function() {
+    //     window.location.href = window.redirectLocation;
+    // };
 
     $("#top-left").click(function() {
         if(quizReady === true) {
@@ -136,8 +144,11 @@ function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
 
+
+
     setTimeout(function() {
         if (firstTry) {
+            bankUpdate();
             correctOnFirstTry++;
         }
         firstTry = true;
@@ -215,4 +226,50 @@ function SetupQuiz(questions) {
 
     questions.answerIndex = answerIndex;
     quizReady = true;
+}
+
+function bankUpdate() {
+    bank.newRight++;
+    bank.totalRight++;
+    localStorage.setItem('totalRight', bank.totalRight.toString());
+    addSilverCoin();
+    bank.silverCoins++;
+    if (bank.silverCoins >= 5) {
+        $(".silver-coin").remove();
+        bank.silverCoins = 0;
+        addGoldCoin();
+        bank.goldCoins++
+    }
+    if (bank.goldCoins >= 5) {
+        $(".gold-coin").remove();
+        bank.goldCoins = 0;
+        addMoneyBag();
+        bank.moneyBags++;
+    }
+    // if (bank.moneyBags >= 5) {
+    //     $(".money-bag").remove();
+    //     bank.moneyBags = 0;
+    //     alert("oh my");
+    // }
+}
+
+function addMoneyBag() {
+    let moneyBag = document.createElement("IMG");
+    moneyBag.setAttribute("src", "/images/buttons/bag.png");
+    moneyBag.setAttribute("class", "money-bag");
+    $("#money-bags").append(moneyBag);
+}
+
+function addGoldCoin() {
+    let goldCoin = document.createElement("IMG");
+    goldCoin.setAttribute("src", "/images/buttons/gcoin.png");
+    goldCoin.setAttribute("class", "gold-coin");
+    $("#gold-coins").append(goldCoin);
+}
+
+function addSilverCoin() {
+    let silverCoin = document.createElement("IMG");
+    silverCoin.setAttribute("src", "/images/buttons/scoin.png");
+    silverCoin.setAttribute("class", "silver-coin");
+    $("#silver-coins").append(silverCoin);
 }
