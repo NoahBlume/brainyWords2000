@@ -211,7 +211,7 @@ body {
 
 
 /*
-special styling for small (mobile) screens
+special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
     .rectangle {
@@ -269,19 +269,23 @@ h2 {
     margin-right: 0;
 }
 
+/*
+    styling for landscape mobile screens
+*/
 @media only screen and (max-height: 420px) {
     .option-container {
         flex-wrap: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
-        height: 70%;
+        height: 60%;
         margin-top: 5%;
         margin-left: 15px;
+        margin-bottom: 0;
     }
     .rectangle {
-        height: 90%;
+        height: 100%;
         /*width: 280px;*/
-        margin-bottom: 10px;
+        margin-bottom: 0px;
     }
 
     .option {
@@ -348,4 +352,17 @@ h2 {
     border-width: 5px;
     box-shadow: none;
     /*background-color: #d8d8d8;*/
+}
+
+.money-bag {
+    /*src:"/images/buttons/bag.png"*/
+    height: 50px;
+}
+.gold-coin {
+    /*src:"/images/buttons/bag.png"*/
+    height: 50px;
+}
+.silver-coin {
+    /*src:"/images/buttons/bag.png"*/
+    height: 50px;
 }
