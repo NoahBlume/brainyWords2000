@@ -2,27 +2,36 @@
 <audio id="incorrect-sound" src="/audio/incorrect.wav" type="audio/wav"></audio>
 <audio id="answer-audio" src="" type="audio/wav"></audio>
 
+<a href="{{subCategoryLocation}}">
+    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
+</a>
+<a href="javascript:openBank();">
+    <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/bag.png"/>
+</a>
+
+
 <div id="top">
-    <h2 align="center">Quiz</h2>
+    <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Quiz</h2>
+    <br style="clear: both; margin-bottom: 20px;"/>
 </div>
 
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content slim" id="myModal">
-        <div class="modal-header" style="text-align:center;">
-            <h2 align="center" style="margin-right: auto; margin-left: auto;">Results</h2>
-        </div>
-        <div class="modal-body">
-            <br/>
-            <h5>Correct on first try:</h5>
-            <h2 id="numRight"></h2>
-            <button type="button" class="btn done-button" id="quiz-complete-button">Done</button>
-        </div>
-        <!-- <div class="modal-footer">
-            <h3>Done</h3>
-        </div> -->
-    </div>
-</div>
+<!--<div id="myModal" class="modal">-->
+    <!--&lt;!&ndash; Modal content &ndash;&gt;-->
+    <!--<div class="modal-content slim" id="myModal">-->
+        <!--<div class="modal-header" style="text-align:center;">-->
+            <!--<h2 align="center" style="margin-right: auto; margin-left: auto;">Results</h2>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+            <!--<br/>-->
+            <!--<h5>Correct on first try:</h5>-->
+            <!--<h2 id="numRight"></h2>-->
+            <!--<button type="button" class="btn done-button" id="quiz-complete-button">Done</button>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; <div class="modal-footer">-->
+            <!--<h3>Done</h3>-->
+        <!--</div> &ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
 
 <div id="startModal" style="display:block;" class="modal">
     <!-- Modal content -->
@@ -36,6 +45,25 @@
             </div>
             <br/>
         </div>
+    </div>
+</div>
+
+
+<div id="bankModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content slim" id="myModal">
+        <div class="modal-header" style="text-align:center;">
+            <h2 align="center" style="margin-right: -35px; margin-left: auto;">Bank</h2>
+            <button onclick="closeBank();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="bank-body">
+
+        </div>
+        <!-- <div class="modal-footer">
+            <h3>Done</h3>
+        </div> -->
     </div>
 </div>
 
@@ -72,6 +100,13 @@
     </div>
 </div>
 
+<span id="money-bags">
+</span>
+<span id="gold-coins">
+</span>
+<span id="silver-coins">
+</span>
+
 
 <script>
     var decodedJson = decodeURIComponent("{{{encodedJson}}}");
@@ -79,4 +114,46 @@
 
     window.redirectLocation = "{{subCategoryLocation}}";
     // console.log(window.sharedInfo);
+
+    function openBank() {
+        if (localStorage.getItem('totalRight') === null) {
+            localStorage.setItem('totalRight', "0");
+        }
+        let totalRight = parseInt(localStorage.getItem('totalRight'));
+
+        let i = totalRight;
+
+        $("#bank-body > .silver-coin").remove();
+        $("#bank-body > .gold-coin").remove();
+        $("#bank-body > .money-bag").remove();
+        while (i >= 25) {
+            i -= 25;
+            let moneyBag = document.createElement("IMG");
+            moneyBag.setAttribute("src", "/images/buttons/bag.png");
+            moneyBag.setAttribute("class", "money-bag");
+            $("#bank-body").append(moneyBag);
+        }
+        while (i >= 5) {
+            i -= 5;
+            let goldCoin = document.createElement("IMG");
+            goldCoin.setAttribute("src", "/images/buttons/gcoin.png");
+            goldCoin.setAttribute("class", "gold-coin");
+            $("#bank-body").append(goldCoin);
+        }
+        while (i >= 1) {
+            i -= 1;
+            let silverCoin = document.createElement("IMG");
+            silverCoin.setAttribute("src", "/images/buttons/scoin.png");
+            silverCoin.setAttribute("class", "silver-coin");
+            $("#bank-body").append(silverCoin);
+        }
+
+
+        $('#bankModal').css({'display': 'inline-block'});
+        // alert(localStorage.getItem('totalRight'));
+    }
+
+    function closeBank() {
+        $('#bankModal').css({'display': 'none'});
+    }
 </script>
