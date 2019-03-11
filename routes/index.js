@@ -50,7 +50,7 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
     audioFiles = fs.readdirSync(audioPath);
 
 
-    const jsonData = {};
+    const jsonData = {testing: "test success"};
     jsonData.quiz = [];
 
     const allWords = {};
@@ -101,7 +101,7 @@ function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
     const remainingWords = wordList.slice();
 
     //randomly generate 5 quiz questions
-    for(let i = 0; i < wordList.length; i++) {
+    for(let i = 0; i < 5 && i < wordList.length; i++) {
         const quizObj = {};
 
         const correctWordIndex = Math.floor(Math.random() * remainingWords.length);
@@ -207,7 +207,7 @@ router.get('/street/:closestStore/:location', function (req, res, next) {
 // GET route for taking a quiz without a subcategory
 router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
     // console.log("quiz page hit!!!");
-    // console.log("trying to take a quiz");
+    console.log("trying to take a quiz");
     const categoryNum = req.params.categoryNum;
     const category = req.params.category;
     // const subCategory = req.params.subCategory;
@@ -221,27 +221,6 @@ router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
             layout: 'quizLayout.hbs',
             subCategoryLocation: '/category/' + categoryNum + '/' + category
         });
-    } catch(error) {
-        console.log(error);
-        // TODO: figure out the correct way to handle this
-        const err = new Error('Subcategory does not exist!');
-        err.status = 404;
-        return next(err);
-    }
-});
-
-
-// GET route for refreshing a quiz without a subcategory
-router.get('/category/:categoryNum/:category/quizRefresh', function (req, res, next) {
-    // console.log("trying to refresh a quiz");
-    const categoryNum = req.params.categoryNum;
-    const category = req.params.category;
-    // const subCategory = req.params.subCategory;
-
-    try {
-        // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, null, false);
-        res.json(jsonData);
     } catch(error) {
         console.log(error);
         // TODO: figure out the correct way to handle this
@@ -433,26 +412,6 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
     }
 });
 
-
-
-// GET route for taking a quiz with a subcategory
-router.get('/category/:categoryNum/:category/:subCategory/quizRefresh', function (req, res, next) {
-    const categoryNum = req.params.categoryNum;
-    const category = req.params.category;
-    const subCategory = req.params.subCategory;
-
-    try {
-        // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, subCategory, true);
-        res.json(jsonData);
-    } catch(error) {
-        console.log(error);
-        // TODO: figure out the correct way to handle this
-        const err = new Error('Subcategory does not exist!');
-        err.status = 404;
-        return next(err);
-    }
-});
 
 // GET route for taking a quiz with a subcategory
 router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, res, next) {
