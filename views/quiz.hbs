@@ -1,5 +1,5 @@
-<audio id="correct-sound" src="/audio/correct.wav" type="audio/wav"></audio>
-<audio id="incorrect-sound" src="/audio/incorrect.wav" type="audio/wav"></audio>
+<audio id="correct-sound" src="/audio/quiz/correct.wav" type="audio/wav"></audio>
+<audio id="incorrect-sound" src="/audio/quiz/incorrect.wav" type="audio/wav"></audio>
 <audio id="answer-audio" src="" type="audio/wav"></audio>
 
 <a href="{{subCategoryLocation}}">
@@ -109,6 +109,29 @@
 
 
 <script>
+    let correctAudio = ["aa1_excellent_4b", "aa1a_awesome_g", "aa2_good_job_22g",
+        "aa3_magnificent_23g", "aa4_you_did_really_well_14b", "aa5_outstanding_6g",
+        "aa5a_super_job_b", "aa6_splendid_24g", "aa6a_you_really_know_your_stuff_18b",
+        "aa7_marvelous_g", "aa8_superb_9g", "aa8a_brilliant_g",
+        "aa9_superlative_work_25g", "aa9_superlative_work_25g", "aa10a_how_did_you_get_so_smart_g",
+        "aa11_terrific_12g", "aa12_tremendous_25g", "aa13_way_to_go_8b",
+        "aa13a_you_sure_know_a_lot_of_words_g", "aa13c_youre_a_really_brainy_kid_b", "aa14_excellent_21g",
+        "aa14a_awesome_g", "aa15_good_job_3b", "aa16_magnificent_23g",
+        "aa17_you_did_really_well_g", "aa18_outstanding_5b", "aa18a_super_job_b",
+        "aa19_splendid_24g", "aa19a_you_really_know_your_stuff_17g", "aa20_marvelous_g",
+        "aa21_superb_11b","aa21a_brilliant_g","aa22_superlative_work_25g",
+        "aa23_you_get_smarter_all_the_time_15g","aa23a_how_did_you_get_so_smart_g","aa24_terrific_11b",
+        "aa25_tremendous_25g","aa26_way_to_go_7g","aa26a_you_sure_know_a_lot_of_words_g",
+        "aa26c_youre_ a_really_brainy_kid_g"];
+    for (let i = 0; i < 40; i++) {
+        //creates audio objects for all correct answer sounds
+        audio = document.createElement('audio');
+        audio.src = '/audio/quiz/correct/' + correctAudio[i]+'.mp3';
+        audio.id = i;
+        audio.type = 'audio/mp3';
+        document.getElementById("startModal").appendChild(audio);
+    }
+
     var decodedJson = decodeURIComponent("{{{encodedJson}}}");
     window.sharedInfo = JSON.parse(decodedJson);
 

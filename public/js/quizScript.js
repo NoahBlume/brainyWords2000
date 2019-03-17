@@ -2,6 +2,7 @@ let correctOnFirstTry = 0;
 let firstTry = true;
 let totalNumQuestions = 0;
 
+
 // Get the modal
 let modal = document.getElementById('myModal');
 const startModal = document.getElementById('startModal');
@@ -143,8 +144,13 @@ function QuizComplete(questions) {
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
-
-
+    var timeOutLength = 500;
+    if (firstTry) {
+        timeOutLength = 2000;
+        setTimeout(function () {
+            $("#" + (bank.totalRight % 40)).trigger('play');
+        }, 500);
+    }
 
     setTimeout(function() {
         if (firstTry) {
@@ -178,7 +184,7 @@ function correctAnswer(questions) {
         } else {
             SetupQuiz(questions);
         }
-    }, 500);
+    }, timeOutLength);
 
 }
 
