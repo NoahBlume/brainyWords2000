@@ -45,8 +45,12 @@
 <br>
 
 <script>
+    var audio = new Audio();
     function playAudio(soundLocation) {
-        var audio = new Audio(soundLocation);
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = soundLocation;
         audio.play();    
     }
 </script>
