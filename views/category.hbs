@@ -30,8 +30,12 @@
 <!--{{/each}}-->
 
 <script>
+    const audio = new Audio();
     function select(subcategory) {
-        const audio = new Audio('/audio/categories/' + subcategory + '.mp3');
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = '/audio/categories/' + subcategory + '.mp3';
 
         audio.addEventListener("ended", function () {
             document.location.href = '/category/' + subcategory;

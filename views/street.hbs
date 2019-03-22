@@ -3218,6 +3218,7 @@
 <!--<a href="/progress">Progress</a>-->
 
 <script>
+    const audio = new Audio();
     $(document).ready(function() {
         // window.scrollTo(0, 1);
         let store = {{store}};
@@ -3372,7 +3373,11 @@
             dragging = false;
             // header.style.color = "red";
         } else {
-            const audio = new Audio('/audio/street/' + soundName);
+            //const audio = new Audio();
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/street/' + soundName;
             audio.play();
         }
     }
@@ -3382,7 +3387,10 @@
             dragging = false;
             // header.style.color = "red";
         } else {
-            const audio = new Audio('/audio/categories/' + categoryName + '.mp3');
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/categories/' + categoryName + '.mp3';
 
             audio.addEventListener("ended", function(){
                 location.href= '/category/' + categoryName;
@@ -3396,7 +3404,10 @@
         if (dragging === true) {
             dragging = false;
         } else {
-            const audio = new Audio('/audio/street/' + soundName);
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/street/' + soundName;
 
             audio.addEventListener("ended", function(){
                 location.href= '/street/' + areaName;
@@ -3420,7 +3431,10 @@
             dragging = false;
             // header.style.color = "red";
         } else {
-            const audio = new Audio('/audio/street/' + soundName);
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/street/' + soundName;
 
             audio.addEventListener("ended", function(){
                 location.href= '/street/' + areaName;
