@@ -102,6 +102,8 @@
 
 <span id="money-bags">
 </span>
+<span id="gold-coin-stacks">
+</span>
 <span id="gold-coins">
 </span>
 <span id="silver-coins">
@@ -125,16 +127,24 @@
 
         $("#bank-body > .silver-coin").remove();
         $("#bank-body > .gold-coin").remove();
+        $("#bank-body > .gold-coin-stack").remove();
         $("#bank-body > .money-bag").remove();
-        while (i >= 25) {
-            i -= 25;
+        while (i >= 50) {
+            i -= 50;
             let moneyBag = document.createElement("IMG");
             moneyBag.setAttribute("src", "/images/buttons/bag.png");
             moneyBag.setAttribute("class", "money-bag");
             $("#bank-body").append(moneyBag);
         }
-        while (i >= 5) {
-            i -= 5;
+        while (i >= 10) {
+            i -= 10;
+            let goldCoinStack = document.createElement("IMG");
+            goldCoinStack.setAttribute("src", "/images/buttons/gcoinStack.png");
+            goldCoinStack.setAttribute("class", "gold-coin-stack");
+            $("#bank-body").append(goldCoinStack);
+        }
+        while (i >= 2) {
+            i -= 2;
             let goldCoin = document.createElement("IMG");
             goldCoin.setAttribute("src", "/images/buttons/gcoin.png");
             goldCoin.setAttribute("class", "gold-coin");
