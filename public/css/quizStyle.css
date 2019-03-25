@@ -5,7 +5,7 @@ body {
 
 
 .rectangle {
-  height: 250px;
+    height: 250px;
 }
 
 .helper {
@@ -50,12 +50,12 @@ body {
     padding-left: 0;
     margin-left: -4px;
 
-  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
 
@@ -359,6 +359,10 @@ h2 {
     height: 50px;
 }
 .gold-coin {
+    /*src:"/images/buttons/bag.png"*/
+    height: 50px;
+}
+.gold-coin-stack {
     /*src:"/images/buttons/bag.png"*/
     height: 50px;
 }

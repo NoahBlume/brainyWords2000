@@ -1,5 +1,5 @@
 <a href="/street?store={{store}}">
-    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
+    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
 </a>
 <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">{{category}}</h2>
 
@@ -30,8 +30,12 @@
 <!--{{/each}}-->
 
 <script>
+    const audio = new Audio();
     function select(subcategory) {
-        const audio = new Audio('/audio/categories/' + subcategory + '.mp3');
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = '/audio/categories/' + subcategory + '.mp3';
 
         audio.addEventListener("ended", function () {
             document.location.href = '/category/' + subcategory;

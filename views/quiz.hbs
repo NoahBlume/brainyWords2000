@@ -1,28 +1,37 @@
-<audio id="correct-sound" src="/audio/correct.wav" type="audio/wav"></audio>
-<audio id="incorrect-sound" src="/audio/incorrect.wav" type="audio/wav"></audio>
+<audio id="correct-sound" src="/audio/quiz/correct.wav" type="audio/wav"></audio>
+<audio id="incorrect-sound" src="/audio/quiz/incorrect.wav" type="audio/wav"></audio>
 <audio id="answer-audio" src="" type="audio/wav"></audio>
 
+<a href="{{subCategoryLocation}}">
+    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
+</a>
+<a href="javascript:openBank();">
+    <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/bag.png"/>
+</a>
+
+
 <div id="top">
-    <h2 align="center">Quiz</h2>
+    <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Quiz</h2>
+    <br style="clear: both; margin-bottom: 20px;"/>
 </div>
 
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content slim" id="myModal">
-        <div class="modal-header" style="text-align:center;">
-            <h2 align="center" style="margin-right: auto; margin-left: auto;">Results</h2>
-        </div>
-        <div class="modal-body">
-            <br/>
-            <h5>Correct on first try:</h5>
-            <h2 id="numRight"></h2>
-            <button type="button" class="btn done-button" id="quiz-complete-button">Done</button>
-        </div>
-        <!-- <div class="modal-footer">
-            <h3>Done</h3>
-        </div> -->
-    </div>
-</div>
+<!--<div id="myModal" class="modal">-->
+<!--&lt;!&ndash; Modal content &ndash;&gt;-->
+<!--<div class="modal-content slim" id="myModal">-->
+<!--<div class="modal-header" style="text-align:center;">-->
+<!--<h2 align="center" style="margin-right: auto; margin-left: auto;">Results</h2>-->
+<!--</div>-->
+<!--<div class="modal-body">-->
+<!--<br/>-->
+<!--<h5>Correct on first try:</h5>-->
+<!--<h2 id="numRight"></h2>-->
+<!--<button type="button" class="btn done-button" id="quiz-complete-button">Done</button>-->
+<!--</div>-->
+<!--&lt;!&ndash; <div class="modal-footer">-->
+<!--<h3>Done</h3>-->
+<!--</div> &ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
 
 <div id="startModal" style="display:block;" class="modal">
     <!-- Modal content -->
@@ -36,6 +45,25 @@
             </div>
             <br/>
         </div>
+    </div>
+</div>
+
+
+<div id="bankModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content slim" id="myModal">
+        <div class="modal-header" style="text-align:center;">
+            <h2 align="center" style="margin-right: -35px; margin-left: auto;">Bank</h2>
+            <button onclick="closeBank();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="bank-body">
+
+        </div>
+        <!-- <div class="modal-footer">
+            <h3>Done</h3>
+        </div> -->
     </div>
 </div>
 
@@ -72,11 +100,93 @@
     </div>
 </div>
 
+<span id="money-bags">
+</span>
+<span id="gold-coin-stacks">
+</span>
+<span id="gold-coins">
+</span>
+<span id="silver-coins">
+</span>
+
 
 <script>
+    let correctAudio = ["aa1_excellent_4b", "aa1a_awesome_g", "aa2_good_job_22g",
+        "aa3_magnificent_23g", "aa4_you_did_really_well_14b", "aa5_outstanding_6g",
+        "aa5a_super_job_b", "aa6_splendid_24g", "aa6a_you_really_know_your_stuff_18b",
+        "aa7_marvelous_g", "aa8_superb_9g", "aa8a_brilliant_g",
+        "aa9_superlative_work_25g", "aa9_superlative_work_25g", "aa10a_how_did_you_get_so_smart_g",
+        "aa11_terrific_12g", "aa12_tremendous_25g", "aa13_way_to_go_8b",
+        "aa13a_you_sure_know_a_lot_of_words_g", "aa13c_youre_a_really_brainy_kid_b", "aa14_excellent_21g",
+        "aa14a_awesome_g", "aa15_good_job_3b", "aa16_magnificent_23g",
+        "aa17_you_did_really_well_g", "aa18_outstanding_5b", "aa18a_super_job_b",
+        "aa19_splendid_24g", "aa19a_you_really_know_your_stuff_17g", "aa20_marvelous_g",
+        "aa21_superb_11b","aa21a_brilliant_g","aa22_superlative_work_25g",
+        "aa23_you_get_smarter_all_the_time_15g","aa23a_how_did_you_get_so_smart_g","aa24_terrific_11b",
+        "aa25_tremendous_25g","aa26_way_to_go_7g","aa26a_you_sure_know_a_lot_of_words_g",
+        "aa26c_youre_ a_really_brainy_kid_g"];
+    for (let i = 0; i < 40; i++) {
+        //creates audio objects for all correct answer sounds
+        audio = document.createElement('audio');
+        audio.src = '/audio/quiz/correct/' + correctAudio[i]+'.mp3';
+        audio.id = i;
+        audio.type = 'audio/mp3';
+        document.getElementById("startModal").appendChild(audio);
+    }
+
     var decodedJson = decodeURIComponent("{{{encodedJson}}}");
     window.sharedInfo = JSON.parse(decodedJson);
 
     window.redirectLocation = "{{subCategoryLocation}}";
     // console.log(window.sharedInfo);
+
+    function openBank() {
+        if (localStorage.getItem('totalRight') === null) {
+            localStorage.setItem('totalRight', "0");
+        }
+        let totalRight = parseInt(localStorage.getItem('totalRight'));
+
+        let i = totalRight;
+
+        $("#bank-body > .silver-coin").remove();
+        $("#bank-body > .gold-coin").remove();
+        $("#bank-body > .gold-coin-stack").remove();
+        $("#bank-body > .money-bag").remove();
+        while (i >= 50) {
+            i -= 50;
+            let moneyBag = document.createElement("IMG");
+            moneyBag.setAttribute("src", "/images/buttons/bag.png");
+            moneyBag.setAttribute("class", "money-bag");
+            $("#bank-body").append(moneyBag);
+        }
+        while (i >= 10) {
+            i -= 10;
+            let goldCoinStack = document.createElement("IMG");
+            goldCoinStack.setAttribute("src", "/images/buttons/gcoinStack.png");
+            goldCoinStack.setAttribute("class", "gold-coin-stack");
+            $("#bank-body").append(goldCoinStack);
+        }
+        while (i >= 2) {
+            i -= 2;
+            let goldCoin = document.createElement("IMG");
+            goldCoin.setAttribute("src", "/images/buttons/gcoin.png");
+            goldCoin.setAttribute("class", "gold-coin");
+            $("#bank-body").append(goldCoin);
+        }
+        while (i >= 1) {
+            i -= 1;
+            let silverCoin = document.createElement("IMG");
+            silverCoin.setAttribute("src", "/images/buttons/scoin.png");
+            silverCoin.setAttribute("class", "silver-coin");
+            $("#bank-body").append(silverCoin);
+        }
+
+
+        $('#bankModal').css({'display': 'inline-block'});
+        // alert(localStorage.getItem('totalRight'));
+    }
+
+    function closeBank() {
+        $('#bankModal').css({'display': 'none'});
+    }
 </script>
