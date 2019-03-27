@@ -203,6 +203,13 @@ router.get('/street/:closestStore/:location', function (req, res, next) {
     res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", store: categoryNum, zoom: true, title: 'Street'});
 });
 
+// GET route for zoomed in ZOO areas
+router.get('/street/18/zoo/:location', function (req, res, next) {
+    // const categoryNum = req.params.closestStore;
+    const location = req.params.location;
+    //TODO: handle errors where page is not found (try catch + 404)
+    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", zoom: true, title: 'Street'});
+});
 
 // GET route for taking a quiz without a subcategory
 router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
@@ -219,6 +226,8 @@ router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
             title: "Quiz",
             encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
             layout: 'quizLayout.hbs',
+            subcategory: category,
+            parentCategory: null,
             subCategoryLocation: '/category/' + categoryNum + '/' + category
         });
     } catch(error) {
@@ -435,7 +444,7 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
 
 
 
-// GET route for taking a quiz with a subcategory
+// GET route for refreshing a quiz with a subcategory
 router.get('/category/:categoryNum/:category/:subCategory/quizRefresh', function (req, res, next) {
     const categoryNum = req.params.categoryNum;
     const category = req.params.category;
@@ -467,6 +476,8 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
             title: "Quiz",
             encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
             layout: 'quizLayout.hbs',
+            subcategory: subCategory,
+            parentCategory: category,
             subCategoryLocation: '/category/' + categoryNum + '/' + category + '/' + subCategory
         });
     } catch(error) {

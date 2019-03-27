@@ -2,9 +2,8 @@
 <audio id="incorrect-sound" src="/audio/quiz/incorrect.wav" type="audio/wav"></audio>
 <audio id="answer-audio" src="" type="audio/wav"></audio>
 
-<a href="{{subCategoryLocation}}">
-    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
-</a>
+<img id="backButton" img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
+
 <a href="javascript:openBank();">
     <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/bag.png"/>
 </a>
@@ -102,6 +101,8 @@
 
 <span id="money-bags">
 </span>
+<span id="gold-coin-stacks">
+</span>
 <span id="gold-coins">
 </span>
 <span id="silver-coins">
@@ -134,7 +135,8 @@
 
     var decodedJson = decodeURIComponent("{{{encodedJson}}}");
     window.sharedInfo = JSON.parse(decodedJson);
-
+    window.subcategory = "{{subcategory}}";
+    window.parentCategory = "{{parentCategory}}";
     window.redirectLocation = "{{subCategoryLocation}}";
     // console.log(window.sharedInfo);
 
@@ -148,16 +150,24 @@
 
         $("#bank-body > .silver-coin").remove();
         $("#bank-body > .gold-coin").remove();
+        $("#bank-body > .gold-coin-stack").remove();
         $("#bank-body > .money-bag").remove();
-        while (i >= 25) {
-            i -= 25;
+        while (i >= 50) {
+            i -= 50;
             let moneyBag = document.createElement("IMG");
             moneyBag.setAttribute("src", "/images/buttons/bag.png");
             moneyBag.setAttribute("class", "money-bag");
             $("#bank-body").append(moneyBag);
         }
-        while (i >= 5) {
-            i -= 5;
+        while (i >= 10) {
+            i -= 10;
+            let goldCoinStack = document.createElement("IMG");
+            goldCoinStack.setAttribute("src", "/images/buttons/gcoinStack.png");
+            goldCoinStack.setAttribute("class", "gold-coin-stack");
+            $("#bank-body").append(goldCoinStack);
+        }
+        while (i >= 2) {
+            i -= 2;
             let goldCoin = document.createElement("IMG");
             goldCoin.setAttribute("src", "/images/buttons/gcoin.png");
             goldCoin.setAttribute("class", "gold-coin");

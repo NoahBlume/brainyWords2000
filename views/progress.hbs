@@ -13,3 +13,12 @@ This is an email link:
 href="mailto:{{accountEmail}}?subject=Brainy%20Words%202000%20Stats%20-%20{{userName}}&body=stat%201%20{{stat1}}%0Astat%202%20{{stat2}}" 
 target="_top">Send Mail</a>
 </p>
+
+<p id="progressData">
+    empty
+</p>
+
+
+<script>
+    document.getElementById("progressData").innerText = localStorage.getItem("progress");
+</script>

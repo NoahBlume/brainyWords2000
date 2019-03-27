@@ -1,9 +1,45 @@
 <div id="mainContainer" style="display: flex; justify-content: center;">
-    <img id="streetBackground" style="height: 800px; z-index: 2;" src="/images/streetZoomedIn/zoo.png"/>
+    <img id="streetBackground" style="height: 850px; z-index: 2;" src="/images/streetZoomedIn/zoo.png"/>
 
-    <div class="streetElement" 
-        style="height: 400px; width: 150px; top: 250px; left: 17px;" 
-        onmouseup="playAudio('19plumber.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    {{!-- <div class="zoomArea" 
+        style="height: 378px; width: 259px; top: 269px; left: 194px;" 
+        onmouseup="zoomInwithAudio('park1', '06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div> --}}
+    <div class="zoomArea" 
+        style="height: 378px; width: 259px; top: 269px; left: 221px;" 
+        onmouseup="playAudio('06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 220px; width: 196px; top: 427px; left: 475px;" 
+        onmouseup="playAudio('06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 191px; width: 258px; top: 218px; left: 462px;" 
+        onmouseup="playAudio('04meat.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 220px; width: 323px; top: 55px; left: 618px;" 
+        onmouseup="playAudio('02birds.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 156px; width: 359px; top: 224px; left: 781px;" 
+        onmouseup="playAudio('01plant.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 174px; width: 415px; top: 44px; left: 1027px;" 
+        onmouseup="playAudio('07dinosaur.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 174px; width: 307px; top: 253px; left: 1120px;" 
+        onmouseup="playAudio('05reptiles.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 225px; width: 402px; top: 409px; left: 1139px;" 
+        onmouseup="playAudio('03water.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="zoomArea" 
+        style="height: 451px; width: 424px; top: 448px; left: 674px;" 
+        onmouseup="playAudio('00animals.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     
 </div>
@@ -23,8 +59,26 @@
         if (dragging === true) {
             dragging = false;
         } else {
-            const audio = new Audio('/audio/street/' + soundName);
+            const audio = new Audio('/audio/categories/18/' + soundName);
             audio.play();    
+        }
+    }
+
+    function zoomInwithAudio(areaName, soundName) {
+        if (dragging === true) {
+            dragging = false;
+            // header.style.color = "red";
+        } else {
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/categories/18/' + soundName;
+
+            audio.addEventListener("ended", function(){
+                location.href= '/street/18/zoo/' + areaName;
+            });
+
+            audio.play();
         }
     }
 </script>
