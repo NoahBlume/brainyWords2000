@@ -28,6 +28,8 @@ body {
     -o-transition: background-color 0.25s ease-in-out;
     -khtml-transition: background-color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
+
+    cursor: pointer;
 }
 .option:hover {
     border-color: #d8d8d8;
@@ -77,6 +79,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    cursor: pointer;
 }
 .button:hover {
     color: #d8d8d8; /* light grey */
@@ -176,6 +179,7 @@ body {
     background-color: #006aff;
     border-radius: 5px;
     position: relative;
+    cursor: pointer;
 }
 
 .play-button:hover {
@@ -369,4 +373,8 @@ h2 {
 .silver-coin {
     /*src:"/images/buttons/bag.png"*/
     height: 50px;
+}
+
+#backButton {
+    cursor: pointer;
 }

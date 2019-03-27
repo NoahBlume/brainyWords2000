@@ -22,13 +22,31 @@ bank['moneyBags'] = 0;
 bank['goldCoinStacks'] = 0;
 bank['goldCoins'] = 0;
 bank['silverCoins'] = 0;
-if (localStorage.getItem('totalRight') === null) {
-    localStorage.setItem('totalRight', "0");
+if (localStorage.getItem('totalPoints') === null) {
+    localStorage.setItem('totalPoints', "0");
 }
-bank['totalRight'] = parseInt(localStorage.getItem('totalRight'));
+bank['totalPoints'] = parseInt(localStorage.getItem('totalPoints'));
+
+let progress = {};
+progress['totalRight'] = 0;
+progress['totalWrong'] = 0;
+progress['quizzes'] = [];
+progress['words'] = {};
+progress['subcategories'] = {};
+if (localStorage.getItem('progress') === null) {
+    localStorage.setItem('progress', JSON.stringify(progress));
+}
+progress = JSON.parse(localStorage.getItem('progress'));
+
 // bank['newRight'] = 0;
 const quizRefreshPath = window.redirectLocation + '/quizRefresh';
+const subcategory = window.subcategory;
+const parentCategory = window.parentCategory;
 
+const empty = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
+let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, empty);
+
+let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": []};
 
 $( document ).ready(function() {
     // console.log("quiz refresh path: " + quizRefreshPath);
@@ -52,6 +70,14 @@ $( document ).ready(function() {
             // console.log("refresh data: " + data.quiz);
             queuedQuiz = data.quiz;
         });
+    });
+
+    //save progress before exiting the quiz
+    $("#backButton").click(function() {
+        progress.quizzes.push(thisQuizProgress);
+        progress.subcategories[subcategory] = subcategoryProgress;
+        localStorage.setItem('progress', JSON.stringify(progress));
+        window.location.href = window.redirectLocation;
     });
 
 
@@ -153,6 +179,14 @@ function QuizComplete(questions) {
     modal.style.display = "block";
 }
 
+function getOrDefault(obj, key, def) {
+    if (key in obj) {
+        return obj.key;
+    } else {
+        return def;
+    }
+}
+
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
@@ -160,17 +194,34 @@ function correctAnswer(questions) {
     if (firstTry) {
         timeOutLength = 2000;
         setTimeout(function () {
-            $("#" + (bank.totalRight % 40)).trigger('play');
+            $("#" + (bank.totalPoints % 40)).trigger('play');
         }, 500);
     }
 
     setTimeout(function() {
+        const curWord = questions.quiz[questions.curQuestion].word;
+        const empty = {'right': 0, 'wrong': 0};
+        let curWordProgress = getOrDefault(progress.words, curWord, empty);
+
         if (firstTry) {
             bankUpdate();
             correctOnFirstTry++;
-        } else if (secondTry) {
-            secondTryBankUpdate();
+            progress.totalRight++;
+            curWordProgress.right++;
+            subcategoryProgress.right++;
+            thisQuizProgress.right.push(curWord);
+        } else {
+            progress.totalWrong++;
+            curWordProgress.wrong++;
+            subcategoryProgress.wrong++;
+            thisQuizProgress.wrong.push(curWord);
+            if (secondTry) {
+                secondTryBankUpdate();
+            }
         }
+        progress.words[curWord] = curWordProgress;
+
+
         firstTry = true;
         secondTry = false;
         // console.log("correct on first try " + correctOnFirstTry);
@@ -251,8 +302,8 @@ function SetupQuiz(questions) {
 
 function bankUpdate() {
     // bank.newRight += 2;
-    bank.totalRight += 2;
-    localStorage.setItem('totalRight', bank.totalRight.toString());
+    bank.totalPoints += 2;
+    localStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
     // if (bank.silverCoins >= 2) {
@@ -277,8 +328,8 @@ function bankUpdate() {
 
 function secondTryBankUpdate() {
     // bank.newRight += 1;
-    bank.totalRight += 1;
-    localStorage.setItem('totalRight', bank.totalRight.toString());
+    bank.totalPoints += 1;
+    localStorage.setItem('totalPoints', bank.totalPoints.toString());
     addSilverCoin();
     bank.silverCoins++;
     if (bank.silverCoins >= 2) {
