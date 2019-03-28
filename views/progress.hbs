@@ -3,16 +3,62 @@
 </a>
 
 <!--<a href="/street">Back to street</a>-->
-<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>
-<br style="clear: both;"/>
-<p>stat 1: {{stat1}}</p>
-<p>stat 2: {{stat2}}</p>
-<p>
-This is an email link:
-<a 
-href="mailto:{{accountEmail}}?subject=Brainy%20Words%202000%20Stats%20-%20{{userName}}&body=stat%201%20{{stat1}}%0Astat%202%20{{stat2}}" 
-target="_top">Send Mail</a>
-</p>
+<br/>
+<br/>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="recent-quizzes-tab" data-toggle="tab" href="#recent-quizzes" role="tab" aria-controls="recent-quizzes" aria-selected="true">Recent Quizzes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="all-category-data-tab" data-toggle="tab" href="#all-category-data" role="tab" aria-controls="all-category-data" aria-selected="false">All Category Data</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="individual-words-tab" data-toggle="tab" href="#individual-words" role="tab" aria-controls="individual-words" aria-selected="false">Individual Words</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="recentQuizzesTabContent">
+    <div class="tab-pane fade show active" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
+        <p>the first thing</p>
+        <table id="recentQuizzesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="th-sm">Subcategory
+                </th>
+                <th class="th-sm">Category
+                </th>
+                <th class="th-sm">Correct Words
+                </th>
+                <th class="th-sm">Incorrect Words
+                </th>
+                <th class="th-sm">Percent Correct
+                </th>
+                <th class="th-sm">Date Taken
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="tab-pane fade" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">the second thing</div>
+    <div class="tab-pane fade" id="individual-words" role="tabpanel" aria-labelledby="individual-words-tab">the third thing</div>
+</div>
+
+<br/>
+
+
+<!--<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>-->
+<!--<br style="clear: both;"/>-->
+<!--<p>stat 1: {{stat1}}</p>-->
+<!--<p>stat 2: {{stat2}}</p>-->
+<!--<p>-->
+<!--This is an email link:-->
+<!--<a -->
+<!--href="mailto:{{accountEmail}}?subject=Brainy%20Words%202000%20Stats%20-%20{{userName}}&body=stat%201%20{{stat1}}%0Astat%202%20{{stat2}}" -->
+<!--target="_top">Send Mail</a>-->
+<!--</p>-->
 
 <p id="progressData">
     empty
@@ -20,5 +66,41 @@ target="_top">Send Mail</a>
 
 
 <script>
+    $(document).ready(function () {
+        if (localStorage.getItem('progress') === null) {
+            return;
+        }
+        const progress = JSON.parse(localStorage.getItem("progress"));
+        const quizzes = progress.quizzes;
+        const words = progress.words;
+        const subcategories = progress.subcategories;
+
+        $.each(quizzes, function( index, quiz ) {
+            let category = quiz.category;
+            if (category === undefined) {
+                category = "No Parent Category";
+            }
+
+            const subcategory = quiz.subcategory;
+            const rightText = quiz.right.join(", ");
+            const wrongText = quiz.wrong.join(", ");
+            const date = quiz.date;
+
+            const totalQuestions = quiz.right.length + quiz.wrong.length;
+            let correctPercent = 0;
+            if(totalQuestions > 0) {
+                correctPercent = 100 * quiz.right.length / totalQuestions;
+            }
+
+            const newRow = "<tr><td>" + subcategory + "</td><td>" + category + "</td><td>" + rightText + "</td><td>"
+                    + wrongText + "</td><td>" + correctPercent + "%</td><td>" + date + "</td></tr>";
+            $('#recentQuizzesTable tbody').append(newRow);
+        });
+
+
+
+        $('#recentQuizzesTable').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
     document.getElementById("progressData").innerText = localStorage.getItem("progress");
 </script>

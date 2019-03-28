@@ -46,7 +46,8 @@ const parentCategory = window.parentCategory;
 const empty = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
 let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, empty);
 
-let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": []};
+const currentDate = getCurrentDate();
+let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": [], "date": currentDate};
 
 $( document ).ready(function() {
     // console.log("quiz refresh path: " + quizRefreshPath);
@@ -378,4 +379,19 @@ function addSilverCoin() {
     silverCoin.setAttribute("src", "/images/buttons/scoin.png");
     silverCoin.setAttribute("class", "silver-coin");
     $("#silver-coins").append(silverCoin);
+}
+
+function getCurrentDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; //January is 0!
+
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    return yyyy + '/' + mm + '/' + dd;
 }
