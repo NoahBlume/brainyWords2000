@@ -76,7 +76,7 @@
         const subcategories = progress.subcategories;
 
         $.each(quizzes, function( index, quiz ) {
-            let category = quiz.category;
+            let category = quiz.parentCategory;
             if (category === undefined) {
                 category = "No Parent Category";
             }
