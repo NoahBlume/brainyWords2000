@@ -43,8 +43,8 @@ const quizRefreshPath = window.redirectLocation + '/quizRefresh';
 const subcategory = window.subcategory;
 const parentCategory = window.parentCategory;
 
-const empty = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
-let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, empty);
+const emptySubcategoryProgress = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
+let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, emptySubcategoryProgress);
 
 const currentDate = getCurrentDate();
 let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": [], "date": currentDate};
@@ -181,7 +181,7 @@ function QuizComplete(questions) {
 }
 
 function getOrDefault(obj, key, def) {
-    if (key in obj) {
+    if (key in obj && obj['key'] !== undefined) {
         return obj.key;
     } else {
         return def;
@@ -201,8 +201,8 @@ function correctAnswer(questions) {
 
     setTimeout(function() {
         const curWord = questions.quiz[questions.curQuestion].word;
-        const empty = {'right': 0, 'wrong': 0};
-        let curWordProgress = getOrDefault(progress.words, curWord, empty);
+        const emptyWordData = {'right': 0, 'wrong': 0};
+        let curWordProgress = getOrDefault(progress.words, curWord, emptyWordData);
 
         if (firstTry) {
             bankUpdate();

@@ -141,12 +141,12 @@
     // console.log(window.sharedInfo);
 
     function openBank() {
-        if (localStorage.getItem('totalRight') === null) {
-            localStorage.setItem('totalRight', "0");
+        if (localStorage.getItem('totalPoints') === null) {
+            localStorage.setItem('totalPoints', "0");
         }
-        let totalRight = parseInt(localStorage.getItem('totalRight'));
+        let totalPoints = parseInt(localStorage.getItem('totalPoints'));
 
-        let i = totalRight;
+        let i = totalPoints;
 
         $("#bank-body > .silver-coin").remove();
         $("#bank-body > .gold-coin").remove();
@@ -183,7 +183,7 @@
 
 
         $('#bankModal').css({'display': 'inline-block'});
-        // alert(localStorage.getItem('totalRight'));
+        // alert(localStorage.getItem('totalPoints'));
     }
 
     function closeBank() {
