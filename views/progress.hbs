@@ -23,9 +23,9 @@
         <table id="recentQuizzesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
-                <th class="th-sm">Subcategory
-                </th>
                 <th class="th-sm">Category
+                </th>
+                <th class="th-sm">Subcategory
                 </th>
                 <th class="th-sm">Correct Words
                 </th>
@@ -76,12 +76,13 @@
         const subcategories = progress.subcategories;
 
         $.each(quizzes, function( index, quiz ) {
+            let subcategory = quiz.subcategory;
             let category = quiz.parentCategory;
-            if (category === undefined) {
-                category = "No Parent Category";
+            if (category === undefined || category === "") {
+                category = subcategory;
+                subcategory = "";
             }
 
-            const subcategory = quiz.subcategory;
             const rightText = quiz.right.join(", ");
             const wrongText = quiz.wrong.join(", ");
             const date = quiz.date;
@@ -92,7 +93,7 @@
                 correctPercent = 100 * quiz.right.length / totalQuestions;
             }
 
-            const newRow = "<tr><td>" + subcategory + "</td><td>" + category + "</td><td>" + rightText + "</td><td>"
+            const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td>" + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
         });
