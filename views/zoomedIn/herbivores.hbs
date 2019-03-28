@@ -1,0 +1,28 @@
+<div id="mainContainer">
+    <img id="streetBackground" style="height: 850px; z-index: 2; display: block; margin-left: auto; margin-right: auto;" src="/images/streetZoomedIn/herbivores.png"/>
+</div>
+
+<script>
+    let dragging = false;
+    const audio = new Audio();
+
+    function setDrag() {
+        dragging = true;
+    }
+
+    function clearDrag() {
+        dragging = false;
+    }
+
+    function playAudio(soundName) {
+        if (dragging === true) {
+            dragging = false;
+        } else {
+            if (!audio.paused){
+                audio.pause();
+            }
+            audio.src = '/audio/categories/18/' + soundName;
+            audio.play();
+        }
+    }
+</script>
