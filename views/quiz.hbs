@@ -3,11 +3,12 @@
 <audio id="answer-audio" src="" type="audio/wav"></audio>
 
 <img id="backButton" img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
+<img id="homeButton" style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
+
 
 <a href="javascript:openBank();">
     <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/bag.png"/>
 </a>
-
 
 <div id="top">
     <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Quiz</h2>
@@ -142,6 +143,7 @@
     window.subcategory = "{{subcategory}}";
     window.parentCategory = "{{parentCategory}}";
     window.redirectLocation = "{{subCategoryLocation}}";
+    window.categoryNum = "{{categoryNum}}";
     // console.log(window.sharedInfo);
 
     function openBank() {

@@ -82,6 +82,14 @@ $( document ).ready(function() {
     });
 
 
+    $("#homeButton").click(function() {
+        progress.quizzes.push(thisQuizProgress);
+        progress.subcategories[subcategory] = subcategoryProgress;
+        localStorage.setItem('progress', JSON.stringify(progress));
+        window.location.href = "/street?store=" + window.categoryNum;
+    });
+
+
     // get the button that closes the quiz complete modal
     // const quizDoneButton = document.getElementById("quiz-complete-button");
 
