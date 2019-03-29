@@ -1,3 +1,12 @@
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 100%;
+    background-color: rgb(214, 214, 214);
+    height: 1px;
+}
+
 body {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -376,5 +385,9 @@ h2 {
 }
 
 #backButton {
+    cursor: pointer;
+}
+
+#homeButton {
     cursor: pointer;
 }
