@@ -228,6 +228,7 @@ router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
             layout: 'quizLayout.hbs',
             subcategory: category,
             parentCategory: null,
+            categoryNum: categoryNum,
             subCategoryLocation: '/category/' + categoryNum + '/' + category
         });
     } catch(error) {
@@ -478,6 +479,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
             layout: 'quizLayout.hbs',
             subcategory: subCategory,
             parentCategory: category,
+            categoryNum: categoryNum,
             subCategoryLocation: '/category/' + categoryNum + '/' + category + '/' + subCategory
         });
     } catch(error) {
