@@ -21,10 +21,10 @@
 <br/>
 <br/>
 
-<div class="row word-container">
+<div class="row word-container justify-content-center">
     {{#each words}}
         {{#if this.image}}
-            <div class="col-sm-3 rectangle wide">
+            <div class="col-sm-5 rectangle">
                 <div class="option wide" onclick='playAudio("{{this.audio}}");'>
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.image}}">

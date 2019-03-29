@@ -5,7 +5,7 @@ body {
 
 .rectangle {
     height: 250px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .helper {
@@ -35,7 +35,7 @@ body {
 }
 
 .option.wide {
-    height: 100px;
+    height: 250px;
 }
 
 .option.square {
@@ -104,6 +104,8 @@ special styling for mobile phones in landscape mode
     .rectangle.wide {
         height: 90%;
         margin-bottom: 10px;
+        padding-left: 300px;
+
     }
 
     .option.wide {
@@ -121,7 +123,7 @@ special styling for small (mobile) screens
 @media only screen and (max-width: 576px) {
     .rectangle {
         height: 100px;
-        margin-bottom: 15px;
+        margin-bottom: 250px;
     }
 
     .option {
