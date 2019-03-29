@@ -201,7 +201,7 @@ function correctAnswer(questions) {
 
     setTimeout(function() {
         const curWord = questions.quiz[questions.curQuestion].word;
-        const emptyWordData = {'right': 0, 'wrong': 0};
+        const emptyWordData = {'right': 0, 'wrong': 0, "parentCategory": parentCategory, "subcategory": subcategory};
         let curWordProgress = getOrDefault(progress.words, curWord, emptyWordData);
 
         if (firstTry) {
