@@ -11,7 +11,7 @@
     {{#each subCategories}}
         {{#if this.imageFile}}
             <div class="col-sm-6 rectangle wide">
-                <div class="option square" onclick="select('{{../store}}/{{../category}}/{{@key}}');">
+                <div class="option square" tabindex="1" onclick="select('{{../store}}/{{../category}}/{{@key}}');">
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.imageFile}}">
                 </div>

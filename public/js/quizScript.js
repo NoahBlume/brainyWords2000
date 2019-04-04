@@ -393,17 +393,22 @@ function addSilverCoin() {
     $("#silver-coins").append(silverCoin);
 }
 
+function makeTwoDigits(num) {
+    if (num < 10) {
+        return '0' + num;
+    }
+    return num;
+}
+
 function getCurrentDate() {
     let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1; //January is 0!
+    let h = makeTwoDigits(today.getHours());
+    let m = makeTwoDigits(today.getMinutes());
+    let s = makeTwoDigits(today.getSeconds());
+    let dd = makeTwoDigits(today.getDate());
+    let mm = makeTwoDigits(today.getMonth() + 1); //January is 0!
 
     let yyyy = today.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    return yyyy + '/' + mm + '/' + dd;
+
+    return yyyy + '/' + mm + '/' + dd + " " + h + ':' + m + ':' + s;
 }

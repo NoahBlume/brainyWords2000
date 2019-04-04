@@ -25,7 +25,7 @@
     {{#each words}}
         {{#if this.image}}
             <div class="col-sm-6 rectangle">
-                <div class="option" onclick='playAudio("{{this.audio}}");'>
+                <div class="option" tabindex="1" onclick='playAudio("{{this.audio}}");'>
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.image}}">
                 </div>
@@ -45,12 +45,24 @@
 <br>
 
 <script>
-    var audio = new Audio();
+    let highlighted = null;
+    let audio = new Audio();
     function playAudio(soundLocation) {
         if (!audio.paused){
             audio.pause();
+            if (document.activeElement !== document.body && document.activeElement === highlighted) {
+                document.activeElement.blur();
+            }
         }
         audio.src = soundLocation;
+        highlighted = document.activeElement;
+
+        audio.addEventListener("ended", function(){
+            if (document.activeElement !== document.body && document.activeElement === highlighted) {
+                document.activeElement.blur();
+            }
+        });
+
         audio.play();    
     }
 </script>

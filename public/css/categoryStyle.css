@@ -48,6 +48,16 @@ body {
     box-shadow: none;
 }
 
+.option:focus {
+    border-color: royalblue;
+    border-style: solid;
+    border-width: 7px;
+}
+
+.option.square:focus {
+    border-color: mediumpurple;
+}
+
 .option-image {
     max-width: 95%;
     max-height: 95%;
