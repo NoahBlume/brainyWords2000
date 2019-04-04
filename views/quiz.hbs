@@ -151,10 +151,10 @@
     // console.log(window.sharedInfo);
 
     function openBank() {
-        if (localStorage.getItem('totalPoints') === null) {
-            localStorage.setItem('totalPoints', "0");
+        if (sessionStorage.getItem('totalPoints') === null) {
+            sessionStorage.setItem('totalPoints', "0");
         }
-        let totalPoints = parseInt(localStorage.getItem('totalPoints'));
+        let totalPoints = parseInt(sessionStorage.getItem('totalPoints'));
 
         let i = totalPoints;
 
@@ -197,7 +197,7 @@
 
 
         $('#bankModal').css({'display': 'inline-block'});
-        // alert(localStorage.getItem('totalPoints'));
+        // alert(sessionStorage.getItem('totalPoints'));
     }
 
     function closeBank() {

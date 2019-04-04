@@ -22,10 +22,10 @@ bank['moneyBags'] = 0;
 bank['goldCoinStacks'] = 0;
 bank['goldCoins'] = 0;
 bank['silverCoins'] = 0;
-if (localStorage.getItem('totalPoints') === null) {
-    localStorage.setItem('totalPoints', "0");
+if (sessionStorage.getItem('totalPoints') === null) {
+    sessionStorage.setItem('totalPoints', "0");
 }
-bank['totalPoints'] = parseInt(localStorage.getItem('totalPoints'));
+bank['totalPoints'] = parseInt(sessionStorage.getItem('totalPoints'));
 
 let progress = {};
 progress['totalRight'] = 0;
@@ -33,10 +33,10 @@ progress['totalWrong'] = 0;
 progress['quizzes'] = [];
 progress['words'] = {};
 progress['subcategories'] = {};
-if (localStorage.getItem('progress') === null) {
-    localStorage.setItem('progress', JSON.stringify(progress));
+if (sessionStorage.getItem('progress') === null) {
+    sessionStorage.setItem('progress', JSON.stringify(progress));
 }
-progress = JSON.parse(localStorage.getItem('progress'));
+progress = JSON.parse(sessionStorage.getItem('progress'));
 
 // bank['newRight'] = 0;
 const quizRefreshPath = window.redirectLocation + '/quizRefresh';
@@ -75,17 +75,13 @@ $( document ).ready(function() {
 
     //save progress before exiting the quiz
     $("#backButton").click(function() {
-        progress.quizzes.push(thisQuizProgress);
-        progress.subcategories[subcategory] = subcategoryProgress;
-        localStorage.setItem('progress', JSON.stringify(progress));
+        saveProgress();
         window.location.href = window.redirectLocation;
     });
 
 
     $("#homeButton").click(function() {
-        progress.quizzes.push(thisQuizProgress);
-        progress.subcategories[subcategory] = subcategoryProgress;
-        localStorage.setItem('progress', JSON.stringify(progress));
+        saveProgress();
         window.location.href = "/street?store=" + window.categoryNum;
     });
 
@@ -164,6 +160,14 @@ $( document ).ready(function() {
 
 
 });
+
+function saveProgress() {
+    if(thisQuizProgress.right.length > 0 || thisQuizProgress.wrong.length > 0) {
+        progress.quizzes.push(thisQuizProgress);
+    }
+    progress.subcategories[subcategory] = subcategoryProgress;
+    sessionStorage.setItem('progress', JSON.stringify(progress));
+}
 
 function handleIncorrect() {
     if (secondTry) {
@@ -312,7 +316,7 @@ function SetupQuiz(questions) {
 function bankUpdate() {
     // bank.newRight += 2;
     bank.totalPoints += 2;
-    localStorage.setItem('totalPoints', bank.totalPoints.toString());
+    sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
     // if (bank.silverCoins >= 2) {
@@ -338,7 +342,7 @@ function bankUpdate() {
 function secondTryBankUpdate() {
     // bank.newRight += 1;
     bank.totalPoints += 1;
-    localStorage.setItem('totalPoints', bank.totalPoints.toString());
+    sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addSilverCoin();
     bank.silverCoins++;
     if (bank.silverCoins >= 2) {

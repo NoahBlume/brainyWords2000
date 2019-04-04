@@ -30,13 +30,9 @@ body {
     transition: background-color 0.25s ease-in-out;
 }
 
-.rectangle.wide {
-    height: 110px;
-}
-
-.option.wide {
-    height: 250px;
-}
+/*.option {*/
+    /*height: 250px;*/
+/*}*/
 
 .option.square {
     border-radius: 0px;
@@ -78,8 +74,9 @@ body {
 }
 
 .word-container {
-    margin-left: 0;
-    margin-right: 0;
+    width: 90%;
+    margin-left: 7%;
+    /*margin-right: 3%;*/
 }
 
 /*
@@ -100,21 +97,13 @@ special styling for mobile phones in landscape mode
         height: 70%;
         margin-top: 5%;
         margin-left: 15px;
-    }
-    .rectangle.wide {
-        height: 90%;
-        margin-bottom: 10px;
-        padding-left: 300px;
-
+        width: 100%;
     }
 
-    .option.wide {
+
+    .option {
         height: 70%;
     }
-    /*.word-container {*/
-        /*margin-left: 0;*/
-        /*margin-right: 0;*/
-    /*}*/
 }
 
 /*
@@ -122,12 +111,12 @@ special styling for small (mobile) screens
  */
 @media only screen and (max-width: 576px) {
     .rectangle {
-        height: 100px;
-        margin-bottom: 250px;
+        height: 200px;
+        margin-bottom: 0px;
     }
 
     .option {
-        height: 90px;
+        height: 140px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -137,9 +126,13 @@ special styling for small (mobile) screens
         margin-right: 0;
     }
 
-    /*.word-container {*/
-        /*margin-left: auto;*/
-        /*margin-right: auto;*/
-    /*}*/
+    .word-container {
+        width: 100%;
+    }
+
+    .word-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
