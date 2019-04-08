@@ -1,6 +1,9 @@
 <a href="/street">
     <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
 </a>
+<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>
+
+<a id="mail-link" href="#" target="_top" class="btn btn-info" role="button" style="float: right">Send Mail</a>
 
 <!--<a href="/street">Back to street</a>-->
 <br/>
@@ -93,12 +96,6 @@
 <!--<br style="clear: both;"/>-->
 <!--<p>stat 1: {{stat1}}</p>-->
 <!--<p>stat 2: {{stat2}}</p>-->
-<!--<p>-->
-<!--This is an email link:-->
-<!--<a -->
-<!--href="mailto:{{accountEmail}}?subject=Brainy%20Words%202000%20Stats%20-%20{{userName}}&body=stat%201%20{{stat1}}%0Astat%202%20{{stat2}}" -->
-<!--target="_top">Send Mail</a>-->
-<!--</p>-->
 
 <!--<p id="progressData">-->
     <!--empty-->
@@ -115,6 +112,9 @@
         const words = progress.words;
         const subcategories = progress.subcategories;
 
+        let quizEmailText = [];
+
+        let elementNumber = 1;
         $.each(quizzes, function( index, quiz ) {
             let subcategory = quiz.subcategory;
             let category = quiz.parentCategory;
@@ -136,7 +136,16 @@
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td>" + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
+
+
+            quizEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct Words: " + rightText
+                + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
+
+            elementNumber++;
         });
+
+        let categoryEmailText = [];
+        elementNumber = 1;
 
         $.each(subcategories, function( subcategory, data ) {
             let category = data.parentCategory;
@@ -157,7 +166,14 @@
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td>" + correctPercent + "%</td></tr>";
             $('#categoriesTable tbody').append(newRow);
+
+            categoryEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
+                    + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
+            elementNumber++;
         });
+
+        let wordEmailText = [];
+        elementNumber = 1;
 
         $.each(words, function( word, data ) {
             let subcategory = data.subcategory;
@@ -179,8 +195,20 @@
             const newRow = "<tr><td>" + word + "</td><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td>" + correctPercent + "%</td></tr>";
             $('#individualWordsTable tbody').append(newRow);
+
+            wordEmailText.push(elementNumber + ". Word: " + word + ", Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
+                    + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
+            elementNumber++;
         });
 
+        const emailTo = "";
+        const emailSubj = "Brainy Words 2000 Stats";
+        let emailBody = "Quizzes:\n" + quizEmailText.join('\n') + '\n\nCategories:\n' + categoryEmailText.join('\n')
+            + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
+
+        emailBody = encodeURI(emailBody);
+
+        $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
 
         $('#recentQuizzesTable').DataTable();
         $('.dataTables_length').addClass('bs-select');
