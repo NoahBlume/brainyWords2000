@@ -102,6 +102,14 @@ body {
     text-align: center;
 }
 
+#keyHorizontal {
+    display: block;
+}
+
+#keyStacked {
+    display: none;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -266,6 +274,14 @@ special styling for small (mobile) screens (portrait)
         border-style: solid;
         border-width: 1.6px;
         /*background-color: #d8d8d8;*/
+    }
+
+    #keyHorizontal {
+        display: None;
+    }
+
+    #keyStacked {
+        display: block;
     }
 }
 
