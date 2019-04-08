@@ -208,7 +208,7 @@ router.get('/street/18/zoo/:location', function (req, res, next) {
     // const categoryNum = req.params.closestStore;
     const location = req.params.location;
     //TODO: handle errors where page is not found (try catch + 404)
-    res.render('zoomedIn/' + location, { layout: "streetLayout.hbs", zoom: true, title: 'Street'});
+    res.render('zoomedIn/' + location, { layout: "zooLayout.hbs", zoom: true, title: 'Street'});
 });
 
 // GET route for taking a quiz without a subcategory
@@ -228,6 +228,7 @@ router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
             layout: 'quizLayout.hbs',
             subcategory: category,
             parentCategory: null,
+            categoryNum: categoryNum,
             subCategoryLocation: '/category/' + categoryNum + '/' + category
         });
     } catch(error) {
@@ -366,6 +367,113 @@ router.get('/category/:categoryNum/:category', function (req, res, next) {
     }
 });
 
+// GET route for viewing Zoo category
+router.get('/street/18/zoo/category/:category', function (req, res, next) {
+    const categoryNum = '18';
+    const category = req.params.category;
+    try {
+        // const audioPath = path.join(__dirname, '..', 'public/audio/categories/', category);
+        // const categoryPath = path.join(__dirname, '..', 'public/images/categories/', categoryNum);
+        // const categoryNameList = fs.readdirSync(categoryPath);
+        // const category = categoryNameList[0];
+
+        const imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category);
+
+        const publicImagePath = '/images/categories/' + categoryNum + '/' + category;
+        const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category;
+
+        // var audioFiles = fs.readdirSync(audioPath);
+        const imageFiles = fs.readdirSync(imagePath);
+
+        const categoryData = {};
+
+        let subCategoryFound = false;
+
+        imageFiles.forEach(function(subCategory) {
+            let subCatObject;
+            if (subCategory.endsWith(".png") || subCategory.endsWith(".jpg")) {
+                const trimmedSubCat = subCategory.split('.')[0];
+
+                subCatObject = {
+                    imageDirectory: publicImagePath + '/' + trimmedSubCat,
+                    audioDirectory: publicAudioPath + '/' + trimmedSubCat,
+                    imageFile: publicImagePath + '/' + subCategory,
+                    subCatName: trimmedSubCat
+                };
+
+                categoryData[trimmedSubCat] = subCatObject;
+            } else if (!subCategory.includes('.')) {
+                subCategoryFound = true;
+            }
+        });
+
+        if (subCategoryFound) {
+            res.render('zooCategory', {
+                title: category,
+                layout: 'categoryLayout.hbs',
+                store: categoryNum,
+                category: category,
+                subCategories: categoryData
+            });
+        } else {
+            //No subcategories - go straight to the words page
+            const subCategoryData = {};
+
+            imageFiles.forEach(function(subCatImage) {
+                if(subCatImage.includes('.')) {
+                    const subCatName = subCatImage.split('.')[0];
+
+                    let subCatObj = {};
+
+                    if (subCatName in subCategoryData) {
+                        subCatObj = subCategoryData[subCatName];
+
+                    }
+                    subCatObj['image'] = publicImagePath + '/' + subCatImage;
+                    subCatObj['name'] = textCleanup(subCatName);
+                    subCategoryData[subCatName] = subCatObj;
+                }
+            });
+
+            const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category);
+            const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category;
+            const audioFiles = fs.readdirSync(audioPath);
+            audioFiles.forEach(function(subCatAudio) {
+                if(subCatAudio.includes('.')) {
+                    const subCatName = subCatAudio.split('.')[0];
+
+                    let subCatObj = {};
+
+                    if (subCatName in subCategoryData) {
+                        subCatObj = subCategoryData[subCatName];
+
+                    }
+                    subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
+                    subCategoryData[subCatName] = subCatObj;
+                }
+            });
+
+            res.render('zooCategory', {
+                title: category,
+                layout: 'categoryLayout.hbs',
+                categoryNum: categoryNum,
+                category: category,
+                subCategory: category,
+                words: subCategoryData,
+                hasParentCategory: false
+            });
+        }
+
+    } catch(error) {
+        console.log(error);
+        // TODO: figure out the correct way to handle this
+        const err = new Error('Category does not exist!');
+        err.status = 404;
+        return next(err);
+    }
+});
+
+
 
 // GET route for viewing a subcategory
 router.get('/category/:categoryNum/:category/:subCategory', function (req, res, next) {
@@ -478,6 +586,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
             layout: 'quizLayout.hbs',
             subcategory: subCategory,
             parentCategory: category,
+            categoryNum: categoryNum,
             subCategoryLocation: '/category/' + categoryNum + '/' + category + '/' + subCategory
         });
     } catch(error) {

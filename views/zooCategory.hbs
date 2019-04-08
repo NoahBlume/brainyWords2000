@@ -1,16 +1,11 @@
-{{#if hasParentCategory}}
-    <a href="./">
-{{else}}
-    <a href="/street?store={{categoryNum}}">
-{{/if}}
-<img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
+<a href="/street/18/zoo">
+    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
 </a>
+<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">{{category}}</h2>
 
-{{#if hasParentCategory}}
-<a href="/street?store={{categoryNum}}">
+<a href="/street?store=18">
     <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
 </a>
-{{/if}}
 
 <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">{{subCategory}}</h2>
 
@@ -24,8 +19,8 @@
 <div class="row word-container">
     {{#each words}}
         {{#if this.image}}
-            <div class="col-sm-6 rectangle">
-                <div class="option" tabindex="1" onclick='playAudio("{{this.audio}}");'>
+            <div class="col-sm-3 rectangle wide">
+                <div class="option wide" onclick='playAudio("{{this.audio}}");'>
                     <span class="helper"></span>
                     <img class="option-image" src="{{this.image}}">
                 </div>
@@ -45,24 +40,12 @@
 <br>
 
 <script>
-    let highlighted = null;
-    let audio = new Audio();
+    var audio = new Audio();
     function playAudio(soundLocation) {
         if (!audio.paused){
             audio.pause();
-            if (document.activeElement !== document.body && document.activeElement === highlighted) {
-                document.activeElement.blur();
-            }
         }
         audio.src = soundLocation;
-        highlighted = document.activeElement;
-
-        audio.addEventListener("ended", function(){
-            if (document.activeElement !== document.body && document.activeElement === highlighted) {
-                document.activeElement.blur();
-            }
-        });
-
         audio.play();    
     }
 </script>

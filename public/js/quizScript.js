@@ -22,10 +22,10 @@ bank['moneyBags'] = 0;
 bank['goldCoinStacks'] = 0;
 bank['goldCoins'] = 0;
 bank['silverCoins'] = 0;
-if (localStorage.getItem('totalPoints') === null) {
-    localStorage.setItem('totalPoints', "0");
+if (sessionStorage.getItem('totalPoints') === null) {
+    sessionStorage.setItem('totalPoints', "0");
 }
-bank['totalPoints'] = parseInt(localStorage.getItem('totalPoints'));
+bank['totalPoints'] = parseInt(sessionStorage.getItem('totalPoints'));
 
 let progress = {};
 progress['totalRight'] = 0;
@@ -33,20 +33,22 @@ progress['totalWrong'] = 0;
 progress['quizzes'] = [];
 progress['words'] = {};
 progress['subcategories'] = {};
-if (localStorage.getItem('progress') === null) {
-    localStorage.setItem('progress', JSON.stringify(progress));
+if (sessionStorage.getItem('progress') === null) {
+    sessionStorage.setItem('progress', JSON.stringify(progress));
 }
-progress = JSON.parse(localStorage.getItem('progress'));
+progress = JSON.parse(sessionStorage.getItem('progress'));
 
 // bank['newRight'] = 0;
 const quizRefreshPath = window.redirectLocation + '/quizRefresh';
 const subcategory = window.subcategory;
 const parentCategory = window.parentCategory;
 
-const empty = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
-let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, empty);
+const emptySubcategoryProgress = {"parentCategory": parentCategory, "right": 0, "wrong": 0};
+let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, emptySubcategoryProgress);
 
-let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": []};
+const currentDate = getCurrentDate();
+let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": [], "date": currentDate};
+let currentAnswerAudio;
 
 $( document ).ready(function() {
     // console.log("quiz refresh path: " + quizRefreshPath);
@@ -74,10 +76,20 @@ $( document ).ready(function() {
 
     //save progress before exiting the quiz
     $("#backButton").click(function() {
-        progress.quizzes.push(thisQuizProgress);
-        progress.subcategories[subcategory] = subcategoryProgress;
-        localStorage.setItem('progress', JSON.stringify(progress));
+        saveProgress();
         window.location.href = window.redirectLocation;
+    });
+
+
+    $("#homeButton").click(function() {
+        saveProgress();
+        window.location.href = "/street?store=" + window.categoryNum;
+    });
+
+    $("#repeatButton").click(function() {
+        if (quizReady === true) {
+            $("#answer-audio").trigger('play');
+        }
     });
 
 
@@ -156,6 +168,14 @@ $( document ).ready(function() {
 
 });
 
+function saveProgress() {
+    if(thisQuizProgress.right.length > 0 || thisQuizProgress.wrong.length > 0) {
+        progress.quizzes.push(thisQuizProgress);
+        progress.subcategories[subcategory] = subcategoryProgress;
+    }
+    sessionStorage.setItem('progress', JSON.stringify(progress));
+}
+
 function handleIncorrect() {
     if (secondTry) {
         secondTry = false;
@@ -180,7 +200,7 @@ function QuizComplete(questions) {
 }
 
 function getOrDefault(obj, key, def) {
-    if (key in obj) {
+    if (key in obj && obj['key'] !== undefined) {
         return obj.key;
     } else {
         return def;
@@ -190,7 +210,7 @@ function getOrDefault(obj, key, def) {
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
-    var timeOutLength = 500;
+    let timeOutLength = 500;
     if (firstTry) {
         timeOutLength = 2000;
         setTimeout(function () {
@@ -200,8 +220,8 @@ function correctAnswer(questions) {
 
     setTimeout(function() {
         const curWord = questions.quiz[questions.curQuestion].word;
-        const empty = {'right': 0, 'wrong': 0};
-        let curWordProgress = getOrDefault(progress.words, curWord, empty);
+        const emptyWordData = {'right': 0, 'wrong': 0, "parentCategory": parentCategory, "subcategory": subcategory};
+        let curWordProgress = getOrDefault(progress.words, curWord, emptyWordData);
 
         if (firstTry) {
             bankUpdate();
@@ -255,17 +275,17 @@ function correctAnswer(questions) {
 }
 
 function SetupQuiz(questions) {
-    var quiz = questions.quiz;
-    var curQuestion = questions.curQuestion;
+    const quiz = questions.quiz;
+    const curQuestion = questions.curQuestion;
     // console.log(questions);
-    var allSrcs = [];
+    const allSrcs = [];
 
-    var question = quiz[curQuestion];
-    var word = question.word;
+    const question = quiz[curQuestion];
+    const word = question.word;
     $("#question-word").text(word);
 
-    var correctImage = question.answerImage;
-    var answerIndex = Math.floor((Math.random() * 4));
+    const correctImage = question.answerImage;
+    const answerIndex = Math.floor((Math.random() * 4));
 
     $.each(question.incorrectImages, function(index, value) {
         allSrcs.push(value);
@@ -285,8 +305,8 @@ function SetupQuiz(questions) {
     $("#bottom-right").children(".option-image").attr("src", allSrcs[3]);
 
 
-    var audioFile = question.answerAudio;
-    $("#answer-audio").attr("src", audioFile);
+    currentAnswerAudio = question.answerAudio;
+    $("#answer-audio").attr("src", currentAnswerAudio);
 
     if(!firstQuestion) {
         setTimeout(function() {
@@ -303,7 +323,7 @@ function SetupQuiz(questions) {
 function bankUpdate() {
     // bank.newRight += 2;
     bank.totalPoints += 2;
-    localStorage.setItem('totalPoints', bank.totalPoints.toString());
+    sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
     // if (bank.silverCoins >= 2) {
@@ -329,7 +349,7 @@ function bankUpdate() {
 function secondTryBankUpdate() {
     // bank.newRight += 1;
     bank.totalPoints += 1;
-    localStorage.setItem('totalPoints', bank.totalPoints.toString());
+    sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addSilverCoin();
     bank.silverCoins++;
     if (bank.silverCoins >= 2) {
@@ -378,4 +398,24 @@ function addSilverCoin() {
     silverCoin.setAttribute("src", "/images/buttons/scoin.png");
     silverCoin.setAttribute("class", "silver-coin");
     $("#silver-coins").append(silverCoin);
+}
+
+function makeTwoDigits(num) {
+    if (num < 10) {
+        return '0' + num;
+    }
+    return num;
+}
+
+function getCurrentDate() {
+    let today = new Date();
+    let h = makeTwoDigits(today.getHours());
+    let m = makeTwoDigits(today.getMinutes());
+    let s = makeTwoDigits(today.getSeconds());
+    let dd = makeTwoDigits(today.getDate());
+    let mm = makeTwoDigits(today.getMonth() + 1); //January is 0!
+
+    let yyyy = today.getFullYear();
+
+    return yyyy + '/' + mm + '/' + dd + " " + h + ':' + m + ':' + s;
 }

@@ -2,43 +2,39 @@
     <img id="streetBackground" style="height: 850px; display: block; margin-left: auto; margin-right: auto;" src="/images/streetZoomedIn/zoo.png"/>
     <div class="zoomArea" 
         style="height: 378px; width: 259px; top: 269px; left: 194px;" 
-        onmouseup="zoomInwithAudio('18/primates', '06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('primates', '06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 220px; width: 196px; top: 427px; left: 460px;" 
-        onmouseup="zoomInwithAudio('18/primates','06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('primates','06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div> 
     <div class="zoomArea" 
         style="height: 191px; width: 258px; top: 218px; left: 462px;" 
-        onmouseup="zoomInwithAudio('18/carnivores','04meat.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('carnivores','04meat.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 220px; width: 323px; top: 55px; left: 618px;" 
-        onmouseup="zoomInwithAudio('18/birds','02birds.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('birds','02birds.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 156px; width: 359px; top: 224px; left: 781px;" 
-        onmouseup="zoomInwithAudio('18/herbivores','01plant.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('herbivores','01plant.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 174px; width: 415px; top: 44px; left: 1027px;" 
-        onmouseup="zoomInwithAudio('18/dinosaurs','07dinosaur.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('dinosaurs','07dinosaur.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 174px; width: 307px; top: 253px; left: 1120px;" 
-        onmouseup="zoomInwithAudio('18/reptiles','05reptiles.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('reptiles','05reptiles.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="zoomArea" 
         style="height: 225px; width: 402px; top: 409px; left: 1139px;" 
-        onmouseup="zoomInwithAudio('18/aquatic','03water.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+        onmouseup="zoomInwithAudio('aquatic','03water.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
-    {{!-- <div class="zoomArea" 
-        style="height: 451px; width: 424px; top: 448px; left: 674px;" 
-        onmouseup="playAudio('00animals.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
-    </div> --}}
     <div class="category" 
          style="height: 451px; width: 424px; top: 448px; left: 674px;" 
-         onmouseup="selectCategory('18/Animals'); " onmousedown="clearDrag();" onmousemove="setDrag();">
+         onmouseup="selectCategory('Animals'); " onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     
 </div>
@@ -80,7 +76,7 @@
             audio.src = '/audio/categories/18/' + soundName;
 
             audio.addEventListener("ended", function(){
-                location.href= '/street/' + areaName;
+                location.href= '/street/18/zoo/' + areaName;
             });
 
             audio.play();
@@ -93,10 +89,10 @@
             if (!audio.paused){
                 audio.pause();
             }
-            audio.src = '/audio/categories/' + categoryName + '.mp3';
+            audio.src = '/audio/categories/18/' + categoryName + '.mp3';
 
             audio.addEventListener("ended", function(){
-                location.href= '/category/' + categoryName;
+                location.href= '/street/18/zoo/category/' + categoryName;
             });
 
             audio.play();

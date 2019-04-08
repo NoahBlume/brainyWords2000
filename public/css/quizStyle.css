@@ -1,3 +1,12 @@
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 100%;
+    background-color: rgb(214, 214, 214);
+    height: 1px;
+}
+
 body {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -91,6 +100,14 @@ body {
 
 #top {
     text-align: center;
+}
+
+#keyHorizontal {
+    display: block;
+}
+
+#keyStacked {
+    display: none;
 }
 
 
@@ -258,6 +275,14 @@ special styling for small (mobile) screens (portrait)
         border-width: 1.6px;
         /*background-color: #d8d8d8;*/
     }
+
+    #keyHorizontal {
+        display: None;
+    }
+
+    #keyStacked {
+        display: block;
+    }
 }
 
 h2 {
@@ -375,6 +400,6 @@ h2 {
     height: 50px;
 }
 
-#backButton {
+#homeButton, #backButton, #repeatButton {
     cursor: pointer;
 }
