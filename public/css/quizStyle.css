@@ -400,10 +400,6 @@ h2 {
     height: 50px;
 }
 
-#backButton {
-    cursor: pointer;
-}
-
-#homeButton {
+#homeButton, #backButton, #repeatButton {
     cursor: pointer;
 }

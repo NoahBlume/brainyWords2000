@@ -48,6 +48,7 @@ let subcategoryProgress = getOrDefault(progress.subcategories, subcategory, empt
 
 const currentDate = getCurrentDate();
 let thisQuizProgress = {"subcategory": subcategory, "parentCategory": parentCategory, "right":[], "wrong": [], "date": currentDate};
+let currentAnswerAudio;
 
 $( document ).ready(function() {
     // console.log("quiz refresh path: " + quizRefreshPath);
@@ -83,6 +84,12 @@ $( document ).ready(function() {
     $("#homeButton").click(function() {
         saveProgress();
         window.location.href = "/street?store=" + window.categoryNum;
+    });
+
+    $("#repeatButton").click(function() {
+        if (quizReady === true) {
+            $("#answer-audio").trigger('play');
+        }
     });
 
 
@@ -203,7 +210,7 @@ function getOrDefault(obj, key, def) {
 function correctAnswer(questions) {
     quizReady = false;
     $("#correct-sound").trigger('play');
-    var timeOutLength = 500;
+    let timeOutLength = 500;
     if (firstTry) {
         timeOutLength = 2000;
         setTimeout(function () {
@@ -268,17 +275,17 @@ function correctAnswer(questions) {
 }
 
 function SetupQuiz(questions) {
-    var quiz = questions.quiz;
-    var curQuestion = questions.curQuestion;
+    const quiz = questions.quiz;
+    const curQuestion = questions.curQuestion;
     // console.log(questions);
-    var allSrcs = [];
+    const allSrcs = [];
 
-    var question = quiz[curQuestion];
-    var word = question.word;
+    const question = quiz[curQuestion];
+    const word = question.word;
     $("#question-word").text(word);
 
-    var correctImage = question.answerImage;
-    var answerIndex = Math.floor((Math.random() * 4));
+    const correctImage = question.answerImage;
+    const answerIndex = Math.floor((Math.random() * 4));
 
     $.each(question.incorrectImages, function(index, value) {
         allSrcs.push(value);
@@ -298,8 +305,8 @@ function SetupQuiz(questions) {
     $("#bottom-right").children(".option-image").attr("src", allSrcs[3]);
 
 
-    var audioFile = question.answerAudio;
-    $("#answer-audio").attr("src", audioFile);
+    currentAnswerAudio = question.answerAudio;
+    $("#answer-audio").attr("src", currentAnswerAudio);
 
     if(!firstQuestion) {
         setTimeout(function() {

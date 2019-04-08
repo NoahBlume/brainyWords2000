@@ -4,7 +4,7 @@
 
 <img id="backButton" img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
 <img id="homeButton" style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
-
+<img id="repeatButton" style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/repeat.png"/>
 
 <a href="javascript:openBank();">
     <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/bag.png"/>
@@ -156,9 +156,7 @@
         if (sessionStorage.getItem('totalPoints') === null) {
             sessionStorage.setItem('totalPoints', "0");
         }
-        let totalPoints = parseInt(sessionStorage.getItem('totalPoints'));
-
-        let i = totalPoints;
+        let i = parseInt(sessionStorage.getItem('totalPoints'));
 
         $("#bank-body > .silver-coin").remove();
         $("#bank-body > .gold-coin").remove();
