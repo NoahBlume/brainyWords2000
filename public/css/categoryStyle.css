@@ -51,7 +51,9 @@ body {
 .option:focus {
     border-color: royalblue;
     border-style: solid;
-    border-width: 7px;
+    border-width: 5px;
+    transform: scale(1.1);
+    margin-bottom: 10px;
 }
 
 .option.square:focus {
@@ -117,7 +119,7 @@ special styling for mobile phones in landscape mode
 }
 
 /*
-special styling for small (mobile) screens
+special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
     .rectangle {
@@ -143,6 +145,26 @@ special styling for small (mobile) screens
     .word-container {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .option:focus {
+        transform: scale(1.15);
+        margin-bottom: 10px;
+    }
+}
+
+/*
+more special styling for mobile phones in landscape mode
+*/
+@media only screen and (max-height: 420px) {
+    .option:focus {
+        transform: scale(1.0);
+        margin-bottom: 0px;
+    }
+
+    .option.wide:focus {
+        transform: scale(1.0);
+        margin-bottom: 0px;
     }
 }
 

@@ -3,14 +3,17 @@
 </a>
 <h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>
 
-<a id="mail-link" href="#" target="_top" class="btn btn-info" role="button" style="float: right">Send Mail</a>
+<a id="mail-link" href="#" target="_top" class="btn btn-info" role="button" style="float: right; margin-top: 5px; margin-right: 5px;">Email Progress</a>
 
 <!--<a href="/street">Back to street</a>-->
 <br/>
 <br/>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="recent-quizzes-tab" data-toggle="tab" href="#recent-quizzes" role="tab" aria-controls="recent-quizzes" aria-selected="true">Recent Quizzes</a>
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="recent-quizzes-tab" data-toggle="tab" href="#recent-quizzes" role="tab" aria-controls="recent-quizzes" aria-selected="false">Recent Quizzes</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" id="all-category-data-tab" data-toggle="tab" href="#all-category-data" role="tab" aria-controls="all-category-data" aria-selected="false">Categories</a>
@@ -21,7 +24,11 @@
 </ul>
 
 <div class="tab-content" id="recentQuizzesTabContent">
-    <div class="tab-pane fade show active" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h4>Information</h4>
+    </div>
+
+    <div class="tab-pane fade" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
         <table id="recentQuizzesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -86,7 +93,11 @@
             </tbody>
         </table>
     </div>
-    </div>
+</div>
+
+<div id="no-quiz-data" style="display: none;">
+    <br/>
+    <h4 align="center">Take a quiz to make data appear here.</h4>
 </div>
 
 <br/>
@@ -106,8 +117,10 @@
     $(document).ready(function () {
         if (sessionStorage.getItem('progress') === null) {
             $('#mail-link').attr('href', "mailto:?&subject=Brainy%20Words%202000%20Stats&body=No%20quizzes%20have%20been%20taken%20yet.");
+            $("#no-quiz-data").show();
             return;
         }
+
         const progress = JSON.parse(sessionStorage.getItem("progress"));
         const quizzes = progress.quizzes;
         const words = progress.words;
@@ -212,10 +225,7 @@
         $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
 
         $('#recentQuizzesTable').DataTable();
-        // $('.dataTables_length').addClass('bs-select');
-
         $('#categoriesTable').DataTable();
-
         $('#individualWordsTable').DataTable();
     });
     // document.getElementById("progressData").innerText = sessionStorage.getItem("progress");
