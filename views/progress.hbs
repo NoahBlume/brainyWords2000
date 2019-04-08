@@ -105,6 +105,7 @@
 <script>
     $(document).ready(function () {
         if (sessionStorage.getItem('progress') === null) {
+            $('#mail-link').attr('href', "mailto:?&subject=Brainy%20Words%202000%20Stats&body=No%20quizzes%20have%20been%20taken%20yet.");
             return;
         }
         const progress = JSON.parse(sessionStorage.getItem("progress"));
@@ -211,7 +212,7 @@
         $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
 
         $('#recentQuizzesTable').DataTable();
-        $('.dataTables_length').addClass('bs-select');
+        // $('.dataTables_length').addClass('bs-select');
 
         $('#categoriesTable').DataTable();
 

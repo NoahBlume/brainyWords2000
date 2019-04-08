@@ -164,8 +164,8 @@ $( document ).ready(function() {
 function saveProgress() {
     if(thisQuizProgress.right.length > 0 || thisQuizProgress.wrong.length > 0) {
         progress.quizzes.push(thisQuizProgress);
+        progress.subcategories[subcategory] = subcategoryProgress;
     }
-    progress.subcategories[subcategory] = subcategoryProgress;
     sessionStorage.setItem('progress', JSON.stringify(progress));
 }
 
