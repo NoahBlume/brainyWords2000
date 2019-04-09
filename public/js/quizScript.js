@@ -18,6 +18,8 @@ let firstQuestion = true;
 
 let queuedQuiz = {};
 let bank = {};
+bank['coinBanks'] = 0;
+bank['armoredCars'] = 0;
 bank['moneyBags'] = 0;
 bank['goldCoinStacks'] = 0;
 bank['goldCoins'] = 0;
@@ -326,12 +328,7 @@ function bankUpdate() {
     sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
-    // if (bank.silverCoins >= 2) {
-    //     $(".silver-coin").remove();
-    //     bank.silverCoins = 0;
-    //     addGoldCoin();
-    //     bank.goldCoins++;
-    // }
+
     if (bank.goldCoins >= 5) {
         $(".gold-coin").remove();
         bank.goldCoins = 0;
@@ -343,6 +340,18 @@ function bankUpdate() {
         bank.goldCoinStacks = 0;
         addMoneyBag();
         bank.moneyBags++;
+    }
+    if (bank.moneyBags >= 5) {
+        $(".money-bag").remove();
+        bank.moneyBags = 0;
+        addArmoredCar();
+        bank.armoredCars++;
+    }
+    if (bank.armoredCars >= 5) {
+        $(".armored-car").remove();
+        bank.armoredCars = 0;
+        addCoinBank();
+        bank.coinBanks++;
     }
 }
 
@@ -370,6 +379,33 @@ function secondTryBankUpdate() {
         addMoneyBag();
         bank.moneyBags++;
     }
+    if (bank.moneyBags >= 5) {
+        $(".money-bag").remove();
+        bank.moneyBags = 0;
+        addArmoredCar();
+        bank.armoredCars++;
+    }
+    if (bank.armoredCars >= 5) {
+        $(".armored-car").remove();
+        bank.armoredCars = 0;
+        addCoinBank();
+        bank.coinBanks++;
+    }
+}
+
+
+function addCoinBank() {
+    let coinBank = document.createElement("IMG");
+    coinBank.setAttribute("src", "/images/buttons/bank.png");
+    coinBank.setAttribute("class", "coin-bank");
+    $("#coin-banks").append(coinBank);
+}
+
+function addArmoredCar() {
+    let armoredCar = document.createElement("IMG");
+    armoredCar.setAttribute("src", "/images/buttons/armoredCar.png");
+    armoredCar.setAttribute("class", "armored-car");
+    $("#armored-cars").append(armoredCar);
 }
 
 function addMoneyBag() {

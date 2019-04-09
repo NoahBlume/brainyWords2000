@@ -3,23 +3,29 @@
 {{else}}
     <a href="/street?store={{categoryNum}}">
 {{/if}}
-<img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
+<img id="backButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
 </a>
 
 {{#if hasParentCategory}}
 <a href="/street?store={{categoryNum}}">
-    <img style="height:30px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
+    <img id="homeButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
+</a>
+<a href="./{{subCategory}}/quiz">
+    <img id="quizButton" style="height:60px; float:right; margin-top: 5px; margin-right: 5px; margin-left: 5px;" src="/images/buttons/quizButton.png"/>
+</a>
+{{else}}
+<a href="./{{subCategory}}/quiz">
+    <img id="homeButton" style="height:60px; float:right; margin-top: 5px; margin-right: 5px; margin-left: 5px;" src="/images/buttons/quizButton.png"/>
 </a>
 {{/if}}
 
-<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">{{subCategory}}</h2>
+<h2 id="subcategoryTitle" style="z-index: -1; position: absolute; text-align: center; width: 100%;">{{subCategory}}</h2>
 
-<a href="./{{subCategory}}/quiz">
-    <img style="height:30px; float:right; margin-top: 5px; margin-right: 5px;" src="/images/buttons/quizButton.png"/>
-</a>
+
 
 <br/>
 <br/>
+<div id="spaceDiv"></div>
 
 <div class="row word-container">
     {{#each words}}
