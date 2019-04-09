@@ -1,5 +1,5 @@
 body {
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: cursive, "Comic Sans MS", "Comic Sans";
 }
 
 h2 {
@@ -313,6 +313,10 @@ special styling for small (mobile) screens (portrait)
         margin-bottom: 110px;
     }
 
+    #coin-banks {
+        margin-left: 0 !important;
+    }
+
     .option-container {
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -410,6 +414,10 @@ h2 {
         /*right: auto;*/
         /*top: 195px;*/
     /*}*/
+
+    #coin-banks {
+        margin-left: 85px;
+    }
 
     #top {
         margin-bottom: 20px;
