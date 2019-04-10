@@ -19,14 +19,20 @@ function textCleanup(string) {
     }
 }
 
-function generateQuiz(categoryNum, category, subCategory, hasSubcategory) {
+function generateQuiz(categoryNum, category, subCategory, secondSubCategory, hasSubcategory, hasSecondSubcategory) {
     let audioPath;
     let imagePath;
     let imageFiles;
     let audioFiles;
 
     let additionQuiz = false;
-    if(hasSubcategory) {
+    if(hasSubcategory && hasSecondSubcategory) {
+        audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory, secondSubCategory);
+        imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory, secondSubCategory);
+
+        publicImagePath = '/images/categories/' + categoryNum + '/' + category + '/' + subCategory + '/' + secondSubCategory;
+        publicAudioPath = '/audio/categories/' + categoryNum + '/' + category + '/' + subCategory + '/' + secondSubCategory;
+    } else if(hasSubcategory) {
         if(subCategory === 'addition') {
             subCategory = 'addition/addition_quiz';
             additionQuiz = true;
@@ -221,7 +227,7 @@ router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
 
     try {
         // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, null, false);
+        const jsonData = generateQuiz(categoryNum, category, null, null,false, false);
         res.render('quiz', {
             title: "Quiz",
             encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
@@ -250,7 +256,7 @@ router.get('/category/:categoryNum/:category/quizRefresh', function (req, res, n
 
     try {
         // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, null, false);
+        const jsonData = generateQuiz(categoryNum, category, null, null, false, false);
         res.json(jsonData);
     } catch(error) {
         console.log(error);
@@ -481,6 +487,15 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
     const categoryNum = req.params.categoryNum;
     const subCategory = req.params.subCategory;
 
+    if(subCategory === "Pediatrician Doctor Exam") {
+        console.log("check worked");
+        res.render('zoomedIn/pediatricianDoctorExam', {
+            layout: "streetLayout.hbs",
+            title: 'Pediatrician Doctor Exam',
+        });
+        return;
+    }
+
     try {
         // const categoryPath = path.join(__dirname, '..', 'public/images/categories/', categoryNum);
         // const categoryNameList = fs.readdirSync(categoryPath);
@@ -551,6 +566,87 @@ router.get('/category/:categoryNum/:category/:subCategory', function (req, res, 
 });
 
 
+// GET route for viewing the pediatrician doctor exam subcategories
+router.get('/category/:categoryNum/:category/:subCategory/:secondSubcategory', function (req, res, next) {
+    const category = req.params.category;
+    const categoryNum = req.params.categoryNum;
+    const subCategory = req.params.subCategory;
+    const secondSubCategory = req.params.secondSubcategory;
+
+    if (subCategory !== "Pediatrician Doctor Exam") {
+        return next();
+    }
+
+    console.log("got where we wanted" + categoryNum + category + subCategory + secondSubCategory);
+    try {
+        // const categoryPath = path.join(__dirname, '..', 'public/images/categories/', categoryNum);
+        // const categoryNameList = fs.readdirSync(categoryPath);
+        // const category = categoryNameList[0];
+
+
+        const audioPath = path.join(__dirname, '..', 'public/audio/categories/', categoryNum, category, subCategory, secondSubCategory);
+        const imagePath = path.join(__dirname, '..', 'public/images/categories/', categoryNum, category, subCategory, secondSubCategory);
+
+        const publicImagePath = '/images/categories/' + categoryNum + '/' + category + '/' + subCategory + '/' + secondSubCategory;
+        const publicAudioPath = '/audio/categories/' + categoryNum + '/' + category + '/' + subCategory + '/' + secondSubCategory;
+
+
+        // var audioFiles = fs.readdirSync(audioPath);
+        const imageFiles = fs.readdirSync(imagePath);
+        const audioFiles = fs.readdirSync(audioPath);
+
+        const subCategoryData = {};
+
+        imageFiles.forEach(function(subCatImage) {
+            if(subCatImage.includes('.')) {
+                const subCatName = subCatImage.split('.')[0];
+
+                let subCatObj = {};
+
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['image'] = publicImagePath + '/' + subCatImage;
+                subCatObj['name'] = textCleanup(subCatName);
+                subCategoryData[subCatName] = subCatObj;
+            }
+
+        });
+
+        audioFiles.forEach(function(subCatAudio) {
+            if(subCatAudio.includes('.')) {
+                const subCatName = subCatAudio.split('.')[0];
+
+                let subCatObj = {};
+
+                if (subCatName in subCategoryData) {
+                    subCatObj = subCategoryData[subCatName];
+
+                }
+                subCatObj['audio'] = publicAudioPath + '/' + subCatAudio;
+                subCategoryData[subCatName] = subCatObj;
+            }
+        });
+
+        res.render('subCategory', {
+            title: category,
+            layout: 'categoryLayout.hbs',
+            categoryNum: categoryNum,
+            category: category,
+            subCategory: secondSubCategory,
+            words: subCategoryData,
+            hasParentCategory: true
+        });
+    } catch(error) {
+        console.log(error);
+        // TODO: figure out the correct way to handle this
+        const err = new Error('Subcategory does not exist!');
+        err.status = 404;
+        return next(err);
+    }
+});
+
 
 // GET route for refreshing a quiz with a subcategory
 router.get('/category/:categoryNum/:category/:subCategory/quizRefresh', function (req, res, next) {
@@ -560,7 +656,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quizRefresh', function
 
     try {
         // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, subCategory, true);
+        const jsonData = generateQuiz(categoryNum, category, subCategory, null, true, false);
         res.json(jsonData);
     } catch(error) {
         console.log(error);
@@ -579,7 +675,7 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
 
     try {
         // TODO - get all of the subcategory data and construct a quiz
-        const jsonData = generateQuiz(categoryNum, category, subCategory, true);
+        const jsonData = generateQuiz(categoryNum, category, subCategory, null,true, false);
         res.render('quiz', {
             title: "Quiz",
             encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
@@ -598,5 +694,35 @@ router.get('/category/:categoryNum/:category/:subCategory/quiz', function (req, 
     }
 });
 
+
+
+
+// GET route for taking a quiz with a subcategory within a subcategory
+router.get('/category/:categoryNum/:category/:subCategory/:secondSubcategory/quiz', function (req, res, next) {
+    const categoryNum = req.params.categoryNum;
+    const category = req.params.category;
+    const subCategory = req.params.subCategory;
+    const secondSubCategory = req.params.secondSubcategory;
+
+    try {
+        // TODO - get all of the subcategory data and construct a quiz
+        const jsonData = generateQuiz(categoryNum, category, subCategory, secondSubCategory, true, true);
+        res.render('quiz', {
+            title: "Quiz",
+            encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
+            layout: 'quizLayout.hbs',
+            subcategory: secondSubCategory,
+            parentCategory: category,
+            categoryNum: categoryNum,
+            subCategoryLocation: '/category/' + categoryNum + '/' + category + '/' + subCategory + '/' + secondSubCategory
+        });
+    } catch(error) {
+        console.log(error);
+        // TODO: figure out the correct way to handle this
+        const err = new Error('Subcategory does not exist!');
+        err.status = 404;
+        return next(err);
+    }
+});
 
 module.exports = router;

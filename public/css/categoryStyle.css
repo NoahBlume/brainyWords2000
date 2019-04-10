@@ -1,6 +1,17 @@
 body {
     overflow-y: scroll;
     overflow-x: hidden;
+    font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.75rem;
+}
+
+h2, h3 {
+    font-weight: bold;
+    font-size: 2.25rem;
 }
 
 .rectangle {
@@ -51,7 +62,9 @@ body {
 .option:focus {
     border-color: royalblue;
     border-style: solid;
-    border-width: 7px;
+    border-width: 5px;
+    transform: scale(1.1);
+    margin-bottom: 10px;
 }
 
 .option.square:focus {
@@ -86,7 +99,27 @@ body {
 .word-container {
     width: 90%;
     margin-left: 7%;
+    margin-top: 5px;
     /*margin-right: 3%;*/
+}
+
+
+#homeButton, #backButton, #quizButton {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+}
+
+#backButton {
+    top: 0px;
+}
+
+#homeButton {
+    top: 65px;
+}
+
+#quizButton {
+    top: 130px;
 }
 
 /*
@@ -104,10 +137,10 @@ special styling for mobile phones in landscape mode
         flex-wrap: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
-        height: 70%;
-        margin-top: 5%;
-        margin-left: 15px;
-        width: 100%;
+        height: 90%;
+        margin-top: 0;
+        margin-left: 65px;
+        width: 90%;
     }
 
 
@@ -117,9 +150,35 @@ special styling for mobile phones in landscape mode
 }
 
 /*
-special styling for small (mobile) screens
+special styling for small screens (slightly wider than portrait)
+ */
+@media only screen and (max-width: 720px) {
+    .word-container {
+        margin-left: 10%;
+    }
+}
+
+/*
+special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    #subcategoryTitle {
+        top: 65px;
+    }
+    #homeButton {
+        top: 0;
+        left: 65px;
+        right: auto;
+    }
+    #quizButton {
+        top: 0;
+        left: 130px;
+        right: auto;
+    }
+    #spaceDiv {
+        margin-bottom: 85px;
+    }
+
     .rectangle {
         height: 200px;
         margin-bottom: 0px;
@@ -143,6 +202,26 @@ special styling for small (mobile) screens
     .word-container {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .option:focus {
+        transform: scale(1.15);
+        margin-bottom: 10px;
+    }
+}
+
+/*
+more special styling for mobile phones in landscape mode
+*/
+@media only screen and (max-height: 420px) {
+    .option:focus {
+        transform: scale(1.0);
+        margin-bottom: 0px;
+    }
+
+    .option.wide:focus {
+        transform: scale(1.0);
+        margin-bottom: 0px;
     }
 }
 

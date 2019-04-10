@@ -1,0 +1,50 @@
+<div id="mainContainer">
+    <img id="streetBackground" style="height: 850px; display: block; margin-left: auto; margin-right: auto;" src="/images/streetZoomedIn/pediatricianDoctorExam.png"/>
+    <div class="category"
+         style="height: 451px; width: 424px; top: 448px; left: 674px;"
+         onmouseup="selectCategory('26/Medical Health Center/Pediatrician Doctor Exam/feet');">
+    </div>
+
+</div>
+
+
+
+
+
+<script>
+    const audio = new Audio();
+
+    function playAudio(soundName) {
+        //const audio = new Audio();
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = '/audio/categories/' + soundName;
+        audio.play();
+    }
+
+    function zoomInwithAudio(areaName, soundName) {
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = '/audio/categories/26/' + soundName;
+
+        audio.addEventListener("ended", function(){
+            location.href= '/street/' + areaName;
+        });
+
+        audio.play();
+    }
+    function selectCategory(categoryName) {
+        if (!audio.paused){
+            audio.pause();
+        }
+        audio.src = '/audio/categories/' + categoryName + '.mp3';
+
+        audio.addEventListener("ended", function(){
+            location.href= '/category/' + categoryName;
+        });
+
+        audio.play();
+    }
+</script>

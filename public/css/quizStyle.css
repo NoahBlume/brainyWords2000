@@ -1,3 +1,22 @@
+body {
+    font-family: "Comic Sans MS", "Comic Sans", sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
 hr {
     border: 0;
     clear: both;
@@ -231,10 +250,90 @@ body {
 }
 
 
+
+#homeButton, #backButton, #repeatButton, #bankButton {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+}
+
+#backButton {
+    top: 0px;
+}
+
+#homeButton {
+    top: 65px;
+}
+
+#repeatButton {
+    top: 130px;
+}
+
+#bankButton {
+    top: 195px;
+}
+
+#question-word {
+    margin-bottom: 15px;
+}
+
+#quizLabel {
+    top: 0;
+}
+#spaceDiv {
+    margin-bottom: 50px;
+}
+
 /*
 special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    #homeButton {
+        left: 65px;
+        right: auto;
+        top: 0;
+    }
+
+    #repeatButton {
+        left: 130px;
+        right: auto;
+        top: 0;
+    }
+
+    #bankButton {
+        left: 195px;
+        right: auto;
+        top: 0;
+    }
+
+    #quizLabel {
+        top: 65px;
+    }
+    #spaceDiv {
+        margin-bottom: 110px;
+    }
+
+    #coin-banks {
+        margin-left: 0 !important;
+    }
+
+    .option-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    #question-word {
+        margin-bottom: 15px;
+    }
+
+
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+
     .rectangle {
         height: 100px;
     }
@@ -289,12 +388,8 @@ h2 {
     margin-bottom: 20px;
 }
 
-#question-word {
-    margin-bottom: 15px;
-}
-
 .option-container {
-    margin-left: 0px;
+    margin-left: 0;
     margin-right: 0;
 }
 
@@ -302,13 +397,46 @@ h2 {
     styling for landscape mobile screens
 */
 @media only screen and (max-height: 420px) {
+    /*#homeButton {*/
+        /*left: 0;*/
+        /*right: auto;*/
+        /*top: 65px;*/
+    /*}*/
+
+    /*#repeatButton {*/
+        /*left: 0;*/
+        /*right: auto;*/
+        /*top: 130px;*/
+    /*}*/
+
+    /*#bankButton {*/
+        /*left: 0;*/
+        /*right: auto;*/
+        /*top: 195px;*/
+    /*}*/
+
+    #coin-banks {
+        margin-left: 85px;
+    }
+
+    #top {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+
     .option-container {
         flex-wrap: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
-        height: 60%;
+        height: 50%;
         margin-top: 5%;
-        margin-left: 15px;
+        margin-left: 75px;
         margin-bottom: 0;
     }
     .rectangle {
@@ -383,6 +511,12 @@ h2 {
     /*background-color: #d8d8d8;*/
 }
 
+.coin-bank {
+    height: 50px;
+}
+.armored-car {
+    height: 50px;
+}
 .money-bag {
     /*src:"/images/buttons/bag.png"*/
     height: 50px;
@@ -398,8 +532,4 @@ h2 {
 .silver-coin {
     /*src:"/images/buttons/bag.png"*/
     height: 50px;
-}
-
-#homeButton, #backButton, #repeatButton {
-    cursor: pointer;
 }
