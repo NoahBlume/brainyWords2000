@@ -26,7 +26,21 @@
 
 <div class="tab-content" id="recentQuizzesTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <h4>Information</h4>
+        <h4>Overview</h4>
+        <div style = "width: 650px; height : 600px; text-align: center; right: 50%; left:50%;">
+            <div style = "overflow: hidden; text-align: center; border: gray 2px; display: inline-block; position: relative; width:300px; height: 300px;  font-weight: bold; font-size: xx-large; font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'">
+                <div style = "position: absolute; width:100%; bottom: 80%;"> Percent Correct </div>
+                <div  id = "overallPercentage" style = " width: 100%; text-align: center; top: 20%; position: absolute; font-size: 300%">
+                </div>
+            </div>
+            <div style = "overflow: hidden; text-align: center; border: black; display: inline-block; position: relative; width:300px; height: 300px; font-weight: bold; font-size: xx-large; font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'">
+                <div style = "position: absolute; width:100%; bottom: 80%;"> Best Category </div>
+                <img src="/images/buttons/fact.png" style=" width: 100%;"/>
+                <div id = "bestCategory" style = "width: 100%; text-align: center; top: 80%; position: absolute; font-size: x-large;">
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div class="tab-pane fade" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
@@ -128,6 +142,10 @@
         const subcategories = progress.subcategories;
 
         let quizEmailText = [];
+        let bestCategory = [0,""];
+        let correctOverall = 0;
+        let totalQuestionsOverall = 0;
+        let overallPercentage = 0;
 
         let elementNumber = 1;
         $.each(quizzes, function( index, quiz ) {
@@ -145,7 +163,7 @@
             const totalQuestions = quiz.right.length + quiz.wrong.length;
             let correctPercent = 0;
             if(totalQuestions > 0) {
-                correctPercent = 100 * quiz.right.length / totalQuestions;
+                correctPercent = Math.round(1000 * quiz.right.length / totalQuestions)/10;
             }
 
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
@@ -173,9 +191,15 @@
             const wrongText = data.wrong;
 
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
+            totalQuestionsOverall += totalQuestions;
             let correctPercent = 0;
             if(totalQuestions > 0) {
-                correctPercent = 100 * parseInt(rightText) / totalQuestions;
+                correctPercent = Math.round(1000 * parseInt(rightText) / totalQuestions)/10;
+                correctOverall+= parseInt(rightText);
+                if(bestCategory[0] < correctPercent){
+                    bestCategory[0] = correctPercent;
+                    bestCategory[1] = category;
+                }
             }
 
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
@@ -185,6 +209,12 @@
             categoryEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
                     + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
             elementNumber++;
+            $('#bestCategory').text(bestCategory[1]);
+            overallPercentage = Math.round((1000* correctOverall)/ totalQuestionsOverall)/10;
+            $('#overallPercentage').css("color", (overallPercentage > 50)? "green":"red");
+            $('#overallPercentage').text(overallPercentage + "%");
+
+
         });
 
         let wordEmailText = [];
