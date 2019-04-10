@@ -1,5 +1,87 @@
 <div id="mainContainer">
     <img id="streetBackground" style="height: 850px; z-index: 2; display: block; margin-left: auto; margin-right: auto;" src="/images/streetZoomedIn/primates.png"/>
+    
+    <div class="streetElement" 
+         style="height: 330px; width: 200px; top: 40px; left: 350px;" 
+         onmouseup="playAudio('18_the_boxer_dog_is_big.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="streetElement" 
+         style="height: 580px; width: 400px; top: 300px; left: 450px;" 
+         onmouseup="playAudio('18_the_boxer_dog_is_big.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="streetElement" 
+         style="height: 400px; width: 450px; top: 350px; left: 800px;" 
+         onmouseup="playAudio('18_the_boxer_dog_is_big.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+    <div class="streetElement" 
+         style="height: 420px; width: 370px; top: 40px; left: 1105px;" 
+         onmouseup="playAudio('18_the_boxer_dog_is_big.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
+    </div>
+
+{{!-- Facts --}}
+    <div class="fact blue"
+         style = "top: 60px; left: 240px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">1</h1>
+    </div>
+    <div class="fact blue"
+         style = "top: 180px; left: 240px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">2</h1>
+    </div>
+     <div class="fact blue"
+         style = "top: 300px; left: 240px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">3</h1>
+    </div>
+
+    <div class="fact orange"
+         style = "top: 522px; left: 350px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">1</h1>
+    </div>
+    <div class="fact orange"
+         style = "top: 642px; left: 350px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">2</h1>
+    </div>
+     <div class="fact orange"
+         style = "top: 762px; left: 350px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">3</h1>
+    </div>
+
+    <div class="fact pink"
+         style = "top: 60px; left: 1000px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">1</h1>
+    </div>
+    <div class="fact pink"
+         style = "top: 180px; left: 1000px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">2</h1>
+    </div>
+     <div class="fact pink"
+         style = "top: 300px; left: 1000px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">3</h1>
+    </div>
+
+    <div class="fact purple"
+         style = "top: 500px; left: 1270px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">1</h1>
+    </div>
+    <div class="fact purple"
+         style = "top: 620px; left: 1270px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">2</h1>
+    </div>
+     <div class="fact purple"
+         style = "top: 740px; left: 1270px;"
+         onmouseup="playAudio('secret_child_stuff.mp3');"  onmousedown="clearDrag();" onmousemove="setDrag();">
+         <h1 class="text-facts">3</h1>
+    </div>
 </div>
 
 <script>
@@ -21,7 +103,7 @@
             if (!audio.paused){
                 audio.pause();
             }
-            audio.src = '/audio/categories/18/' + soundName;
+            audio.src = '/audio/categories/18/Facts/' + soundName;
             audio.play();
         }
     }

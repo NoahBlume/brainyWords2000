@@ -28,6 +28,10 @@
     cursor : grabbing;
 }
 
+body {
+    background-image: url(/images/Backgrounds/Grey2.png);
+    /* background-color: rgb(129, 127, 127); */
+}
 
 .category {
     z-index: 4;
@@ -45,7 +49,7 @@
     border-color: greenyellow;
     border-width: medium;
     border-style: solid;
-    cursor: pointer;
+    cursor: url(/images/buttons/cursor.png), auto;
 }
 
 .zoomArea {
@@ -63,6 +67,40 @@
     cursor:pointer;
 }
 
+.fact {
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; 
+    width: 100px; 
+    z-index: 5;
+    position: absolute;
+    cursor:pointer;
+}
+
+.blue {
+    background-color: rgb(13, 190, 221);
+}
+
+.orange {
+    background-color: rgb(252, 155, 29);
+}
+
+.pink {
+    background-color: rgb(236, 105, 145);
+}
+
+.purple {
+    background-color: rgb(179, 73, 240);
+}
+
+.text-facts {
+    margin-top: 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 50px;
+}
 
 
 /* START OF SCREEN RESIZING SETTINGS */

@@ -140,6 +140,7 @@
 
 <script>
     let dragging = false;
+     const audio = new Audio();
 
     function setDrag() {
         dragging = true;
@@ -153,7 +154,10 @@
         if (dragging === true) {
             dragging = false;
         } else {
-            const audio = new Audio('/audio/street/' + soundName);
+            if (!audio.paused){
+               audio.pause();
+            }
+            audio.src = '/audio/street/' + soundName;
             audio.play();    
         }
     }
