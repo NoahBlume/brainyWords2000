@@ -28,6 +28,10 @@
     cursor : grabbing;
 }
 
+body {
+    background-image: url(/images/Backgrounds/Grey2.png);
+    /* background-color: rgb(129, 127, 127); */
+}
 
 .category {
     z-index: 4;
@@ -45,7 +49,7 @@
     border-color: greenyellow;
     border-width: medium;
     border-style: solid;
-    cursor: pointer;
+    cursor: url(/images/buttons/cursor.png), auto;
 }
 
 .zoomArea {
