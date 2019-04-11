@@ -102,6 +102,11 @@ body {
     border-width: 9.5px 0 9.5px 17px;
     border-color: transparent transparent transparent rgba(255, 255, 255, 1);
 }
+.progressTop {
+    width: 100%;
+    left: 50%;
+    right: 50%;
+}
 .progressBox{
     display: inline-block;
     left: 50%;
@@ -133,10 +138,10 @@ body {
     top: 85%;
 }
 #box1{
-    left: 5%;
+    float: right;
 }
 #box2{
-    left:5%;
+    left: 15%;
 }
 @media (min-width: 350px) {
     #bestCategory{
@@ -156,11 +161,10 @@ body {
         height: 95%;
     }
     #box1 {
-        left: 0;
+        float: right;
     }
     #box2 {
-        left: 0;
-        right: 0;
+        left: 15%;
     }
     .progressContentBox {
         width: 150px;
@@ -175,10 +179,10 @@ body {
 
 @media (min-width: 600px) {
     #box1{
-        left: 10%;
+        float: right;
     }
     #box2{
-        left: 10%;
+        left: 15%;
     }
     .progressContentBox {
         width: 250px;
@@ -232,10 +236,10 @@ body {
         right:initial;
     }
     #box1{
-        left: 50%;
+        float:right;
     }
     #box2{
-        left: 10%;
+        left: 15%;
     }
 }
 
@@ -264,10 +268,10 @@ body {
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
     }
     #box1{
-        left: 50%;
+        float: right;
     }
     #box2{
-        left: 10%;
+        left: 15%;
     }
 }
 
