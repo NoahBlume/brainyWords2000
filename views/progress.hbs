@@ -156,6 +156,7 @@
         $.each(quizzes, function( index, quiz ) {
             let subcategory = quiz.subcategory;
             let category = quiz.parentCategory;
+            let theColor = "";
             if (category === undefined || category === "") {
                 category = subcategory;
                 subcategory = "";
@@ -169,10 +170,11 @@
             let correctPercent = 0;
             if(totalQuestions > 0) {
                 correctPercent = Math.round(1000 * quiz.right.length / totalQuestions)/10;
+                theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
 
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
-                    + wrongText + "</td><td>" + correctPercent + "%</td><td>" + date + "</td></tr>";
+                    + wrongText + "</td><td" + theColor + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
 
 
@@ -198,8 +200,10 @@
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             totalQuestionsOverall += totalQuestions;
             let correctPercent = 0;
+            let theColor = "";
             if(totalQuestions > 0) {
                 correctPercent = Math.round(1000 * parseInt(rightText) / totalQuestions)/10;
+                theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
                 correctOverall+= parseInt(rightText);
                 if(bestCategory[0] < correctPercent){
                     bestCategory[0] = correctPercent;
@@ -208,7 +212,7 @@
             }
 
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
-                    + wrongText + "</td><td>" + correctPercent + "%</td></tr>";
+                    + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#categoriesTable tbody').append(newRow);
 
             categoryEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
@@ -238,12 +242,14 @@
 
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             let correctPercent = 0;
+            let theColor = "";
             if(totalQuestions > 0) {
                 correctPercent = 100 * parseInt(rightText) / totalQuestions;
+                theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
 
             const newRow = "<tr><td>" + word + "</td><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
-                    + wrongText + "</td><td>" + correctPercent + "%</td></tr>";
+                    + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#individualWordsTable tbody').append(newRow);
 
             wordEmailText.push(elementNumber + ". Word: " + word + ", Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
