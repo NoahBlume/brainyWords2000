@@ -444,14 +444,19 @@ function makeTwoDigits(num) {
 }
 
 function getCurrentDate() {
+    let months = ["January", "February", "March", "April",
+        "May", "June", "July", "August", "September", "October", "November", "December"];
+    let theTime = [12, 1, 2,3, 4, 5, 6 ,7 , 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    let theHalf = ["AM", "PM"];
     let today = new Date();
     let h = makeTwoDigits(today.getHours());
+    let half = theHalf[((h - 12) < 0)? 0:1];
+    let hh = theTime[today.getHours()];
     let m = makeTwoDigits(today.getMinutes());
-    let s = makeTwoDigits(today.getSeconds());
+    //let s = makeTwoDigits(today.getSeconds());
     let dd = makeTwoDigits(today.getDate());
-    let mm = makeTwoDigits(today.getMonth() + 1); //January is 0!
-
+    let mm = months[today.getMonth()]; //January is 0!
     let yyyy = today.getFullYear();
-
-    return yyyy + '/' + mm + '/' + dd + " " + h + ':' + m + ':' + s;
+    //return yyyy + '/' + mm + '/' + dd + " " + h + ':' + m + ':' + s;
+    return mm + " " + dd + ", " + yyyy + " " + hh + ':' + m + " " + half;
 }

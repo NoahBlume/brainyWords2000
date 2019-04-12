@@ -102,6 +102,218 @@ body {
     border-width: 9.5px 0 9.5px 17px;
     border-color: transparent transparent transparent rgba(255, 255, 255, 1);
 }
+.progressTop {
+    width: 100%;
+    left: 50%;
+    right: 50%;
+}
+.progressBox{
+    display: inline-block;
+    left: 50%;
+    right:50%;
+    width:45%;
+    height: 50%;
+}
+.progressContentBox {
+    width: 100px;
+    height: 140px;
+    border: 2px solid #888888;
+    border-radius: 10%;
+    text-align: center;
+}
+.progressBoxTitle{
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+}
+#overallPercentage{
+    font-size: 200%;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+}
+#bestCategory{
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    top: 85%;
+}
+#box1{
+    float: right;
+}
+#box2{
+    float: left;
+}
+#separator{
+    width:4%;
+}
+#overviewHeader {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 2%;
+    font-size: 25px;
+}
+@media (min-width: 350px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        font-size: 35px;
+    }
+    #separator{
+        width:5%;
+    }
+    #bestCategory{
+        font-size: medium;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 85%;
+    }
+    .progressBoxTitle{
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'"
+    }
+    .progressBox{
+        display: inline-block;
+        width:  45%;
+        height: 95%;
+    }
+    .progressContentBox {
+        width: 150px;
+        height: 190px;
+        position: inherit;
+    }
+    #overallPercentage{
+        font-size: 300%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+}
+
+@media (min-width: 600px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        font-size: 45px;
+    }
+    #separator{
+        width:8%;
+    }
+    .progressContentBox {
+        width: 250px;
+        height: 290px;
+        position: inherit;
+    }
+    #bestCategory{
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 90%;
+    }
+    #overallPercentage{
+        font-size: 400%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    .progressBoxTitle{
+        font-size: x-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'"
+    }
+
+}
+
+@media (min-width: 1060px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        font-size: 55px;
+    }
+    #separator{
+        width:8%;
+    }
+    .progressBox{
+        display: inline-block;
+        width: 45%;
+        height: 95%;
+    }
+    #overallPercentage{
+        top: 30%;
+        font-size: 600%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    #bestCategory{
+        font-size: x-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 90%;
+    }
+    .progressBoxTitle{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    .progressContentBox {
+        width: 50%;
+        height: 55%;
+        left:initial;
+        right:initial;
+    }
+}
+
+@media (min-width: 1250px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        font-size: 65px;
+    }
+    #separator{
+        width:8%;
+    }
+    .progressContentBox {
+        width: 340px;
+        height: 390px;
+        left:initial;
+        right:initial;
+    }
+
+    #overallPercentage{
+        top: 30%;
+        font-size: 800%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    #bestCategory{
+        font-size: x-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 90%;
+    }
+    .progressBoxTitle{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+}
+
+.lessThan50 {
+    color: red;
+}
+
+.greaterThan50 {
+    color: green;
+
+}
 
 /*.delete-button {*/
     /*margin-left: auto;*/
