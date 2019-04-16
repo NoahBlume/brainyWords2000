@@ -5,7 +5,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const path = require('path');
 
 
@@ -21,16 +20,6 @@ app.engine('hbs', hbs({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
-//use sessions for tracking logins
-app.set('trust proxy', 1); // trust first proxy
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { }
-  // cookie: { secure: true }
-}));
 
 // parse incoming requests
 app.use(bodyParser.json());
