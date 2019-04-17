@@ -189,15 +189,8 @@ router.get('/street', function (req, res, next) {
 
 // GET route for progress screen
 router.get('/progress', function (req, res, next) {
-    const email = "example email";
-    const name = "example name";
-
     res.render('progress', {
-        title: 'progress',
-        stat1: '42',
-        stat2: 'another statistic',
-        userName: name,
-        accountEmail: email
+        title: 'progress'
     });
 });
 

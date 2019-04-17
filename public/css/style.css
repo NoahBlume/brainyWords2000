@@ -341,6 +341,15 @@ body {
 
 }
 
+@media (max-width: 440px) {
+    #progress-header {
+        margin-top: 60px;
+    }
+    #myTab {
+        margin-top: 60px;
+    }
+}
+
 /*.delete-button {*/
     /*margin-left: auto;*/
     /*margin-right: auto;*/
