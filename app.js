@@ -11,8 +11,14 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const hbs = require('express-handlebars');
+
 // view engine setup
 app.engine('hbs', hbs({
+  helpers: {
+    rand: function (min, max) {
+      return Math.floor((Math.random() * (max - min + 1))) + min;
+    }
+  },
   extname: 'hbs',
   defaultLayout: 'default',
   layoutsDir: __dirname + '/views/layouts/'

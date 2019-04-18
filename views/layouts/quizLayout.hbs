@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="/css/quizStyle.css">
     <title>Brainy Words 2000</title>
 </head>
-<body onload="changeBackground();">
+
+
+<style>
+    body {
+        background-image: url('/images/Backgrounds/{{rand 1 12}}.png');
+    }
+</style>
+
+<body>
     {{{body}}}
 </body>
 
@@ -17,13 +25,5 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="/js/quizScript.js"></script>
-
-<script>
-    function changeBackground() {
-        const totalCount = 12;
-        const num = Math.ceil(Math.random() * totalCount);
-        document.body.style.backgroundImage = 'url(/images/Backgrounds/' + num +'.png)';
-    }
-</script>
 
 </html>
