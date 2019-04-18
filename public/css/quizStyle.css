@@ -442,8 +442,14 @@ h2 {
         /*top: 195px;*/
     /*}*/
 
-    #coin-banks {
+    #coin-container {
         margin-left: 85px;
+    }
+    #gold-coin-counter{
+        float: left;
+        margin-right: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     #top {
