@@ -1,4 +1,4 @@
-Release Notes
+## Release Notes
 
 Brainy Words 2000 Web Application
 
@@ -33,9 +33,8 @@ Version 1.0
 
 
 
-Install Guide
+## Install Guide
 
-Install Guide for Brainy Words 2000 Web Application
 
 **Prerequisites**
 
