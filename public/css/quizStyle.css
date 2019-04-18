@@ -332,6 +332,13 @@ body {
 special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    #gold-coin-counter{
+        float: left;
+        margin-right: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
     #homeButton {
         left: 65px;
         right: auto;
@@ -351,10 +358,10 @@ special styling for small (mobile) screens (portrait)
     }
 
     #quizLabel {
-        top: 65px;
+        top: 60px;
     }
     #spaceDiv {
-        margin-bottom: 110px;
+        margin-bottom: 105px;
     }
 
     #coin-banks {
@@ -367,7 +374,7 @@ special styling for small (mobile) screens (portrait)
     }
 
     #question-word {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
 
@@ -379,7 +386,7 @@ special styling for small (mobile) screens (portrait)
     }
 
     .rectangle {
-        height: 100px;
+        height: 90px;
     }
 
     #top-left {
