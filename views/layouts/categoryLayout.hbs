@@ -15,10 +15,9 @@
 
 <script> 
     function changeBackground() {
-        var totalCount = 12;
-        var num = Math.ceil( Math.random() * totalCount );
+        const totalCount = 12;
+        const num = Math.ceil(Math.random() * totalCount);
         document.body.style.backgroundImage = 'url(/images/Backgrounds/' + num +'.png)';
-        console.log("holaaa");
     }
 </script>
 <body onload="changeBackground();">

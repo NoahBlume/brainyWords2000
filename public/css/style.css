@@ -185,7 +185,7 @@ body {
     .progressBoxTitle{
         font-size: large;
         font-weight: bold;
-        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'"
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'
     }
     .progressBox{
         display: inline-block;
@@ -237,7 +237,7 @@ body {
     .progressBoxTitle{
         font-size: x-large;
         font-weight: bold;
-        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'"
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'
     }
     #progressBarGraphBox {
         height: 290px;

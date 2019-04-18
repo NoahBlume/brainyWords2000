@@ -30,6 +30,10 @@
 
 body {
     background-image: url(/images/Backgrounds/Grey.png);
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
     /* background-color: rgb(129, 127, 127); */
 }
 

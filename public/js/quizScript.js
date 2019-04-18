@@ -28,6 +28,7 @@ if (sessionStorage.getItem('totalPoints') === null) {
     sessionStorage.setItem('totalPoints', "0");
 }
 bank['totalPoints'] = parseInt(sessionStorage.getItem('totalPoints'));
+bank['totalNewPoints'] = 0;
 
 let progress = {};
 progress['totalRight'] = 0;
@@ -325,6 +326,8 @@ function SetupQuiz(questions) {
 function bankUpdate() {
     // bank.newRight += 2;
     bank.totalPoints += 2;
+    bank.totalNewPoints += 2;
+    updateGoldCoinCounter();
     sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
@@ -358,6 +361,8 @@ function bankUpdate() {
 function secondTryBankUpdate() {
     // bank.newRight += 1;
     bank.totalPoints += 1;
+    bank.totalNewPoints += 1;
+    updateGoldCoinCounter();
     sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addSilverCoin();
     bank.silverCoins++;
@@ -441,6 +446,10 @@ function makeTwoDigits(num) {
         return '0' + num;
     }
     return num;
+}
+
+function updateGoldCoinCounter() {
+    $('#gold-coin-counter').text("Gold Coins: " + Math.floor(bank.totalNewPoints/2));
 }
 
 function getCurrentDate() {
