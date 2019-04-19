@@ -49,7 +49,7 @@ Install Guide for Brainy Words 2000 Web Application
   - The packages that will be installed are:
     - body-parser (v1.17.1)
       - [https://www.npmjs.com/package/body-parser/v/1.17.1](https://www.npmjs.com/package/body-parser/v/1.17.1)
-    - express (4.15.2)
+    - express (v4.15.2)
       - [https://www.npmjs.com/package/express/v/4.15.2](https://www.npmjs.com/package/express/v/4.15.2)
     - express-handlebars (v3.0.0)
       - [https://www.npmjs.com/package/express-handlebars/v/3.0.0](https://www.npmjs.com/package/express-handlebars/v/3.0.0)
