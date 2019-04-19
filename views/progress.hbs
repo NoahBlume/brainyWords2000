@@ -167,6 +167,11 @@
         const quizzes = progress.quizzes;
         const words = progress.words;
         const subcategories = progress.subcategories;
+        const attemptCounter = progress.attemptCounter;
+
+        let attemptText = "1st try: " + attemptCounter[0] + ", 2nd try: " + attemptCounter[1]
+                + ", 3rd try: " + attemptCounter[2] + ", 4th try: " + attemptCounter[3];
+        $("#progressBarGraphBox").text(attemptText);
 
         let quizEmailText = [];
         let bestCategory = [0,""];
