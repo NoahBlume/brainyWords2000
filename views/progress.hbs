@@ -55,7 +55,7 @@
         <div class = "progressRow">
             <div id = "progressBarGraphBox"  style = "position: relative;">
                 <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
-                    Number of Tries for Correct Answers
+                    Tries Before Correct Answer
                 </div>
                 <canvas id="horizontalBar" style = " margin-top: 20px"></canvas>
                 {{!-- <div  id = "overallPercentage" style = " width: 100%; text-align: center; top: 10%; position: absolute;">
@@ -353,7 +353,7 @@
         "data": {
             "labels": ["One Try", "Two Tries", "Three Tries", "Four Tries"],
             "datasets": [{
-                "label": "Number of Tries for Correctly Answered Questions",
+                "label": "Tries Before Correct Answer",
                 "data": [attemptCounter[0], attemptCounter[1], attemptCounter[2], attemptCounter[3]],
                 "fill": false,
                 "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
