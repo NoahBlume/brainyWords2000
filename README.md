@@ -69,15 +69,15 @@ Install Guide for Brainy Words 2000 Web Application
 **Running Application**
 
 - Launch the command line, navigate the root application directory containing _app.js_, and type this command: node app.js
-- The application should now be accessible from the browser at this address: _localhost:3000_
-- While the above command will allow you to start the application on your computer, the links provided in the web server setup tutorials below will give more detailed instructions on how to set up a server that will automatically start the application whenever the server boots up.
+- The application should now be accessible from a web browser at this address: _localhost:3000_
+- While the above command will allow you to start the application on your computer, the links provided in the web server setup tutorials below will give more detailed instructions on how to set up a server to host the website.
 
 **Troubleshooting**
 
-- If you installed Node.js and the application is not able to run, in your command line enter the command: node -v
+- If you installed Node.js and the application is not able to run, in your command line enter this command: node -v
   - This will tell you what version of Node.js you have installed.
   - If Node.js is not installed or the version number is different from the version you downloaded from the link above, try installing Node.js again.
-- If you are having trouble installing the packages with the command &quot;npm install&quot;, in your command line enter the command: npm -v
+- If you are having trouble installing the packages with the command &quot;npm install&quot;, in your command line enter this command: npm -v
   - This will tell you what version of NPM you have installed.
   - If NPM was not installed, or if it was installed but its version number is lower than v6.4.1, you should try reinstalling Node.js or try installing NPM using the commands listed on this page: [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
 - If you are having trouble using the command line, this guide should be a good introduction: [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/](https://tutorial.djangogirls.org/en/intro_to_command_line/)
