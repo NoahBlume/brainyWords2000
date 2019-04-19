@@ -129,6 +129,9 @@ h2, h3 {
     /*margin-right: 3%;*/
 }
 
+#categoryBackButton {
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
+}
 
 #homeButton, #backButton, #quizButton {
     /*cursor: pointer;*/
