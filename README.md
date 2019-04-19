@@ -56,7 +56,7 @@ Install Guide for Brainy Words 2000 Web Application
 
 **Download**
 
-Download version 1.0 of the Brainy Words 2000 Web Application from [https://github.com/NoahBlume/brainyWords2000](https://github.com/NoahBlume/brainyWords2000)
+- Download version 1.0 of the Brainy Words 2000 Web Application from [https://github.com/NoahBlume/brainyWords2000](https://github.com/NoahBlume/brainyWords2000)
 
 **Build**
 
