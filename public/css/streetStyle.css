@@ -232,7 +232,8 @@ body {
     }
 }
 
+/* END OF SCREEN RESIZING SETTINGS */
+
 #backButton, #progressButton {
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
-/* END OF SCREEN RESIZING SETTINGS */
