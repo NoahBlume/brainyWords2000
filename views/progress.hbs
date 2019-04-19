@@ -55,8 +55,9 @@
         <div class = "progressRow">
             <div id = "progressBarGraphBox"  style = "position: relative;">
                 <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
-                    Breakdown
+                    Number of Tries for Correct Answers
                 </div>
+                <canvas id="horizontalBar" style = " margin-top: 20px"></canvas>
                 {{!-- <div  id = "overallPercentage" style = " width: 100%; text-align: center; top: 10%; position: absolute;">
                 </div> --}}
             </div>
@@ -212,7 +213,7 @@
 
         let attemptText = "1st try: " + attemptCounter[0] + ", 2nd try: " + attemptCounter[1]
                 + ", 3rd try: " + attemptCounter[2] + ", 4th try: " + attemptCounter[3];
-        $("#progressBarGraphBox").text(attemptText);
+        // $("#progressBarGraphBox").text(attemptText);
 
         let quizEmailText = [];
         let bestCategory = [0,""];
@@ -345,4 +346,39 @@
         document.body.style.backgroundImage = 'url(/images/backgrounds/' + num +'.png)';
     }
     // document.getElementById("progressData").innerText = sessionStorage.getItem("progress");
+    const progress = JSON.parse(sessionStorage.getItem("progress"));
+    const attemptCounter = progress.attemptCounter;
+    new Chart(document.getElementById("horizontalBar"), {
+        "type": "horizontalBar",
+        "data": {
+            "labels": ["One Try", "Two Tries", "Three Tries", "Four Tries"],
+            "datasets": [{
+                "label": "Number of Tries for Correctly Answered Questions",
+                "data": [attemptCounter[0], attemptCounter[1], attemptCounter[2], attemptCounter[3]],
+                "fill": false,
+                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+                    "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+                    "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
+                ],
+                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+                    "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
+                ],
+                "borderWidth": 1
+            }]
+        },
+        "options": {
+
+            "scales": {
+                "xAxes": [{
+                    "ticks": {
+                        stepSize: 1,
+                        "beginAtZero": true
+                    }
+                }]
+            },
+            "legend": {
+                display: false
+            },
+        }
+    });
 </script>
