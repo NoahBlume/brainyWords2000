@@ -38,7 +38,7 @@ Install Guide for Brainy Words 2000 Web Application
 
 **Prerequisites**
 
-- js and NPM must already be installed. When installing Node.js, NPM will automatically be installed as well.
+- Node.js and NPM must already be installed. When installing Node.js, NPM will automatically be installed as well.
 - To download the latest version of Node.js see [https://nodejs.org/](https://nodejs.org/)
   - Both the LTS (Long Term Support) and Current versions of Node.js should be compatible with the application. However, it is generally recommended that the LTS version is used.
 
