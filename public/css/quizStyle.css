@@ -4,6 +4,7 @@ body {
     /*background-repeat: no-repeat;*/
     /*background-attachment:fixed;*/
     /*background-size: cover;*/
+    cursor: url(/images/cursors/hand2.png), grab;
 }
 
 #backgroundDiv {
@@ -59,6 +60,7 @@ body {
 
 #coin-container {
     margin-left: 5px;
+    margin-right: 5px;
     background-color: white;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -101,7 +103,8 @@ body {
     -khtml-transition: background-color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
 
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 .option:hover {
     border-color: #d8d8d8;
@@ -151,7 +154,8 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 .button:hover {
     color: #d8d8d8; /* light grey */
@@ -225,13 +229,15 @@ body {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: url(/images/cursors/handPointerCropped.png), pointer !important;
 }
 
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 .modal-header {
@@ -259,7 +265,8 @@ body {
     background-color: #006aff;
     border-radius: 5px;
     position: relative;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 .play-button:hover {
@@ -296,7 +303,8 @@ body {
 
 
 #homeButton, #backButton, #repeatButton, #bankButton {
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
     position: absolute;
     left: 0;
 }
@@ -338,7 +346,7 @@ special styling for small (mobile) screens (portrait)
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    
+
     #homeButton {
         left: 65px;
         right: auto;
@@ -358,10 +366,10 @@ special styling for small (mobile) screens (portrait)
     }
 
     #quizLabel {
-        top: 60px;
+        top: 65px;
     }
     #spaceDiv {
-        margin-bottom: 105px;
+        margin-bottom: 110px;
     }
 
     #coin-banks {
@@ -386,7 +394,7 @@ special styling for small (mobile) screens (portrait)
     }
 
     .rectangle {
-        height: 90px;
+        height: 95px;
     }
 
     #top-left {

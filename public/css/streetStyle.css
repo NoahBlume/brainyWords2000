@@ -1,3 +1,7 @@
+body {
+    cursor: url(/images/cursors/hand2.png), pointer;
+}
+
 .dragscroll {
     /*border: 1px solid rgb(31, 40, 49);*/
     background-color : #283849;
@@ -14,18 +18,20 @@
 }
 
 .horizontal {
-    cursor : -webkit-grab;
-    cursor : -moz-grab;
+    /*cursor : -webkit-grab;*/
+    /*cursor : -moz-grab;*/
     /*cursor : -o-grab;*/
-    cursor : grab;
+    /*cursor : grab;*/
+    cursor: url(/images/cursors/hand2.png), grab;
 }
 
 
 .horizontal:active {
-    cursor : -webkit-grabbing;
-    cursor : -moz-grabbing;
+    /*cursor : -webkit-grabbing;*/
+    /*cursor : -moz-grabbing;*/
     /*cursor : -o-grabbing;*/
-    cursor : grabbing;
+    /*cursor : grabbing;*/
+    /*cursor: url(/images/cursors/hand.png), auto;*/
 }
 
 body {
@@ -43,7 +49,8 @@ body {
     border-color: magenta;
     border-width: medium;
     border-style: solid;
-    cursor: alias;
+    /*cursor: alias;*/
+    cursor: url(/images/cursors/door.png), alias;
 }
 
 .streetElement {
@@ -53,7 +60,8 @@ body {
     border-color: greenyellow;
     border-width: medium;
     border-style: solid;
-    cursor: url(/images/buttons/cursor.png), auto;
+    /*cursor: url('/images/buttons/cursor2.png'), auto;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 .zoomArea {
@@ -62,13 +70,15 @@ body {
     border-color: cyan;
     border-width: medium;
     border-style: solid;
-    cursor: zoom-in;
+    /*cursor: zoom-in;*/
+    cursor: url(/images/cursors/opaqueZoom.png), zoom-in;
 }
 
 .missingStreetImage {
     z-index:2;
     position: absolute;
-    cursor:pointer;
+    /*cursor:pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 .fact {
@@ -80,8 +90,10 @@ body {
     width: 100px; 
     z-index: 5;
     position: absolute;
-    cursor:pointer;
+    /*cursor:pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
+
 
 .blue {
     background-color: rgb(13, 190, 221);
@@ -220,4 +232,7 @@ body {
     }
 }
 
+#backButton, #progressButton {
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
+}
 /* END OF SCREEN RESIZING SETTINGS */

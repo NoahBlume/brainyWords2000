@@ -7,6 +7,7 @@ body {
     overflow-x: hidden;
     font-family: "Comic Sans MS", "Comic Sans", sans-serif;
     font-weight: bold;
+    cursor: url(/images/cursors/hand2.png), grab;
 }
 
 #backgroundDiv {
@@ -62,6 +63,8 @@ h2, h3 {
     -o-transition: background-color 0.25s ease-in-out;
     -khtml-transition: background-color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
+
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 /*.option {*/
@@ -128,7 +131,8 @@ h2, h3 {
 
 
 #homeButton, #backButton, #quizButton {
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
     position: absolute;
     left: 0;
 }
