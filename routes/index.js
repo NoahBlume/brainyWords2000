@@ -190,6 +190,7 @@ router.get('/street', function (req, res, next) {
 // GET route for progress screen
 router.get('/progress', function (req, res, next) {
     res.render('progress', {
+        layout: "progressLayout.hbs",
         title: 'progress'
     });
 });
