@@ -85,7 +85,7 @@ Download version 1.0 of the Brainy Words 2000 Web Application from [https://gith
     - ■■Open the command-line interface [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#open-the-command-line-interface](https://tutorial.djangogirls.org/en/intro_to_command_line/#open-the-command-line-interface)
     - ■■Change current directory [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#change-current-directory](https://tutorial.djangogirls.org/en/intro_to_command_line/#change-current-directory)
 
-Web Server Setup Tutorials
+## Web Server Setup Tutorials
 
 **First Tutorial:**
 
