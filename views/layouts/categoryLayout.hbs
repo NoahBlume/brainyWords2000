@@ -13,15 +13,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<script> 
-    function changeBackground() {
-        var totalCount = 12;
-        var num = Math.ceil( Math.random() * totalCount );
-        document.body.style.backgroundImage = 'url(/images/Backgrounds/' + num +'.png)';
-        console.log("holaaa");
+
+<style>
+    #backgroundDiv {
+        background-image: url('/images/Backgrounds/{{rand 1 12}}.png');
     }
-</script>
-<body onload="changeBackground();">
+</style>
+
+<body>
+    <div id="backgroundDiv"></div>
     {{{ body }}}
 </body>
 </html>

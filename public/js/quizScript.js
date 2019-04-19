@@ -1,6 +1,5 @@
 let correctOnFirstTry = 0;
-let firstTry = true;
-let secondTry = false;
+let attemptNumber = 1;
 let totalNumQuestions = 0;
 
 
@@ -28,10 +27,12 @@ if (sessionStorage.getItem('totalPoints') === null) {
     sessionStorage.setItem('totalPoints', "0");
 }
 bank['totalPoints'] = parseInt(sessionStorage.getItem('totalPoints'));
+bank['totalNewPoints'] = 0;
 
 let progress = {};
 progress['totalRight'] = 0;
 progress['totalWrong'] = 0;
+progress['attemptCounter'] = [0, 0, 0, 0]; //tracks number of questions right on 1st, 2nd, 3rd, and 4th attempt
 progress['quizzes'] = [];
 progress['words'] = {};
 progress['subcategories'] = {};
@@ -111,9 +112,10 @@ $( document ).ready(function() {
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                // alert("Wrong Answer");
-                $("#top-left").addClass('incorrect');
-                handleIncorrect();
+                if (! $("#top-left").hasClass('incorrect')) {
+                    $("#top-left").addClass('incorrect');
+                    handleIncorrect();
+                }
                 $("#incorrect-sound").trigger('play');
             }
         }
@@ -127,9 +129,10 @@ $( document ).ready(function() {
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                // alert("Wrong Answer");
-                $("#top-right").addClass('incorrect');
-                handleIncorrect();
+                if (! $("#top-right").hasClass('incorrect')) {
+                    $("#top-right").addClass('incorrect');
+                    handleIncorrect();
+                }
                 $("#incorrect-sound").trigger('play');
             }
         }
@@ -143,9 +146,10 @@ $( document ).ready(function() {
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                // alert("Wrong Answer");
-                $("#bottom-left").addClass('incorrect');
-                handleIncorrect();
+                if (! $("#bottom-left").hasClass('incorrect')) {
+                    $("#bottom-left").addClass('incorrect');
+                    handleIncorrect();
+                }
                 $("#incorrect-sound").trigger('play');
             }
         }
@@ -159,8 +163,10 @@ $( document ).ready(function() {
                 // alert("Correct!");
                 correctAnswer(questions);
             } else {
-                $("#bottom-right").addClass('incorrect');
-                handleIncorrect();
+                if (! $("#bottom-right").hasClass('incorrect')) {
+                    $("#bottom-right").addClass('incorrect');
+                    handleIncorrect();
+                }
                 $("#incorrect-sound").trigger('play');
                 // alert("Wrong Answer");
             }
@@ -179,12 +185,8 @@ function saveProgress() {
 }
 
 function handleIncorrect() {
-    if (secondTry) {
-        secondTry = false;
-    }
-    if (firstTry) {
-        secondTry = true;
-        firstTry = false;
+    if (attemptNumber < 4) {
+        attemptNumber++;
     }
 }
 
@@ -211,9 +213,11 @@ function getOrDefault(obj, key, def) {
 
 function correctAnswer(questions) {
     quizReady = false;
+    progress.attemptCounter[attemptNumber - 1]++;
+
     $("#correct-sound").trigger('play');
     let timeOutLength = 500;
-    if (firstTry) {
+    if (attemptNumber === 1) {
         timeOutLength = 2000;
         setTimeout(function () {
             $("#" + (bank.totalPoints % 40)).trigger('play');
@@ -225,7 +229,7 @@ function correctAnswer(questions) {
         const emptyWordData = {'right': 0, 'wrong': 0, "parentCategory": parentCategory, "subcategory": subcategory};
         let curWordProgress = getOrDefault(progress.words, curWord, emptyWordData);
 
-        if (firstTry) {
+        if (attemptNumber === 1) {
             bankUpdate();
             correctOnFirstTry++;
             progress.totalRight++;
@@ -237,15 +241,14 @@ function correctAnswer(questions) {
             curWordProgress.wrong++;
             subcategoryProgress.wrong++;
             thisQuizProgress.wrong.push(curWord);
-            if (secondTry) {
+            if (attemptNumber === 2) {
                 secondTryBankUpdate();
             }
         }
         progress.words[curWord] = curWordProgress;
 
 
-        firstTry = true;
-        secondTry = false;
+        attemptNumber = 1;
         // console.log("correct on first try " + correctOnFirstTry);
 
         questions.curQuestion++;
@@ -325,6 +328,8 @@ function SetupQuiz(questions) {
 function bankUpdate() {
     // bank.newRight += 2;
     bank.totalPoints += 2;
+    bank.totalNewPoints += 2;
+    updateGoldCoinCounter();
     sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addGoldCoin();
     bank.goldCoins++;
@@ -358,6 +363,8 @@ function bankUpdate() {
 function secondTryBankUpdate() {
     // bank.newRight += 1;
     bank.totalPoints += 1;
+    bank.totalNewPoints += 1;
+    updateGoldCoinCounter();
     sessionStorage.setItem('totalPoints', bank.totalPoints.toString());
     addSilverCoin();
     bank.silverCoins++;
@@ -441,6 +448,10 @@ function makeTwoDigits(num) {
         return '0' + num;
     }
     return num;
+}
+
+function updateGoldCoinCounter() {
+    $('#gold-coin-counter').text("Gold Coins: " + Math.floor(bank.totalNewPoints/2));
 }
 
 function getCurrentDate() {

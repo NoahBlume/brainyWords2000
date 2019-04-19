@@ -5,15 +5,20 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const path = require('path');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 const hbs = require('express-handlebars');
+
 // view engine setup
 app.engine('hbs', hbs({
+  helpers: {
+    rand: function (min, max) {
+      return Math.floor((Math.random() * (max - min + 1))) + min;
+    }
+  },
   extname: 'hbs',
   defaultLayout: 'default',
   layoutsDir: __dirname + '/views/layouts/'
@@ -21,16 +26,6 @@ app.engine('hbs', hbs({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-
-//use sessions for tracking logins
-app.set('trust proxy', 1); // trust first proxy
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { }
-  // cookie: { secure: true }
-}));
 
 // parse incoming requests
 app.use(bodyParser.json());

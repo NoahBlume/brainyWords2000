@@ -1,17 +1,41 @@
 body {
+    /*background-position: top right;*/
+    /*background-repeat: no-repeat;*/
+    /*background-attachment:fixed;*/
+    /*background-size: cover;*/
     overflow-y: scroll;
     overflow-x: hidden;
     font-family: "Comic Sans MS", "Comic Sans", sans-serif;
     font-weight: bold;
+    cursor: url(/images/cursors/hand2.png), grab;
+}
+
+#backgroundDiv {
+    width: 100%;
+    height: 120%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /*background-image: url('/images/Backgrounds/1.png');*/
+    background-repeat:no-repeat;
+    background-position: center center;
+    /* background-attachment: fixed; removed for Android */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 p {
-    font-size: 1.75rem;
+    /*font-size: 1.75rem;*/
+    font-size: 2.5vw;
 }
 
 h2, h3 {
     font-weight: bold;
     font-size: 2.25rem;
+    /*font-size: 3vw;*/
 }
 
 .rectangle {
@@ -27,9 +51,9 @@ h2, h3 {
 .option {
     height: 90%;
     width: 90%;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
-    box-shadow: -3px 3px 10px -3px;
+    box-shadow: -5px 5px 20px -3px;
 
     white-space: nowrap;
     text-align: center;
@@ -39,6 +63,8 @@ h2, h3 {
     -o-transition: background-color 0.25s ease-in-out;
     -khtml-transition: background-color 0.25s ease-in-out;
     transition: background-color 0.25s ease-in-out;
+
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
 /*.option {*/
@@ -46,30 +72,32 @@ h2, h3 {
 /*}*/
 
 .option.square {
-    border-radius: 0px;
+    border-radius: 15px;
 }
 
 .option:hover {
     border-color: #d8d8d8;
     border-style: solid;
-    border-width: 1.6px;
+    border-width: 5px;
     /*background-color: #d8d8d8;*/
 }
-.option:active {
+/* .option:active {
     box-shadow: none;
-}
+} */
 
 .option:focus {
-    border-color: royalblue;
-    border-style: solid;
-    border-width: 5px;
-    transform: scale(1.1);
+    /* border-color: royalblue; */
+    /* border-style: solid;
+    border-width: 5px; */
+    outline: none;
+    transform: scale(1.15);
     margin-bottom: 10px;
+    box-shadow: -5px 5px 20px -3px #d8d8d8;
 }
 
-.option.square:focus {
+/* .option.square:focus {
     border-color: mediumpurple;
-}
+} */
 
 .option-image {
     max-width: 95%;
@@ -103,9 +131,13 @@ h2, h3 {
     /*margin-right: 3%;*/
 }
 
+#categoryBackButton {
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
+}
 
 #homeButton, #backButton, #quizButton {
-    cursor: pointer;
+    /*cursor: pointer;*/
+    cursor: url(/images/cursors/handPointerCropped.png), pointer;
     position: absolute;
     left: 0;
 }
@@ -120,6 +152,15 @@ h2, h3 {
 
 #quizButton {
     top: 130px;
+}
+
+.tab-content {
+    background-color: white;
+    height: 100%;
+}
+
+.nav-link {
+    color: black;
 }
 
 /*
@@ -162,6 +203,10 @@ special styling for small screens (slightly wider than portrait)
 special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    p {
+        /*font-size: 1.75rem;*/
+        font-size: 6vw;
+    }
     #subcategoryTitle {
         top: 65px;
     }

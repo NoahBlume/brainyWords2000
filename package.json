@@ -4,16 +4,13 @@
   "main": "index.js",
   "repository": "https://github.com/NoahBlume/brainyWords2000",
   "author": "Noah Blume <noahablume@gmail.com>",
-  "license": "none",
+  "license": "MIT",
   "scripts": {
-    "start": "node app",
-    "watch": "nodemon app"
+    "start": "node app"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "express-session": "^1.15.2",
-    "nodemon": "^1.11.0",
     "express-handlebars": "^3.0.0"
   }
 }
