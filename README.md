@@ -47,11 +47,11 @@ Install Guide for Brainy Words 2000 Web Application
 - From the command line run the command &quot;npm install&quot; from within the root directory of the application (the folder containing _package.json_).
   - This command will install all packages that are needed to run the Node.js application.
   - The packages that will be installed are:
-    - ■■body-parser (v1.17.1)
+    - body-parser (v1.17.1)
       - [https://www.npmjs.com/package/body-parser/v/1.17.1](https://www.npmjs.com/package/body-parser/v/1.17.1)
-    - ■■express (4.15.2)
+    - express (4.15.2)
       - [https://www.npmjs.com/package/express/v/4.15.2](https://www.npmjs.com/package/express/v/4.15.2)
-    - ■■express-handlebars (v3.0.0)
+    - express-handlebars (v3.0.0)
       - [https://www.npmjs.com/package/express-handlebars/v/3.0.0](https://www.npmjs.com/package/express-handlebars/v/3.0.0)
 
 **Download**
@@ -82,8 +82,8 @@ Download version 1.0 of the Brainy Words 2000 Web Application from [https://gith
   - If NPM was not installed, or if it was installed but its version number is lower than v6.4.1, you should try reinstalling Node.js or try installing NPM using the commands listed on this page: [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
 - If you are having trouble using the command line, this guide should be a good introduction: [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/](https://tutorial.djangogirls.org/en/intro_to_command_line/)
   - The most relevant sections are:
-    - ■■Open the command-line interface [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#open-the-command-line-interface](https://tutorial.djangogirls.org/en/intro_to_command_line/#open-the-command-line-interface)
-    - ■■Change current directory [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#change-current-directory](https://tutorial.djangogirls.org/en/intro_to_command_line/#change-current-directory)
+    - Open the command-line interface [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#open-the-command-line-interface](https://tutorial.djangogirls.org/en/intro_to_command_line/#open-the-command-line-interface)
+    - Change current directory [https://tutorial.djangogirls.org/en/intro\_to\_command\_line/#change-current-directory](https://tutorial.djangogirls.org/en/intro_to_command_line/#change-current-directory)
 
 ## Web Server Setup Tutorials
 
