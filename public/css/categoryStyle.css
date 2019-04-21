@@ -220,6 +220,12 @@ special styling for small screens (slightly wider than portrait)
 special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    .option:hover {
+        /*border-color: #d8d8d8;*/
+        border-style: none;
+        border-width: 0;
+        /*background-color: #d8d8d8;*/
+    }
     .option:focus {
         border-color: #d8d8d8;
         border-style: solid;
@@ -290,6 +296,12 @@ more special styling for mobile phones in landscape mode
     .option.wide:focus {
         transform: scale(1.0);
         margin-bottom: 0px;
+    }
+    .option:hover {
+        /*border-color: #d8d8d8;*/
+        border-style: none;
+        border-width: 0;
+        /*background-color: #d8d8d8;*/
     }
     .option:focus {
         border-color: #d8d8d8;
