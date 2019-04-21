@@ -29,7 +29,7 @@ body {
 
 p {
     /*font-size: 1.75rem;*/
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 
 h2, h3 {
@@ -87,8 +87,9 @@ h2, h3 {
 
 .option:focus {
     /* border-color: royalblue; */
-    /* border-style: solid;
-    border-width: 5px; */
+    border-color: #d8d8d8;
+    border-style: solid;
+    border-width: 5px;
     outline: none;
     transform: scale(1.15);
     margin-bottom: 10px;
@@ -187,6 +188,22 @@ special styling for mobile phones in landscape mode
 
     .option {
         height: 70%;
+    }
+}
+
+/*
+special font size for large screens
+ */
+@media only screen and (min-width: 850px) {
+    p {
+        /*font-size: 1.75rem;*/
+        font-size: 2.5vw;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    p {
+        /*font-size: 1.75rem;*/
+        font-size: 2vw;
     }
 }
 
