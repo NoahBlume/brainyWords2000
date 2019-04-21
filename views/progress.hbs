@@ -236,7 +236,16 @@
                 correctOverall+= parseInt(rightText);
                 if(bestCategory[0] < correctPercent){
                     bestCategory[0] = correctPercent;
-                    bestCategory[1] = category;
+
+                    if (subcategory === "") {
+                        bestCategory[1] = category;
+                    } else {
+                        let subcatArr = subcategory.split(" ");
+                        for (let k = 0; k < subcatArr.length; k++) {
+                            subcatArr[k] = subcatArr[k].charAt(0).toUpperCase() + subcatArr[k].substring(1);
+                        }
+                        bestCategory[1] = subcatArr.join(" ");
+                    }
                 }
             }
 
