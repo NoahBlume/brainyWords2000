@@ -211,6 +211,33 @@ router.get('/street/18/zoo/:location', function (req, res, next) {
     res.render('zoomedIn/' + location, { layout: "zooLayout.hbs", zoom: true, title: 'Street'});
 });
 
+// GET route for ZOO quiz
+router.get('/street/18/zoo/category/:category/quiz', function (req, res, next) {
+    // const categoryNum = req.params.closestStore;
+    console.log("got hereeeee");
+    const category = req.params.category;
+    const categoryNum = "18";
+    try {
+        // TODO - get all of the subcategory data and construct a quiz
+        const jsonData = generateQuiz(categoryNum, category, null, null,false, false);
+        res.render('quiz', {
+            title: "Quiz",
+            encodedJson : encodeURIComponent(JSON.stringify(jsonData)),
+            layout: 'quizLayout.hbs',
+            subcategory: category,
+            parentCategory: null,
+            categoryNum: categoryNum,
+            subCategoryLocation: '/street/18/zoo/category/' + category
+        });
+    } catch(error) {
+        console.log(error);
+        // TODO: figure out the correct way to handle this
+        const err = new Error('Subcategory does not exist!');
+        err.status = 404;
+        return next(err);
+    }
+});
+
 // GET route for taking a quiz without a subcategory
 router.get('/category/:categoryNum/:category/quiz', function (req, res, next) {
     // console.log("quiz page hit!!!");

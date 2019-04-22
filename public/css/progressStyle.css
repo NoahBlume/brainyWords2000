@@ -2,6 +2,16 @@ body {
     background: white;
 }
 
+h2 {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+}
+
+#outerProgressDiv {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 .play-button {
     margin-left: auto;
     margin-right: auto;
@@ -44,14 +54,14 @@ body {
     width: 100px;
     height: 140px;
     border: 2px solid #888888;
-    border-radius: 10%;
+    border-radius: 15px;
     text-align: center;
 }
 #progressBarGraphBox {
-    width: 211px;
-    height: 140px;
+    width: 250px;
+    height: 160px;
     border: 2px solid #888888;
-    border-radius: 10%;
+    border-radius: 15px;
     text-align: center;
     display: block;
     margin: 0 auto;
@@ -62,6 +72,7 @@ body {
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
 }
 #overallPercentage{
+    top: 40%;
     font-size: 200%;
     font-weight: bold;
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
@@ -70,7 +81,13 @@ body {
     font-size: small;
     font-weight: bold;
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-    top: 80%;
+    top: 50%;
+}
+#bestCategoryAccuracy {
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    top: 70%;
 }
 #box1{
     float: right;
@@ -105,7 +122,10 @@ body {
         font-size: large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 80%;
+        top: 50%;
+    }
+    #bestCategoryAccuracy {
+        font-size: medium;
     }
     .progressBoxTitle{
         font-size: large;
@@ -127,6 +147,7 @@ body {
         width: 315px;
     }
     #overallPercentage{
+        top: 30%;
         font-size: 340%;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
     }
@@ -153,9 +174,14 @@ body {
         font-size: x-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 85%;
+        top: 50%;
     }
+    #bestCategoryAccuracy {
+         font-size: large;
+     }
+
     #overallPercentage{
+        top: 30%;
         font-size: 560%;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
     }
@@ -197,7 +223,10 @@ body {
         font-size: xx-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 85%;
+        top: 50%;
+    }
+    #bestCategoryAccuracy {
+        font-size: x-large;
     }
     .progressBoxTitle{
         font-size: xx-large;
@@ -248,8 +277,12 @@ body {
         font-size: xx-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 85%;
+        top: 50%;
     }
+    #bestCategoryAccuracy {
+        font-size: x-large;
+    }
+
     .progressBoxTitle{
         font-size: xx-large;
         font-weight: bold;

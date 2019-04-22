@@ -29,7 +29,7 @@ body {
 
 p {
     /*font-size: 1.75rem;*/
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 
 h2, h3 {
@@ -87,8 +87,9 @@ h2, h3 {
 
 .option:focus {
     /* border-color: royalblue; */
-    /* border-style: solid;
-    border-width: 5px; */
+    border-color: #d8d8d8;
+    border-style: solid;
+    border-width: 5px;
     outline: none;
     transform: scale(1.15);
     margin-bottom: 10px;
@@ -191,6 +192,22 @@ special styling for mobile phones in landscape mode
 }
 
 /*
+special font size for large screens
+ */
+@media only screen and (min-width: 850px) {
+    p {
+        /*font-size: 1.75rem;*/
+        font-size: 2.5vw;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    p {
+        /*font-size: 1.75rem;*/
+        font-size: 2vw;
+    }
+}
+
+/*
 special styling for small screens (slightly wider than portrait)
  */
 @media only screen and (max-width: 720px) {
@@ -203,6 +220,18 @@ special styling for small screens (slightly wider than portrait)
 special styling for small (mobile) screens (portrait)
  */
 @media only screen and (max-width: 576px) {
+    .option:hover {
+        /*border-color: #d8d8d8;*/
+        border-style: none;
+        border-width: 0;
+        /*background-color: #d8d8d8;*/
+    }
+    .option:focus {
+        border-color: #d8d8d8;
+        border-style: solid;
+        border-width: 5px;
+        /*background-color: #d8d8d8;*/
+    }
     p {
         /*font-size: 1.75rem;*/
         font-size: 6vw;
@@ -267,6 +296,18 @@ more special styling for mobile phones in landscape mode
     .option.wide:focus {
         transform: scale(1.0);
         margin-bottom: 0px;
+    }
+    .option:hover {
+        /*border-color: #d8d8d8;*/
+        border-style: none;
+        border-width: 0;
+        /*background-color: #d8d8d8;*/
+    }
+    .option:focus {
+        border-color: #d8d8d8;
+        border-style: solid;
+        border-width: 5px;
+        /*background-color: #d8d8d8;*/
     }
 }
 
