@@ -86,53 +86,53 @@
             </tbody>
         </table>
 
-        </div>
-        <div class="tab-pane fade table-responsive" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
-            <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="th-sm">Category
-                    </th>
-                    <th class="th-sm">Subcategory
-                    </th>
-                    <th class="th-sm">Total Correct
-                    </th>
-                    <th class="th-sm">Total Incorrect
-                    </th>
-                    <th class="th-sm">Percent Correct
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade table-responsive" id="individual-words" role="tabpanel" aria-labelledby="individual-words-tab">
-            <table id="individualWordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="th-sm">Word
-                    </th>
-                    <th class="th-sm">Category
-                    </th>
-                    <th class="th-sm">Subcategory
-                    </th>
-                    <th class="th-sm">Total Correct
-                    </th>
-                    <th class="th-sm">Total Incorrect
-                    </th>
-                    <th class="th-sm">Percent Correct
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
     </div>
+    <div class="tab-pane fade table-responsive" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
+        <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="th-sm">Category
+                </th>
+                <th class="th-sm">Subcategory
+                </th>
+                <th class="th-sm">Total Correct
+                </th>
+                <th class="th-sm">Total Incorrect
+                </th>
+                <th class="th-sm">Percent Correct
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade table-responsive" id="individual-words" role="tabpanel" aria-labelledby="individual-words-tab">
+        <table id="individualWordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="th-sm">Word
+                </th>
+                <th class="th-sm">Category
+                </th>
+                <th class="th-sm">Subcategory
+                </th>
+                <th class="th-sm">Total Correct
+                </th>
+                <th class="th-sm">Total Incorrect
+                </th>
+                <th class="th-sm">Percent Correct
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-    <br/>
-    <h4 id="no-quiz-data" align="center" style="display: None;"> <b> Take a quiz to make data appear here. </b> </h4>
+<br/>
+<h4 id="no-quiz-data" align="center" style="display: None;"> <b> Take a quiz to make data appear here. </b> </h4>
 </div>
 
 <div>
@@ -151,7 +151,7 @@
 <!--<p>stat 2: {{stat2}}</p>-->
 
 <!--<p id="progressData">-->
-    <!--empty-->
+<!--empty-->
 <!--</p>-->
 
 <script>
@@ -197,7 +197,7 @@
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
             quizEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct Words: " + rightText
-                + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
+                    + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
             elementNumber++;
         });
         let categoryEmailText = [];
@@ -272,7 +272,7 @@
         const emailTo = "";
         const emailSubj = "Brainy Words 2000 Stats";
         let emailBody = "Quizzes:\n" + quizEmailText.join('\n') + '\n\nCategories:\n' + categoryEmailText.join('\n')
-            + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
+                + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
         emailBody = encodeURI(emailBody);
         $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
         $('#recentQuizzesTable').DataTable();

@@ -85,13 +85,13 @@ h2 {
     font-size: small;
     font-weight: bold;
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-    top: 50%;
+    top: 45%;
 }
 #bestCategoryAccuracy {
     font-size: small;
     font-weight: bold;
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-    top: 70%;
+    top: 85%;
 }
 #box1{
     float: right;
@@ -126,10 +126,11 @@ h2 {
         font-size: large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 50%;
+        top: 45%;
     }
     #bestCategoryAccuracy {
         font-size: medium;
+        top: 75%;
     }
     .progressBoxTitle{
         font-size: large;
@@ -178,11 +179,11 @@ h2 {
         font-size: x-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 50%;
+        top: 45%;
     }
     #bestCategoryAccuracy {
-         font-size: large;
-     }
+        font-size: large;
+    }
 
     #overallPercentage{
         top: 30%;
@@ -224,13 +225,13 @@ h2 {
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
     }
     #bestCategory{
-        font-size: xx-large;
+        font-size: x-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 50%;
+        top: 45%;
     }
     #bestCategoryAccuracy {
-        font-size: x-large;
+        font-size: large;
     }
     .progressBoxTitle{
         font-size: xx-large;
@@ -281,7 +282,7 @@ h2 {
         font-size: xx-large;
         font-weight: bold;
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
-        top: 50%;
+        top: 45%;
     }
     #bestCategoryAccuracy {
         font-size: x-large;
@@ -313,16 +314,16 @@ h2 {
 }
 
 /*.delete-button {*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*height: 40px;*/
-    /*!*width: 65px;*!*/
-    /*background-color: #ff0000; !*red*!*/
-    /*border-radius: 5px;*/
-    /*position: relative;*/
-    /*color: white;*/
+/*margin-left: auto;*/
+/*margin-right: auto;*/
+/*height: 40px;*/
+/*!*width: 65px;*!*/
+/*background-color: #ff0000; !*red*!*/
+/*border-radius: 5px;*/
+/*position: relative;*/
+/*color: white;*/
 /*}*/
 
 /*.delete-button:hover {*/
-    /*background-color: #ff4d4d; !*light red*!*/
+/*background-color: #ff4d4d; !*light red*!*/
 /*}*/

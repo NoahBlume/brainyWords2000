@@ -1,0 +1,291 @@
+body {
+    background: white;
+}
+
+.play-button {
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 65px;
+    background-color: #006aff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.play-button:hover {
+    background-color: #3a8cff;
+}
+
+.play-button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10.5px;
+    left: 24px;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 9.5px 0 9.5px 17px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+}
+.progressRow {
+    width: 100%;
+    left: 50%;
+    right: 50%;
+    padding-top: 2%;
+}
+.progressBox{
+    display: inline-block;
+    left: 50%;
+    right:50%;
+    width:45%;
+    height: 50%;
+}
+.progressContentBox {
+    width: 100px;
+    height: 140px;
+    border: 2px solid #888888;
+    border-radius: 10%;
+    text-align: center;
+}
+#progressBarGraphBox {
+    width: 250px;
+    height: 160px;
+    border: 2px solid #888888;
+    border-radius: 10%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+.progressBoxTitle{
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+}
+#overallPercentage{
+    font-size: 200%;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+}
+#bestCategory{
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    top: 80%;
+}
+#box1{
+    float: right;
+}
+#box2{
+    float: left;
+}
+#separator{
+    width: 10px;
+}
+#overviewHeader {
+    font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    font-weight: bold;
+    text-align: center;
+    /*padding-bottom: 5%;*/
+    padding-top: 2%;
+    font-size: 25px;
+}
+@media (min-width: 350px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        /*padding-bottom: 5%;*/
+        padding-top: 2%;
+        font-size: 35px;
+    }
+    #separator{
+        width:15px;
+    }
+    #bestCategory{
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 80%;
+    }
+    .progressBoxTitle{
+        font-size: large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'
+    }
+    .progressBox{
+        display: inline-block;
+        width:  45%;
+        height: 95%;
+    }
+    .progressContentBox {
+        width: 150px;
+        height: 190px;
+        position: inherit;
+    }
+    #progressBarGraphBox {
+        height: 190px;
+        width: 315px;
+    }
+    #overallPercentage{
+        font-size: 340%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+}
+
+@media (min-width: 600px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        /*padding-bottom: 5%;*/
+        padding-top: 2%;
+        font-size: 45px;
+    }
+    #separator{
+        width:20px;
+    }
+    .progressContentBox {
+        width: 250px;
+        height: 290px;
+        position: inherit;
+    }
+    #bestCategory{
+        font-size: x-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 85%;
+    }
+    #overallPercentage{
+        font-size: 560%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    .progressBoxTitle{
+        font-size: x-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif'
+    }
+    #progressBarGraphBox {
+        height: 290px;
+        width: 520px;
+    }
+
+}
+
+@media (min-width: 1060px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        /*padding-bottom: 5%;*/
+        padding-top: 2%;
+        font-size: 55px;
+    }
+    #separator{
+        width:20px;
+    }
+    .progressBox{
+        display: inline-block;
+        width: 45%;
+        height: 95%;
+    }
+    #overallPercentage{
+        top: 30%;
+        font-size: 560%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    #bestCategory{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 85%;
+    }
+    .progressBoxTitle{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    .progressContentBox {
+        width: 250px;
+        height: 290px;
+        left:initial;
+        right:initial;
+    }
+    #progressBarGraphBox {
+        height: 290px;
+        width: 520px;
+    }
+}
+
+@media (min-width: 1250px) {
+    #overviewHeader {
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        font-weight: bold;
+        text-align: center;
+        /*padding-bottom: 5%;*/
+        padding-top: 2%;
+        font-size: 65px;
+    }
+    #separator{
+        width:20px;
+    }
+    .progressContentBox {
+        width: 340px;
+        height: 390px;
+        left:initial;
+        right:initial;
+    }
+    #progressBarGraphBox {
+        height: 390px;
+        width: 700px;
+    }
+
+    #overallPercentage{
+        top: 30%;
+        font-size: 780%;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+    #bestCategory{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+        top: 85%;
+    }
+    .progressBoxTitle{
+        font-size: xx-large;
+        font-weight: bold;
+        font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
+    }
+}
+
+.lessThan50 {
+    color: red;
+}
+
+.greaterThan50 {
+    color: green;
+
+}
+
+@media (max-width: 440px) {
+    #progress-header {
+        margin-top: 60px;
+    }
+    #myTab {
+        margin-top: 60px;
+    }
+}
+
+/*.delete-button {*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*height: 40px;*/
+    /*!*width: 65px;*!*/
+    /*background-color: #ff0000; !*red*!*/
+    /*border-radius: 5px;*/
+    /*position: relative;*/
+    /*color: white;*/
+/*}*/
+
+/*.delete-button:hover {*/
+    /*background-color: #ff4d4d; !*light red*!*/
+/*}*/
