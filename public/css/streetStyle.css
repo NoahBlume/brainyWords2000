@@ -134,9 +134,9 @@ body {
     #progressButton {
         margin-right: -5% !important;
     }
-    #backButton {
-        margin-left: -5% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -5% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 750px) {
@@ -155,9 +155,9 @@ body {
     #progressButton {
         margin-right: -8.325% !important;
     }
-    #backButton {
-        margin-left: -8.325% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -8.325% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 695px) {
@@ -176,9 +176,9 @@ body {
     #progressButton {
         margin-right: -12% !important;
     }
-    #backButton {
-        margin-left: -12% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -12% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 640px) {
@@ -197,9 +197,9 @@ body {
     #progressButton {
         margin-right: -19% !important;
     }
-    #backButton {
-        margin-left: -19% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -19% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height:585px) {
@@ -218,9 +218,9 @@ body {
     #progressButton {
         margin-right: -26.5% !important;
     }
-    #backButton {
-        margin-left: -26.5% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -26.5% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 530px) {
@@ -239,9 +239,9 @@ body {
     #progressButton {
         margin-right: -35.75% !important;
     }
-    #backButton {
-        margin-left: -35.75% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -35.75% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 475px) {
@@ -260,9 +260,9 @@ body {
     #progressButton {
         margin-right: -47.625% !important;
     }
-    #backButton {
-        margin-left: -47.625% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -47.625% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 420px) {
@@ -281,9 +281,9 @@ body {
     #progressButton {
         margin-right: -60.5% !important;
     }
-    #backButton {
-        margin-left: -60.5% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -60.5% !important;*/
+    /*}*/
 }
 
 @media screen and (max-height: 365px) {
@@ -302,9 +302,9 @@ body {
     #progressButton {
         margin-right: -74.5% !important;
     }
-    #backButton {
-        margin-left: -74.5% !important;
-    }
+    /*#backButton {*/
+        /*margin-left: -74.5% !important;*/
+    /*}*/
 }
 
 /* END OF SCREEN RESIZING SETTINGS */

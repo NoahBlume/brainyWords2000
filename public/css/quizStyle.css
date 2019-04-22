@@ -468,6 +468,13 @@ h2 {
     styling for landscape mobile screens
 */
 @media only screen and (max-height: 420px) {
+    #quizLabel {
+        top: 10px;
+    }
+
+    #spaceDiv {
+        margin-bottom: 0;
+    }
     /*#homeButton {*/
         /*left: 0;*/
         /*right: auto;*/
@@ -542,6 +549,7 @@ h2 {
     }
 
     #question-word {
+        margin-top: 70px;
         margin-bottom: 20px;
         font-size: 30px;
     }
