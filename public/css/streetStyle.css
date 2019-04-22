@@ -37,9 +37,9 @@ body {
 .category {
     z-index: 4;
     position: absolute;
-    border-color: magenta;
-    border-width: medium;
-    border-style: solid;
+    /*border-color: magenta;*/
+    /*border-width: medium;*/
+    /*border-style: solid;*/
 
     /*cursor: alias;*/
     cursor: url(/images/cursors/door.png), alias;
@@ -49,9 +49,9 @@ body {
     z-index: 5;
     position: absolute;
     /*background-color: greenyellow;*/
-    border-color: greenyellow;
-    border-width: medium;
-    border-style: solid;
+    /*border-color: greenyellow;*/
+    /*border-width: medium;*/
+    /*border-style: solid;*/
 
     /*cursor: url('/images/buttons/cursor2.png'), auto;*/
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
@@ -60,9 +60,9 @@ body {
 .zoomArea {
     z-index: 4;
     position: absolute;
-    border-color: cyan;
-    border-width: medium;
-    border-style: solid;
+    /*border-color: cyan;*/
+    /*border-width: medium;*/
+    /*border-style: solid;*/
 
     /*cursor: zoom-in;*/
     cursor: url(/images/cursors/opaqueZoom.png), zoom-in;
