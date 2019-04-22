@@ -26,16 +26,16 @@
     </li>
 </ul>
 
-<div class="tab-content" id="recentQuizzesTabContent">
+<div class="tab-content" id="outerProgressDiv">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <h1 id = "overviewHeader">Summary</h1>
+        <h1 id = "overviewHeader">Progress Summary</h1>
         <div class = "progressRow" style = "text-align: center; display:block;" >
             <div class = "progressBox">
                 <div class = "progressContentBox" id = "box1"  style = "position: relative;">
                     <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
-                        Percent Correct
+                        Overall Percent Correct
                     </div>
-                    <div  id = "overallPercentage" style = " width: 100%; text-align: center; top: 30%; position: absolute;">
+                    <div  id = "overallPercentage" style = " width: 100%; text-align: center; position: absolute;">
                     </div>
                 </div>
             </div>
@@ -46,18 +46,18 @@
                     <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
                         Best Category
                     </div>
-                    <img src="/images/buttons/fact.png" style=" padding-top:15%; height: 75%; margin: 0 auto;"/>
-                    <div id = "bestCategory" style = "width: 100%; text-align: center; position: absolute;">
-                    </div>
+                    <img src="/images/buttons/fact.png" style="position:absolute; top: 15%; right: 0.5%; width: 100%;"/>
+                    <div id = "bestCategory" style = "width: 100%; text-align: center; position: absolute;"></div>
+                    <div id = "bestCategoryAccuracy" style = "width: 100%; text-align: center; position: absolute;"></div>
                 </div>
             </div>
         </div>
         <div class = "progressRow">
             <div id = "progressBarGraphBox"  style = "position: relative;">
                 <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
-                    Number of Tries for Correct Answers
+                    Tries Before Correct Answer
                 </div>
-                <canvas id="horizontalBar" style = " margin-top: 5%"></canvas>
+                <canvas id="horizontalBar" style = "margin-top: 35px"></canvas>
                 {{!-- <div  id = "overallPercentage" style = " width: 100%; text-align: center; top: 10%; position: absolute;">
                 </div> --}}
             </div>
@@ -86,49 +86,6 @@
             </tbody>
         </table>
 
-        </div>
-        <div class="tab-pane fade" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
-            <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="th-sm">Category
-                    </th>
-                    <th class="th-sm">Subcategory
-                    </th>
-                    <th class="th-sm">Total Correct
-                    </th>
-                    <th class="th-sm">Total Incorrect
-                    </th>
-                    <th class="th-sm">Percent Correct
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade" id="individual-words" role="tabpanel" aria-labelledby="individual-words-tab">
-            <table id="individualWordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="th-sm">Word
-                    </th>
-                    <th class="th-sm">Category
-                    </th>
-                    <th class="th-sm">Subcategory
-                    </th>
-                    <th class="th-sm">Total Correct
-                    </th>
-                    <th class="th-sm">Total Incorrect
-                    </th>
-                    <th class="th-sm">Percent Correct
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
     </div>
     <div class="tab-pane fade table-responsive" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
         <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -172,16 +129,17 @@
             </tbody>
         </table>
     </div>
+</div>
 
-    <br/>
-    <h4 align="center"> <b> Take a quiz to make data appear here. </b> </h4>
+<br/>
+<h4 id="no-quiz-data" align="center" style="display: None;"> <b> Take a quiz to make data appear here. </b> </h4>
 </div>
 
 <div>
-    <h4 align="center"> A question is <i style="color: green">correct</i> if it is answered on the first try. </h4>
+    <h4 id="correctInfo" align="center"> A question is <i style="color: green">correct</i> if it is answered on the first try. </h4>
 </div>
 <div>
-    <h4 align="center"> A question is <i style="color: red">incorrect</i> if it is NOT answered on the first try. </h4>
+    <h4 id="incorrectInfo" align="center"> A question is <i style="color: red">incorrect</i> if it is NOT answered on the first try. </h4>
 </div>
 
 <br/>
@@ -193,7 +151,7 @@
 <!--<p>stat 2: {{stat2}}</p>-->
 
 <!--<p id="progressData">-->
-    <!--empty-->
+<!--empty-->
 <!--</p>-->
 </body>
 
@@ -202,25 +160,22 @@
         if (sessionStorage.getItem('progress') === null) {
             $('#mail-link').attr('href', "mailto:?&subject=Brainy%20Words%202000%20Stats&body=No%20quizzes%20have%20been%20taken%20yet.");
             $("#no-quiz-data").show();
+            console.log("no progress1");
             return;
         }
-
         const progress = JSON.parse(sessionStorage.getItem("progress"));
         const quizzes = progress.quizzes;
         const words = progress.words;
         const subcategories = progress.subcategories;
         const attemptCounter = progress.attemptCounter;
-
         let attemptText = "1st try: " + attemptCounter[0] + ", 2nd try: " + attemptCounter[1]
                 + ", 3rd try: " + attemptCounter[2] + ", 4th try: " + attemptCounter[3];
         // $("#progressBarGraphBox").text(attemptText);
-
         let quizEmailText = [];
         let bestCategory = [0,""];
         let correctOverall = 0;
         let totalQuestionsOverall = 0;
         let overallPercentage = 0;
-
         let elementNumber = 1;
         $.each(quizzes, function( index, quiz ) {
             let subcategory = quiz.subcategory;
@@ -230,74 +185,68 @@
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = quiz.right.join(", ");
             const wrongText = quiz.wrong.join(", ");
             const date = quiz.date;
-
             const totalQuestions = quiz.right.length + quiz.wrong.length;
             let correctPercent = 0;
             if(totalQuestions > 0) {
                 correctPercent = Math.round(1000 * quiz.right.length / totalQuestions)/10;
                 theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
-
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
-
-
             quizEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct Words: " + rightText
-                + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
-
+                    + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
             elementNumber++;
         });
-
         let categoryEmailText = [];
         elementNumber = 1;
-
         $.each(subcategories, function( subcategory, data ) {
             let category = data.parentCategory;
             if (category === undefined || category === "") {
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = data.right;
             const wrongText = data.wrong;
-
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             totalQuestionsOverall += totalQuestions;
             let correctPercent = 0;
             let theColor = "";
             if(totalQuestions > 0) {
                 correctPercent = Math.round(1000 * parseInt(rightText) / totalQuestions)/10;
+                console.log("correct percent: " + correctPercent);
                 theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
                 correctOverall+= parseInt(rightText);
                 if(bestCategory[0] < correctPercent){
                     bestCategory[0] = correctPercent;
-                    bestCategory[1] = category;
+                    if (subcategory === "") {
+                        bestCategory[1] = category;
+                    } else {
+                        let subcatArr = subcategory.split(" ");
+                        for (let k = 0; k < subcatArr.length; k++) {
+                            subcatArr[k] = subcatArr[k].charAt(0).toUpperCase() + subcatArr[k].substring(1);
+                        }
+                        bestCategory[1] = subcatArr.join(" ");
+                    }
                 }
             }
-
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#categoriesTable tbody').append(newRow);
-
             categoryEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
                     + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
             elementNumber++;
             $('#bestCategory').text(bestCategory[1]);
+            $('#bestCategoryAccuracy').text(bestCategory[0] + "% Correct");
             overallPercentage = Math.round((100* correctOverall)/ totalQuestionsOverall);
             $('#overallPercentage').css("color", (overallPercentage > 50)? "green":"red");
             $('#overallPercentage').text(overallPercentage + "%");
-
-
         });
-
         let wordEmailText = [];
         elementNumber = 1;
-
         $.each(words, function( word, data ) {
             let subcategory = data.subcategory;
             let category = data.parentCategory;
@@ -305,10 +254,8 @@
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = data.right;
             const wrongText = data.wrong;
-
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             let correctPercent = 0;
             let theColor = "";
@@ -316,69 +263,92 @@
                 correctPercent = 100 * parseInt(rightText) / totalQuestions;
                 theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
-
             const newRow = "<tr><td>" + word + "</td><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#individualWordsTable tbody').append(newRow);
-
             wordEmailText.push(elementNumber + ". Word: " + word + ", Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
                     + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
             elementNumber++;
         });
-
         const emailTo = "";
         const emailSubj = "Brainy Words 2000 Stats";
         let emailBody = "Quizzes:\n" + quizEmailText.join('\n') + '\n\nCategories:\n' + categoryEmailText.join('\n')
-            + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
-
+                + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
         emailBody = encodeURI(emailBody);
-
         $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
-
         $('#recentQuizzesTable').DataTable();
         $('#categoriesTable').DataTable();
         $('#individualWordsTable').DataTable();
     });
-
     function changeBackground() {
         var totalCount = 12;
         var num = Math.ceil( Math.random() * totalCount );
         document.body.style.backgroundImage = 'url(/images/backgrounds/' + num +'.png)';
     }
-    // document.getElementById("progressData").innerText = sessionStorage.getItem("progress");
-    const progress = JSON.parse(sessionStorage.getItem("progress"));
-    const attemptCounter = progress.attemptCounter;
-    new Chart(document.getElementById("horizontalBar"), {
-        "type": "horizontalBar",
-        "data": {
-            "labels": ["One Try", "Two Tries", "Three Tries", "Four Tries"],
-            "datasets": [{
-                "label": "Number of Tries for Correctly Answered Questions",
-                "data": [attemptCounter[0], attemptCounter[1], attemptCounter[2], attemptCounter[3]],
-                "fill": false,
-                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
-                    "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
-                    "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"
-                ],
-                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
-                    "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"
-                ],
-                "borderWidth": 1
-            }]
-        },
-        "options": {
-
-            "scales": {
-                "xAxes": [{
-                    "ticks": {
-                        stepSize: 1,
-                        "beginAtZero": true
-                    }
+    if (sessionStorage.getItem('progress') === null) {
+        // $('#mail-link').attr('href', "mailto:?&subject=Brainy%20Words%202000%20Stats&body=No%20quizzes%20have%20been%20taken%20yet.");
+        $("#no-quiz-data").show();
+        $("#correctInfo").hide();
+        $("#incorrectInfo").hide();
+        $("#home").hide();
+        console.log("no progress2");
+        // return;
+    } else {
+        // document.getElementById("progressData").innerText = sessionStorage.getItem("progress");
+        const progress = JSON.parse(sessionStorage.getItem("progress"));
+        const attemptCounter = progress.attemptCounter;
+        new Chart(document.getElementById("horizontalBar"), {
+            "type": "horizontalBar",
+            "data": {
+                "labels": ["One Try", "Two Tries", "Three Tries", "Four Tries"],
+                "datasets": [{
+                    "data": [attemptCounter[0], attemptCounter[1], attemptCounter[2], attemptCounter[3]],
+                    "backgroundColor": ["rgba(75, 192, 192, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(255, 159, 64, 0.2)",
+                        "rgba(255, 99, 132, 0.2)"
+                    ],
+                    "borderColor": ["rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(255, 159, 64)", "rgb(255, 99, 132)"
+                    ],
+                    "borderWidth": 1
                 }]
             },
-            "legend": {
-                display: false
-            },
-        }
-    });
+            "options": {
+                "scales": {
+                    "xAxes": [{
+                        "ticks": {
+                            stepSize: 1,
+                            "beginAtZero": true
+                        }
+                    }]
+                },
+                "legend": {
+                    display: false
+                },
+                "tooltips": {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            const index = tooltipItem.index;
+                            let label = "";
+                            switch(index) {
+                                case 0:
+                                    label = "Number of questions correctly answered on the first try";
+                                    break;
+                                case 1:
+                                    label = "Number of questions correctly answered on the second try";
+                                    break;
+                                case 2:
+                                    label = "Number of questions correctly answered on the third try";
+                                    break;
+                                case 3:
+                                    label = "Number of questions correctly answered on the fourth try";
+                                    break;
+                                default:
+                                    label = "";
+                            }
+                            return label;
+                        }
+                    }
+                }
+            }
+        });
+    }
 </script>
