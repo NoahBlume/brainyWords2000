@@ -1,9 +1,8 @@
-<div id="backgroundDiv" style={"z-index: -1;"}>
-    <a href="/street">
-        <img id="backButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
-    </a>
+<a href="/street">
+    <img id="backButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/backButton.png"/>
+</a>
 
-    <a id="mail-link" href="#" target="_top" class="btn btn-info" role="button" style="float: right; margin-top: 15px; margin-right: 10px;">Email Progress</a>
+<a id="mail-link" href="#" target="_top" class="btn btn-info" role="button" style="float: right; margin-top: 15px; margin-right: 10px;">Email Progress</a>
 
 <div id="progress-spacing">
     <h2 id="progress-header" style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>
@@ -40,10 +39,12 @@
                     </div>
                 </div>
             </div>
-            <div class = "progressRow">
-                <div id = "progressBarGraphBox"  style = "position: relative;">
+            <div id = "separator" style = "display:inline-block;">
+            </div>
+            <div class = "progressBox">
+                <div  class = "progressContentBox" id = "box2" style = "position: relative;">
                     <div class = "progressBoxTitle" style = "position: absolute; width:100%;">
-                        Breakdown
+                        Best Category
                     </div>
                     <img src="/images/buttons/fact.png" style="position:absolute; top: 15%; right: 0.5%; width: 100%;"/>
                     <div id = "bestCategory" style = "width: 100%; text-align: center; position: absolute;"></div>
@@ -61,72 +62,30 @@
                 </div> --}}
             </div>
         </div>
+    </div>
 
-        <div class="tab-pane fade table-responsive" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
-            <table id="recentQuizzesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                <tr>
-                    <th class="th-sm">Category
-                    </th>
-                    <th class="th-sm">Subcategory
-                    </th>
-                    <th class="th-sm">Correct Words
-                    </th>
-                    <th class="th-sm">Incorrect Words
-                    </th>
-                    <th class="th-sm">Percent Correct
-                    </th>
-                    <th class="th-sm">Date Taken
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+    <div class="tab-pane fade table-responsive" id="recent-quizzes" role="tabpanel" aria-labelledby="recent-quizzes-tab">
+        <table id="recentQuizzesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="th-sm">Category
+                </th>
+                <th class="th-sm">Subcategory
+                </th>
+                <th class="th-sm">Correct Words
+                </th>
+                <th class="th-sm">Incorrect Words
+                </th>
+                <th class="th-sm">Percent Correct
+                </th>
+                <th class="th-sm">Date Taken
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-            </div>
-            <div class="tab-pane fade" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
-                <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th class="th-sm">Category
-                        </th>
-                        <th class="th-sm">Subcategory
-                        </th>
-                        <th class="th-sm">Total Correct
-                        </th>
-                        <th class="th-sm">Total Incorrect
-                        </th>
-                        <th class="th-sm">Percent Correct
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="tab-pane fade" id="individual-words" role="tabpanel" aria-labelledby="individual-words-tab">
-                <table id="individualWordsTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <thead>
-                    <tr>
-                        <th class="th-sm">Word
-                        </th>
-                        <th class="th-sm">Category
-                        </th>
-                        <th class="th-sm">Subcategory
-                        </th>
-                        <th class="th-sm">Total Correct
-                        </th>
-                        <th class="th-sm">Total Incorrect
-                        </th>
-                        <th class="th-sm">Percent Correct
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
         </div>
         <div class="tab-pane fade table-responsive" id="all-category-data" role="tabpanel" aria-labelledby="all-category-data-tab">
             <table id="categoriesTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -170,9 +129,6 @@
                 </tbody>
             </table>
         </div>
-
-        <br/>
-        <h4 align="center"> <b> Take a quiz to make data appear here. </b> </h4>
     </div>
 
     <br/>
@@ -186,6 +142,8 @@
     <h4 id="incorrectInfo" align="center"> A question is <i style="color: red">incorrect</i> if it is NOT answered on the first try. </h4>
 </div>
 
+<br/>
+
 
 <!--<h2 style="z-index: -1; position: absolute; text-align: center; width: 100%;">Progress</h2>-->
 <!--<br style="clear: both;"/>-->
@@ -195,7 +153,7 @@
 <!--<p id="progressData">-->
     <!--empty-->
 <!--</p>-->
-{{!-- </body> --}}
+</body>
 
 <script>
     $(document).ready(function () {
@@ -205,23 +163,19 @@
             console.log("no progress1");
             return;
         }
-
         const progress = JSON.parse(sessionStorage.getItem("progress"));
         const quizzes = progress.quizzes;
         const words = progress.words;
         const subcategories = progress.subcategories;
         const attemptCounter = progress.attemptCounter;
-
         let attemptText = "1st try: " + attemptCounter[0] + ", 2nd try: " + attemptCounter[1]
                 + ", 3rd try: " + attemptCounter[2] + ", 4th try: " + attemptCounter[3];
         // $("#progressBarGraphBox").text(attemptText);
-
         let quizEmailText = [];
         let bestCategory = [0,""];
         let correctOverall = 0;
         let totalQuestionsOverall = 0;
         let overallPercentage = 0;
-
         let elementNumber = 1;
         $.each(quizzes, function( index, quiz ) {
             let subcategory = quiz.subcategory;
@@ -231,42 +185,32 @@
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = quiz.right.join(", ");
             const wrongText = quiz.wrong.join(", ");
             const date = quiz.date;
-
             const totalQuestions = quiz.right.length + quiz.wrong.length;
             let correctPercent = 0;
             if(totalQuestions > 0) {
                 correctPercent = Math.round(1000 * quiz.right.length / totalQuestions)/10;
                 theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
-
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td><td>" + date + "</td></tr>";
             $('#recentQuizzesTable tbody').append(newRow);
-
-
             quizEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct Words: " + rightText
                 + ", Incorrect Words: " + wrongText + ", Percent Correct: " + correctPercent + "%, Date Taken: " + date);
-
             elementNumber++;
         });
-
         let categoryEmailText = [];
         elementNumber = 1;
-
         $.each(subcategories, function( subcategory, data ) {
             let category = data.parentCategory;
             if (category === undefined || category === "") {
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = data.right;
             const wrongText = data.wrong;
-
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             totalQuestionsOverall += totalQuestions;
             let correctPercent = 0;
@@ -278,7 +222,6 @@
                 correctOverall+= parseInt(rightText);
                 if(bestCategory[0] < correctPercent){
                     bestCategory[0] = correctPercent;
-
                     if (subcategory === "") {
                         bestCategory[1] = category;
                     } else {
@@ -290,11 +233,9 @@
                     }
                 }
             }
-
             const newRow = "<tr><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#categoriesTable tbody').append(newRow);
-
             categoryEmailText.push(elementNumber + ". Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
                     + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
             elementNumber++;
@@ -303,13 +244,9 @@
             overallPercentage = Math.round((100* correctOverall)/ totalQuestionsOverall);
             $('#overallPercentage').css("color", (overallPercentage > 50)? "green":"red");
             $('#overallPercentage').text(overallPercentage + "%");
-
-
         });
-
         let wordEmailText = [];
         elementNumber = 1;
-
         $.each(words, function( word, data ) {
             let subcategory = data.subcategory;
             let category = data.parentCategory;
@@ -317,10 +254,8 @@
                 category = subcategory;
                 subcategory = "";
             }
-
             const rightText = data.right;
             const wrongText = data.wrong;
-
             const totalQuestions = parseInt(rightText) + parseInt(wrongText);
             let correctPercent = 0;
             let theColor = "";
@@ -328,30 +263,23 @@
                 correctPercent = 100 * parseInt(rightText) / totalQuestions;
                 theColor = (correctPercent > 50)? " class = \"greaterThan50\" >":" class = \"lessThan50\" >";
             }
-
             const newRow = "<tr><td>" + word + "</td><td>" + category + "</td><td>" + subcategory + "</td><td>" + rightText + "</td><td>"
                     + wrongText + "</td><td" + theColor + correctPercent + "%</td></tr>";
             $('#individualWordsTable tbody').append(newRow);
-
             wordEmailText.push(elementNumber + ". Word: " + word + ", Category: " + category + ", Subcategory: " + subcategory + ", Correct: " + rightText
                     + ", Incorrect: " + wrongText + ", Percent Correct: " + correctPercent + "%");
             elementNumber++;
         });
-
         const emailTo = "";
         const emailSubj = "Brainy Words 2000 Stats";
         let emailBody = "Quizzes:\n" + quizEmailText.join('\n') + '\n\nCategories:\n' + categoryEmailText.join('\n')
             + '\n\nWords:\n' + wordEmailText.join('\n') + '\n';
-
         emailBody = encodeURI(emailBody);
-
         $('#mail-link').attr('href', "mailto:"+emailTo+'?&subject='+emailSubj+'&body='+emailBody);
-
         $('#recentQuizzesTable').DataTable();
         $('#categoriesTable').DataTable();
         $('#individualWordsTable').DataTable();
     });
-
     function changeBackground() {
         var totalCount = 12;
         var num = Math.ceil( Math.random() * totalCount );
@@ -379,13 +307,11 @@
                         "rgba(255, 99, 132, 0.2)"
                     ],
                     "borderColor": ["rgb(75, 192, 192)", "rgb(255, 205, 86)", "rgb(255, 159, 64)", "rgb(255, 99, 132)"
-
                     ],
                     "borderWidth": 1
                 }]
             },
             "options": {
-
                 "scales": {
                     "xAxes": [{
                         "ticks": {
@@ -397,7 +323,6 @@
                 "legend": {
                     display: false
                 },
-
                 "tooltips": {
                     callbacks: {
                         label: function(tooltipItem, data) {
@@ -426,5 +351,4 @@
             }
         });
     }
-
 </script>

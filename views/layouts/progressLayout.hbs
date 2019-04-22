@@ -18,9 +18,15 @@
 <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
+<style>
+    #backgroundDiv {
+        background-image: url('/images/backgrounds/{{rand 1 12}}.png');
+    }
+</style>
+
 <body>
+    <div id="backgroundDiv"></div>
     {{{ body }}}
 </body>
-
 
 </html>
