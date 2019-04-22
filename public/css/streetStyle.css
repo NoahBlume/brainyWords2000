@@ -42,7 +42,7 @@ body {
     border-style: solid;
 
     /*cursor: alias;*/
-    cursor: url(/images/cursors/door.png), alias;
+    cursor: url(/images/cursors/door.png), auto;
 }
 
 .streetElement {
@@ -89,26 +89,30 @@ body {
 }
 
 
-.blue-facts {
-    background-color: rgb(13, 190, 221);
+.blue {
+    background-color: rgb(164, 221, 234);
+    z-index: 6;
 }
 
-.orange-facts {
-    background-color: rgb(252, 155, 29);
+.orange {
+    background-color: rgb(245, 170, 89);
+    z-index: 6;
 }
 
-.pink-facts {
-    background-color: rgb(236, 105, 145);
+.pink {
+    background-color: rgb(251, 156, 204);
+    z-index: 6;
 }
 
-.purple-facts {
-    background-color: rgb(179, 73, 240);
+.purple {
+    background-color: rgb(198, 178, 249);
+    z-index: 6;
 }
 
 .text-facts {
     margin-top: 8px;
     color: white;
-    font-weight: 500;
+    font-weight: 900;
     font-size: 50px;
 }
 

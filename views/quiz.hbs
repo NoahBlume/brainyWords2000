@@ -1,100 +1,102 @@
-<audio id="correct-sound" src="/audio/quiz/correct.wav" type="audio/wav"></audio>
-<audio id="incorrect-sound" src="/audio/quiz/incorrect.wav" type="audio/wav"></audio>
-<audio id="answer-audio" src="" type="audio/wav"></audio>
+<html>
+    <audio id="correct-sound" src="/audio/quiz/correct.wav" type="audio/wav"></audio>
+    <audio id="incorrect-sound" src="/audio/quiz/incorrect.wav" type="audio/wav"></audio>
+    <audio id="answer-audio" src="" type="audio/wav"></audio>
 
-<img id="backButton" img style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/back.png"/>
-<img id="homeButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/home.png"/>
-<img id="repeatButton" style="height:60px; float:left; margin-top: 5px; margin-left: 5px;" src="/images/buttons/repeat.png"/>
+    <img id="backButton" img style="height:60px; float:left; margin-top: 20px; margin-left: 20px;" src="/images/buttons/back.png"/>
+    <img id="homeButton" style="height:60px; float:left; margin-top: 20px; margin-left: 20px;" src="/images/buttons/home.png"/>
+    <img id="repeatButton" style="height:60px; float:left; margin-top: 20px; margin-left: 20px;" src="/images/buttons/repeat.png"/>
 
-<a id="bankButtonLink" href="javascript:openBank();">
-    <img id="bankButton" style="height:60px; float:right; margin-top: 5px; margin-right: 5px; margin-left: 5px;" src="/images/buttons/bank.png"/>
-</a>
+    <a id="bankButtonLink" href="javascript:openBank();">
+        <img id="bankButton" style="height:60px; float:right; margin-top: 20px; margin-right: 5px; margin-left: 20px;" src="/images/buttons/bank.png"/>
+    </a>
 
-<h2 id="quizLabel" style="z-index: -1; position: absolute; text-align: center; width: 100%;">Quiz</h2>
-<!--<br style="clear: both; margin-bottom: 20px;"/>-->
-<div id="spaceDiv"></div>
+    <h2 id="quizLabel">Quiz</h2>
+    <!--<br style="clear: both; margin-bottom: 20px;"/>-->
+    <div id="spaceDiv"></div>
 
-<div id="startModal" style="display:block;" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content slim">
-        <div class="modal-header" style="text-align:center;">
-            <h2 align="center" style="margin-right: auto; margin-left: auto;">Start Quiz</h2>
-        </div>
-        <div class="modal-body">
-            <br/>
-            <div class="play-button" id="begin-quiz">
+    <div id="startModal" style="display:block;" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content slim">
+            <div class="modal-header" style="text-align:center;">
+                <h2 align="center" style="margin-right: auto; margin-left: auto;">Start Quiz</h2>
             </div>
-            <br/>
-        </div>
-    </div>
-</div>
-
-
-<div id="bankModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content slim" id="myModal">
-        <div class="modal-header" style="text-align:center;">
-            <h2 align="center" style="margin-right: -35px; margin-left: auto;">Bank</h2>
-            <button onclick="closeBank();" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div>
-            <h4 align="center">Key</h4>
-            <img src="/images/buttons/keyStacked.png"/>
-        </div>
-        <hr>
-        <div id="bank-body">
-            <h4 id="totalCount"></h4>
-        </div>
-        <!-- <div class="modal-footer">
-            <h3>Done</h3>
-        </div> -->
-    </div>
-</div>
-
-
-<h3 id="question-word" align="center"></h3>
-
-
-<div class="row option-container">
-    <div class="col-sm-3 offset-sm-3 rectangle">
-        <div class="option" id="top-left">
-            <span class="helper"></span>
-            <img class="option-image">
-        </div>
-    </div>
-    <div class="col-sm-3 rectangle">
-        <div class="option" id="top-right">
-            <span class="helper"></span>
-            <img class="option-image">
+            <div class="modal-body">
+                <br/>
+                <div class="play-button" id="begin-quiz">
+                </div>
+                <br/>
+            </div>
         </div>
     </div>
 
 
-    <div class="col-sm-3 offset-sm-3 rectangle">
-        <div class="option" id="bottom-left">
-            <span class="helper"></span>
-            <img class="option-image">
+    <div id="bankModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content slim" id="myModal">
+            <div class="modal-header" style="text-align:center;">
+                <h2 align="center" style="margin-right: -35px; margin-left: auto;">Bank</h2>
+                <button onclick="closeBank();" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div>
+                <h4 align="center">Key</h4>
+                <img src="/images/buttons/keyStacked.png"/>
+            </div>
+            <hr>
+            <div id="bank-body">
+                <h4 id="totalCount"></h4>
+            </div>
+            <!-- <div class="modal-footer">
+                <h3>Done</h3>
+            </div> -->
         </div>
     </div>
-    <div class="col-sm-3 rectangle">
-        <div class="option" id="bottom-right">
-            <span class="helper"></span>
-            <img class="option-image">
-        </div>
-    </div>
-</div>
 
-<div id="coin-container">
-    <p id="gold-coin-counter">Gold Coins: 0</p>
-    <span class="coin-span" id="coin-banks"></span>
-    <span class="coin-span" id="armored-cars"></span>
-    <span class="coin-span" id="money-bags"></span>
-    <span class="coin-span" id="gold-coin-stacks"></span>
-    <span class="coin-span" id="gold-coins"></span>
-    <span class="coin-span" id="silver-coins"></span>
-</div>
+
+    <h3 id="question-word" align="center"></h3>
+
+
+    <div class="row option-container">
+        <div class="col-sm-3 offset-sm-3 rectangle">
+            <div class="option" id="top-left">
+                <span class="helper"></span>
+                <img class="option-image">
+            </div>
+        </div>
+        <div class="col-sm-3 rectangle">
+            <div class="option" id="top-right">
+                <span class="helper"></span>
+                <img class="option-image">
+            </div>
+        </div>
+
+
+        <div class="col-sm-3 offset-sm-3 rectangle">
+            <div class="option" id="bottom-left">
+                <span class="helper"></span>
+                <img class="option-image">
+            </div>
+        </div>
+        <div class="col-sm-3 rectangle">
+            <div class="option" id="bottom-right">
+                <span class="helper"></span>
+                <img class="option-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="coin-container">
+        <p id="gold-coin-counter">Gold Coins: 0</p>
+        <span class="coin-span" id="coin-banks"></span>
+        <span class="coin-span" id="armored-cars"></span>
+        <span class="coin-span" id="money-bags"></span>
+        <span class="coin-span" id="gold-coin-stacks"></span>
+        <span class="coin-span" id="gold-coins"></span>
+        <span class="coin-span" id="silver-coins"></span>
+    </div>
+</html>
 
 <!--<div class="row">-->
     <!--<img id="keyHorizontal" src="/images/buttons/keyHorizontal.png" style="margin-right: auto; margin-left: auto;"/>-->

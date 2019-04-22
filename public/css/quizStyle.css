@@ -1,3 +1,5 @@
+
+
 body {
     font-family: "Comic Sans MS", "Comic Sans", sans-serif;
     /*background-position: top right;*/
@@ -59,7 +61,7 @@ body {
 }
 
 #coin-container {
-    margin-left: 5px;
+    margin-left: 20px;
     margin-right: 5px;
     background-color: white;
     -webkit-border-radius: 5px;
@@ -330,8 +332,13 @@ body {
 }
 
 #quizLabel {
-    top: 0;
+    z-index: -1; 
+    position: absolute; 
+    text-align: center; 
+    width: 100%;
+    top: 10px;
 }
+
 #spaceDiv {
     margin-bottom: 50px;
 }

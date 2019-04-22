@@ -1,3 +1,7 @@
+html {
+    margin: 20px;
+}
+
 body {
     /*background-position: top right;*/
     /*background-repeat: no-repeat;*/
@@ -128,7 +132,7 @@ h2, h3 {
 .word-container {
     width: 90%;
     margin-left: 7%;
-    margin-top: 5px;
+    margin-top: 70px;
     /*margin-right: 3%;*/
 }
 
@@ -180,7 +184,7 @@ special styling for mobile phones in landscape mode
         overflow-x: auto;
         overflow-y: hidden;
         height: 90%;
-        margin-top: 0;
+        margin-top: 10px;
         margin-left: 65px;
         width: 90%;
     }
