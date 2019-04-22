@@ -184,7 +184,7 @@ special styling for mobile phones in landscape mode
         overflow-x: auto;
         overflow-y: hidden;
         height: 90%;
-        margin-top: 10px;
+        margin-top: 50px;
         margin-left: 65px;
         width: 90%;
     }
@@ -280,6 +280,7 @@ special styling for small (mobile) screens (portrait)
     .word-container {
         margin-left: auto;
         margin-right: auto;
+        /* margin-top: 180px; */
     }
 
     .option:focus {

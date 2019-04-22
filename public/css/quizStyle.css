@@ -330,6 +330,7 @@ body {
 #question-word {
     margin-top: 100px;
     margin-bottom: 50px;
+    font-size: 50px;
 }
 
 #quizLabel {
@@ -393,6 +394,7 @@ special styling for small (mobile) screens (portrait)
     #question-word {
         margin-bottom: 20px;
         padding-top: 20px;
+        font-size: 30px;
     }
 
 
@@ -540,7 +542,8 @@ h2 {
     }
 
     #question-word {
-        margin-bottom: 5px;
+        margin-bottom: 20px;
+        font-size: 30px;
     }
 
     h2 {
