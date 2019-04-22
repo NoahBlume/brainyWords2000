@@ -175,18 +175,6 @@
         <h4 align="center"> <b> Take a quiz to make data appear here. </b> </h4>
     </div>
 
-    <div>
-        <h4 align="center"> A question is <i style="color: green">correct</i> if it is answered on the first try. </h4>
-    </div>
-    <div>
-        <h4 align="center"> A question is <i style="color: red">incorrect</i> if it is NOT answered on the first try. </h4>
-    </div>
-
-    <br/>
-
-    <br/>
-    <br/>
-
     <br/>
     <h4 id="no-quiz-data" align="center" style="display: None;"> <b> Take a quiz to make data appear here. </b> </h4>
 </div>
@@ -369,21 +357,6 @@
         var num = Math.ceil( Math.random() * totalCount );
         document.body.style.backgroundImage = 'url(/images/backgrounds/' + num +'.png)';
     }
-    // document.getElementById("progressData").innerText = sessionStorage.getItem("progress");
-</script>
-
-<style>
-    #backgroundDiv {
-        background-image: url('/images/Backgrounds/{{rand 1 12}}.png');
-    }
-</style>
-
-{{!-- <body>
-    <div id="backgroundDiv"></div>
-    {{{ body }}}
-</body>
-</html> --}}
-<script><
     if (sessionStorage.getItem('progress') === null) {
         // $('#mail-link').attr('href', "mailto:?&subject=Brainy%20Words%202000%20Stats&body=No%20quizzes%20have%20been%20taken%20yet.");
         $("#no-quiz-data").show();
@@ -453,4 +426,5 @@
             }
         });
     }
+
 </script>
