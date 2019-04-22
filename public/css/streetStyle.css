@@ -25,17 +25,8 @@ body {
     cursor: url(/images/cursors/hand2.png), grab;
 }
 
-
-.horizontal:active {
-    /*cursor : -webkit-grabbing;*/
-    /*cursor : -moz-grabbing;*/
-    /*cursor : -o-grabbing;*/
-    /*cursor : grabbing;*/
-    /*cursor: url(/images/cursors/hand.png), auto;*/
-}
-
 body {
-    background-image: url(/images/Backgrounds/Grey.png);
+    background-image: url(/images/backgrounds/Grey.png);
     background-position: top right;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -49,6 +40,7 @@ body {
     border-color: magenta;
     border-width: medium;
     border-style: solid;
+
     /*cursor: alias;*/
     cursor: url(/images/cursors/door.png), alias;
 }
@@ -60,6 +52,7 @@ body {
     border-color: greenyellow;
     border-width: medium;
     border-style: solid;
+
     /*cursor: url('/images/buttons/cursor2.png'), auto;*/
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
@@ -70,6 +63,7 @@ body {
     border-color: cyan;
     border-width: medium;
     border-style: solid;
+
     /*cursor: zoom-in;*/
     cursor: url(/images/cursors/opaqueZoom.png), zoom-in;
 }
@@ -95,19 +89,19 @@ body {
 }
 
 
-.blue {
+.blue-facts {
     background-color: rgb(13, 190, 221);
 }
 
-.orange {
+.orange-facts {
     background-color: rgb(252, 155, 29);
 }
 
-.pink {
+.pink-facts {
     background-color: rgb(236, 105, 145);
 }
 
-.purple {
+.purple-facts {
     background-color: rgb(179, 73, 240);
 }
 
@@ -120,7 +114,7 @@ body {
 
 
 /* START OF SCREEN RESIZING SETTINGS */
-@media screen and (max-height: 750px) {
+@media screen and (max-height: 805px) {
     html {
         -webkit-transform: scale(.9);
         -moz-transform: scale(.9);
@@ -132,107 +126,185 @@ body {
         margin-left: -5.5%;
         margin-right: -5.5%;
     }
+
+    #progressButton {
+        margin-right: -5% !important;
+    }
+    #backButton {
+        margin-left: -5% !important;
+    }
 }
 
-@media screen and (max-height: 695px) {
+@media screen and (max-height: 750px) {
     html {
-        -webkit-transform: scale(.83);
-        -moz-transform: scale(.83);
-        transform: scale(.83);
+        -webkit-transform: scale(.85);
+        -moz-transform: scale(.85);
+        transform: scale(.85);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -10.25%;
-        margin-right: -10.25%;
+        margin-left: -8.825%;
+        margin-right: -8.825%;
+    }
+
+    #progressButton {
+        margin-right: -8.325% !important;
+    }
+    #backButton {
+        margin-left: -8.325% !important;
+    }
+}
+
+@media screen and (max-height: 695px) {
+    html {
+        -webkit-transform: scale(.8);
+        -moz-transform: scale(.8);
+        transform: scale(.8);
+        transform-origin: top center;
+    }
+
+    .horizontal.dragscroll {
+        margin-left: -12.5%;
+        margin-right: -12.5%;
+    }
+
+    #progressButton {
+        margin-right: -12% !important;
+    }
+    #backButton {
+        margin-left: -12% !important;
     }
 }
 
 @media screen and (max-height: 640px) {
     html {
-        -webkit-transform: scale(.77);
-        -moz-transform: scale(.77);
-        transform: scale(.77);
+        -webkit-transform: scale(.72);
+        -moz-transform: scale(.72);
+        transform: scale(.72);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -15%;
-        margin-right: -15%;
+        margin-left: -19.5%;
+        margin-right: -19.5%;
+    }
+
+    #progressButton {
+        margin-right: -19% !important;
+    }
+    #backButton {
+        margin-left: -19% !important;
     }
 }
 
 @media screen and (max-height:585px) {
     html {
-        -webkit-transform: scale(.7);
-        -moz-transform: scale(.7);
-        transform: scale(.7);
+        -webkit-transform: scale(.65);
+        -moz-transform: scale(.65);
+        transform: scale(.65);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -21.5%;
-        margin-right: -21.5%;
+        margin-left: -27%;
+        margin-right: -27%;
+    }
+
+    #progressButton {
+        margin-right: -26.5% !important;
+    }
+    #backButton {
+        margin-left: -26.5% !important;
     }
 }
 
 @media screen and (max-height: 530px) {
     html {
-        -webkit-transform: scale(.62);
-        -moz-transform: scale(.62);
-        transform: scale(.62);
+        -webkit-transform: scale(.58);
+        -moz-transform: scale(.58);
+        transform: scale(.58);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -30.65%;
-        margin-right: -30.65%;
+        margin-left: -36.25%;
+        margin-right: -36.25%;
+    }
+
+    #progressButton {
+        margin-right: -35.75% !important;
+    }
+    #backButton {
+        margin-left: -35.75% !important;
     }
 }
 
 @media screen and (max-height: 475px) {
     html {
-        -webkit-transform: scale(.55);
-        -moz-transform: scale(.55);
-        transform: scale(.55);
+        -webkit-transform: scale(.51);
+        -moz-transform: scale(.51);
+        transform: scale(.51);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -41%;
-        margin-right: -41%;
+        margin-left: -48.125%;
+        margin-right: -48.125%;
+    }
+
+    #progressButton {
+        margin-right: -47.625% !important;
+    }
+    #backButton {
+        margin-left: -47.625% !important;
     }
 }
 
 @media screen and (max-height: 420px) {
     html {
-        -webkit-transform: scale(.47);
-        -moz-transform: scale(.47);
-        transform: scale(.47);
+        -webkit-transform: scale(.45);
+        -moz-transform: scale(.45);
+        transform: scale(.45);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -56.33%;
-        margin-right: -56.33%;
+        margin-left: -61%;
+        margin-right: -61%;
+    }
+
+    #progressButton {
+        margin-right: -60.5% !important;
+    }
+    #backButton {
+        margin-left: -60.5% !important;
     }
 }
 
 @media screen and (max-height: 365px) {
     html {
-        -webkit-transform: scale(.42);
-        -moz-transform: scale(.42);
-        transform: scale(.42);
+        -webkit-transform: scale(.4);
+        -moz-transform: scale(.4);
+        transform: scale(.4);
         transform-origin: top center;
     }
 
     .horizontal.dragscroll {
-        margin-left: -69%;
-        margin-right: -69%;
+        margin-left: -75%;
+        margin-right: -75%;
+    }
+
+    #progressButton {
+        margin-right: -74.5% !important;
+    }
+    #backButton {
+        margin-left: -74.5% !important;
     }
 }
 
-#backButton, #progressButton {
+/* END OF SCREEN RESIZING SETTINGS */
+
+#backButton, #progressButton, #homeButton {
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
-/* END OF SCREEN RESIZING SETTINGS */
