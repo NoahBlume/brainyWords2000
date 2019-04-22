@@ -25,15 +25,6 @@ body {
     cursor: url(/images/cursors/hand2.png), grab;
 }
 
-
-.horizontal:active {
-    /*cursor : -webkit-grabbing;*/
-    /*cursor : -moz-grabbing;*/
-    /*cursor : -o-grabbing;*/
-    /*cursor : grabbing;*/
-    /*cursor: url(/images/cursors/hand.png), auto;*/
-}
-
 body {
     background-image: url(/images/Backgrounds/Grey.png);
     background-position: top right;
@@ -76,6 +67,16 @@ body {
     /*cursor: zoom-in;*/
     cursor: url(/images/cursors/opaqueZoom.png), zoom-in;
 }
+
+/* .zoomAreaRelative {
+    z-index: 4;
+    position: absolute;
+    border-color: cyan;
+    border-width: medium;
+    border-style: solid;
+    /*cursor: zoom-in;*/
+    /* cursor: url(/images/cursors/opaqueZoom.png), zoom-in;
+} */ 
 
 .missingStreetImage {
     z-index:2;

@@ -1,5 +1,5 @@
 <div id="mainContainer">
-    <img id="streetBackground" style="height: 850px; display: block; margin-left: auto; margin-right: auto;" src="/images/streetZoomedIn/zoo.png"/>
+    <img id="streetBackground" style="height: 850px; display: block; margin-left: auto; margin-right: auto; position: relative;" src="/images/streetZoomedIn/zoo.png"/>
     <div class="zoomArea" 
         style="height: 378px; width: 259px; top: 269px; left: 194px;" 
         onmouseup="zoomInwithAudio('primates', '06monkeys.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
@@ -33,10 +33,9 @@
         onmouseup="zoomInwithAudio('aquatic','03water.mp3');" onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
     <div class="category" 
-         style="height: 451px; width: 424px; top: 448px; left: 674px;" 
-         onmouseup="selectCategory('Animals'); " onmousedown="clearDrag();" onmousemove="setDrag();">
+        style="height: 451px; width: 424px; top: 448px; left: 674px;" 
+        onmouseup="selectCategory('Animals'); " onmousedown="clearDrag();" onmousemove="setDrag();">
     </div>
-    
 </div>
 
 <script>
