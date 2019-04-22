@@ -111,7 +111,7 @@ body {
 .option:hover {
     border-color: #d8d8d8;
     border-style: solid;
-    border-width: 1.6px;
+    border-width: 5px;
     /*background-color: #d8d8d8;*/
 }
 .option:active {
@@ -328,7 +328,8 @@ body {
 }
 
 #question-word {
-    margin-bottom: 15px;
+    margin-top: 100px;
+    margin-bottom: 50px;
 }
 
 #quizLabel {
@@ -336,7 +337,8 @@ body {
     position: absolute; 
     text-align: center; 
     width: 100%;
-    top: 10px;
+    /* top: 10px; */
+    top: 30px;
 }
 
 #spaceDiv {
@@ -373,7 +375,7 @@ special styling for small (mobile) screens (portrait)
     }
 
     #quizLabel {
-        top: 65px;
+        top: 80px;
     }
     #spaceDiv {
         margin-bottom: 110px;
@@ -389,7 +391,8 @@ special styling for small (mobile) screens (portrait)
     }
 
     #question-word {
-        margin-bottom: 10px;
+        margin-bottom: 20px;
+        padding-top: 20px;
     }
 
 
@@ -571,16 +574,14 @@ h2 {
     border-color: red;
     border-style: solid;
     border-width: 5px;
-    /*box-shadow: none;*/
-    /*background-color: #d8d8d8;*/
+    box-shadow: -5px 5px 20px -3px red;
 }
 
 .option.correct {
     border-color: green;
     border-style: solid;
     border-width: 5px;
-    box-shadow: none;
-    /*background-color: #d8d8d8;*/
+    box-shadow: -5px 5px 20px -3px green;
 }
 
 .coin-bank {

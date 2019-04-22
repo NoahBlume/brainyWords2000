@@ -1,20 +1,21 @@
-html {
-    margin: 20px;
-}
+/* html {
+    padding: 20px;
+} */
 
 body {
     background: white;
+    padding: 20px;
 }
 
 h2 {
     font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
 }
 
-#outerProgressDiv {
+/* #outerProgressDiv {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-}
+} */
 
 .play-button {
     margin-left: auto;
@@ -108,8 +109,14 @@ h2 {
     text-align: center;
     /*padding-bottom: 5%;*/
     padding-top: 2%;
-    font-size: 25px;
+    font-size: 40px;
 }
+
+.tab-content {
+    background-color: white;
+    padding: 20px;
+}
+
 @media (min-width: 350px) {
     #overviewHeader {
         font-family: 'Comic Sans MS', 'Comic Sans', 'sans-serif';
@@ -117,7 +124,7 @@ h2 {
         text-align: center;
         /*padding-bottom: 5%;*/
         padding-top: 2%;
-        font-size: 35px;
+        font-size: 40px;
     }
     #separator{
         width:15px;
@@ -165,7 +172,7 @@ h2 {
         text-align: center;
         /*padding-bottom: 5%;*/
         padding-top: 2%;
-        font-size: 45px;
+        font-size: 40px;
     }
     #separator{
         width:20px;
@@ -209,7 +216,7 @@ h2 {
         text-align: center;
         /*padding-bottom: 5%;*/
         padding-top: 2%;
-        font-size: 55px;
+        font-size: 40px;
     }
     #separator{
         width:20px;
@@ -257,7 +264,7 @@ h2 {
         text-align: center;
         /*padding-bottom: 5%;*/
         padding-top: 2%;
-        font-size: 65px;
+        font-size: 40px;
     }
     #separator{
         width:20px;
