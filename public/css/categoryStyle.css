@@ -172,6 +172,10 @@ h2, h3 {
 special styling for mobile phones in landscape mode
 */
 @media only screen and (max-height: 420px) {
+    #spaceDiv {
+        margin: 0;
+    }
+
     html {
         height: 95%;
     }
