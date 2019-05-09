@@ -48,10 +48,10 @@ body {
 .streetElement {
     z-index: 5;
     position: absolute;
-    /*background-color: greenyellow;*/
-    /*border-color: greenyellow;*/
-    /*border-width: medium;*/
-    /*border-style: solid;*/
+    /* background-color: greenyellow; */
+    border-color: greenyellow;
+    border-width: medium;
+    border-style: solid;
 
     /*cursor: url('/images/buttons/cursor2.png'), auto;*/
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
