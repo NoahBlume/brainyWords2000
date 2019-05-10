@@ -69,10 +69,6 @@ h2, h3 {
     cursor: url(/images/cursors/handPointerCropped.png), pointer;
 }
 
-/*.option {*/
-    /*height: 250px;*/
-/*}*/
-
 .option.square {
     border-radius: 15px;
 }
@@ -83,9 +79,6 @@ h2, h3 {
     border-width: 5px;
     /*background-color: #d8d8d8;*/
 }
-/* .option:active {
-    box-shadow: none;
-} */
 
 .option:focus {
     /* border-color: royalblue; */
@@ -97,10 +90,6 @@ h2, h3 {
     margin-bottom: 10px;
     box-shadow: -5px 5px 20px -3px #d8d8d8;
 }
-
-/* .option.square:focus {
-    border-color: mediumpurple;
-} */
 
 .option-image {
     max-width: 95%;

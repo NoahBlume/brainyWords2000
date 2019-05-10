@@ -12,7 +12,6 @@
     </a>
 
     <h2 id="quizLabel">Quiz</h2>
-    <!--<br style="clear: both; margin-bottom: 20px;"/>-->
     <div id="spaceDiv"></div>
 
     <div id="startModal" style="display:block;" class="modal">
@@ -48,9 +47,6 @@
             <div id="bank-body">
                 <h4 id="totalCount"></h4>
             </div>
-            <!-- <div class="modal-footer">
-                <h3>Done</h3>
-            </div> -->
         </div>
     </div>
 
@@ -98,12 +94,6 @@
     </div>
 </html>
 
-<!--<div class="row">-->
-    <!--<img id="keyHorizontal" src="/images/buttons/keyHorizontal.png" style="margin-right: auto; margin-left: auto;"/>-->
-
-    <!--<img id="keyStacked" src="/images/buttons/keyStacked.png" style="margin-right: auto; margin-left: auto;"/>-->
-<!--</div>-->
-
 <script>
     let correctAudio = ["aa1_excellent_4b", "aa1a_awesome_g", "aa2_good_job_22g",
         "aa3_magnificent_23g", "aa4_you_did_really_well_14b", "aa5_outstanding_6g",
@@ -134,7 +124,6 @@
     window.parentCategory = "{{parentCategory}}";
     window.redirectLocation = "{{subCategoryLocation}}";
     window.categoryNum = "{{categoryNum}}";
-    // console.log(window.sharedInfo);
 
     function openBank() {
         if (sessionStorage.getItem('totalPoints') === null) {
